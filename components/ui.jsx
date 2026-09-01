@@ -497,6 +497,50 @@ export function CountUp({ end, duration = 1400, prefix = '', suffix = '', decima
   );
 }
 
+/**
+ * Reveal — fades and lifts its children the first time they scroll into view,
+ * with an optional stagger delay. Movement is small on purpose: enough to draw
+ * the eye down the section, not enough to feel like a slideshow. Respects
+ * prefers-reduced-motion by rendering the finished state immediately.
+ */
+export function Reveal({ children, delay = 0, y = 18 }) {
+  const ref = React.useRef(null);
+  const [shown, setShown] = React.useState(false);
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? 'translateY(0)' : `translateY(${y}px)`,
+        transition: `opacity 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 /** StatBand — full-bleed image with oversized figures across it. */
 export function StatBand({ image, stats, tone = 'primary' }) {
   const accent = tone === 'secondary' ? SECONDARY_LIGHT : PRIMARY_LIGHT;

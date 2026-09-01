@@ -1,7 +1,8 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Check, Play } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  VideoHeader, Eyebrow, CountUp, Reveal, GOLD,
+  PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -181,28 +182,141 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
+      {/* THE VALUE PROPOSITION — this is the page's argument, so it gets the
+          weight: a dark ground, counters that animate in, and the four blocks
+          staggered rather than dumped as four equal columns of text. */}
+      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: INK }}>
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="max-w-3xl">
+              <Eyebrow color={SECONDARY} className="mb-4">What the gathering delivers</Eyebrow>
+              <h2
+                className="text-white font-bold mb-6"
+                style={{ fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)', lineHeight: 1.1, letterSpacing: '-0.025em' }}
+              >
+                One firm. One room.{' '}
+                <span style={{ color: SECONDARY, fontStyle: 'italic' }}>Everyone&rsquo;s attention.</span>
+              </h2>
+            </div>
+          </Reveal>
+
+          {/* The numbers first — they make the argument before anyone reads a
+              bullet, and each one is a claim a conference cannot match. */}
+          <Reveal delay={80}>
+            <div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 my-14 py-12"
+              style={{ borderTop: `1px solid ${GOLD}44`, borderBottom: `1px solid ${GOLD}44` }}
+            >
+              {[
+                { end: 1, suffix: '', label: 'firm presenting — yours' },
+                { pre: 'up to', end: 50, label: 'principals, family offices, wealth managers and RIAs' },
+                { end: 0, suffix: '', label: 'competing pitches, booths or expo halls' },
+                { end: 100, suffix: '%', label: 'of attendees on the list we hand you' }
+              ].map((stat) => (
+                <div key={stat.label}>
+                  {/* A qualifier like "up to" set at numeral size reads as part
+                      of the number and wrecks the row's rhythm — keep it small. */}
+                  {stat.pre && (
+                    <div
+                      style={{
+                        color: SECONDARY,
+                        opacity: 0.75,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        marginBottom: 6
+                      }}
+                    >
+                      {stat.pre}
+                    </div>
+                  )}
+                  <div
+                    className="font-bold mb-3"
+                    style={{
+                      color: SECONDARY,
+                      fontSize: 'clamp(2.4rem, 5.2vw, 3.6rem)',
+                      lineHeight: 1,
+                      letterSpacing: '-0.03em',
+                      fontFamily: "'Playfair Display', Georgia, serif"
+                    }}
+                  >
+                    <CountUp end={stat.end} suffix={stat.suffix || ''} />
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.66)', fontSize: 14, lineHeight: 1.6, maxWidth: '24ch' }}>
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
+            {DELIVERS.map((d, i) => (
+              <Reveal key={d.n} delay={120 + i * 90}>
+                <div
+                  className="h-full rounded-2xl p-8 md:p-9"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.045)',
+                    border: '1px solid rgba(216,195,165,0.22)'
+                  }}
+                >
+                  <div className="flex items-baseline gap-4 mb-5">
+                    <span
+                      style={{
+                        color: SECONDARY,
+                        fontSize: 26,
+                        fontWeight: 700,
+                        lineHeight: 1,
+                        fontFamily: "'Playfair Display', Georgia, serif"
+                      }}
+                    >
+                      {d.n}
+                    </span>
+                    <h3 className="text-white font-bold" style={{ fontSize: 20, letterSpacing: '-0.01em' }}>
+                      {d.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {d.points.map((pt) => (
+                      <li
+                        key={pt}
+                        className="flex gap-3"
+                        style={{ color: 'rgba(255,255,255,0.78)', fontSize: 15.5, lineHeight: 1.65 }}
+                      >
+                        <Check size={16} style={{ color: SECONDARY, flexShrink: 0, marginTop: 3 }} />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CITIES */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: INK }}>
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-5xl mx-auto text-center">
-          <Eyebrow color={SECONDARY} className="mb-6">Cities we host in</Eyebrow>
+          <Eyebrow color={SECONDARY_DEEP} className="mb-6">Cities we host in</Eyebrow>
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4">
             {cities.map((city, i) => (
               <React.Fragment key={city}>
                 {i > 0 && (
-                  <span aria-hidden="true" style={{ color: SECONDARY, opacity: 0.5, fontSize: 15 }}>
+                  <span aria-hidden="true" style={{ color: SECONDARY_DEEP, opacity: 0.55, fontSize: 15 }}>
                     ·
                   </span>
                 )}
                 <span
-                  className="text-white"
-                  style={{ fontSize: 'clamp(1rem, 2.2vw, 1.35rem)', fontWeight: 600, letterSpacing: '-0.01em' }}
+                  style={{ color: SLATE, fontSize: 'clamp(1rem, 2.2vw, 1.35rem)', fontWeight: 600, letterSpacing: '-0.01em' }}
                 >
                   {city}
                 </span>
               </React.Fragment>
             ))}
           </div>
-          <p className="mx-auto mt-8" style={{ color: 'rgba(255,255,255,0.66)', fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
+          <p className="mx-auto mt-8" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
             These are where we host most often. With enough lead time we have the flexibility to
             plan around a different city or a date that suits your firm.
           </p>
@@ -314,43 +428,6 @@ export default function EventsPage({ onNavigate, onContactClick }) {
               >
                 <h4 className="font-bold mb-3" style={{ color: SLATE, fontSize: 17 }}>{c.title}</h4>
                 <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7 }}>{c.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT THE GATHERING DELIVERS */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-6xl mx-auto">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-10">What the gathering delivers</Eyebrow>
-
-          <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
-            {DELIVERS.map((d) => (
-              <div key={d.n}>
-                <div
-                  className="mb-3"
-                  style={{
-                    color: SECONDARY_DEEP,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    letterSpacing: '0.16em',
-                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace'
-                  }}
-                >
-                  {d.n}
-                </div>
-                <h3 className="font-bold mb-5" style={{ color: SLATE, fontSize: 21 }}>
-                  {d.title}
-                </h3>
-                <ul className="space-y-3.5">
-                  {d.points.map((pt) => (
-                    <li key={pt} className="flex gap-3" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
-                      <Check size={16} style={{ color: SECONDARY_DEEP, flexShrink: 0, marginTop: 3 }} />
-                      <span>{pt}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>

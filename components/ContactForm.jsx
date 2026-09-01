@@ -103,10 +103,11 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
         ) : (
           <>
             <h2 className="font-bold mb-2" style={{ color: SLATE, fontSize: 24, letterSpacing: '-0.02em' }}>
-              Request an invitation
+              Book your gathering
             </h2>
             <p className="mb-8" style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.7 }}>
-              Tell us who you are and what you are working on. Everything you send stays between us.
+              Tell us about your firm and the date you have in mind. Everything you send stays
+              between us.
             </p>
 
             {/* Netlify detects forms at BUILD time by scanning static HTML, not

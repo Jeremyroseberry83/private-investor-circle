@@ -165,7 +165,7 @@ export default function Site() {
                 whiteSpace: 'nowrap'
               }}
             >
-              Request an invitation
+              Book Now
             </button>
           </div>
 
@@ -205,7 +205,7 @@ export default function Site() {
                   color: colors.INK
                 }}
               >
-                Request an invitation
+                Book Now
               </button>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default function Site() {
             background: `linear-gradient(135deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_MID} 100%)`,
             color: colors.INK
           }}
-          aria-label="Request an invitation"
+          aria-label="Book Now"
         >
           <Mail size={24} />
         </button>
