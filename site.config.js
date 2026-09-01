@@ -28,7 +28,10 @@ module.exports = {
 
   // Cities from the Private Gathering Overview. The separate Fall Dates sheet
   // is marked confidential and is deliberately NOT published here.
-  cities: ['Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York', 'Chicago', 'Dallas', 'Las Vegas'],
+  cities: [
+    'Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York',
+    'Chicago', 'Dallas', 'Las Vegas', 'Boston', 'Newport, RI'
+  ],
 
   colors: {
     // Matches the live site: warm near-black grounds, champagne type. Gold is
