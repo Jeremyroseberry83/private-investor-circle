@@ -122,10 +122,6 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               ))}
             </div>
 
-            <p className="mt-7" style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600 }}>
-              Most rooms only ever trade the fifth. Private Investor Circle is built so all five
-              are in the room at once.
-            </p>
           </div>
         </div>
       </section>
