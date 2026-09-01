@@ -68,7 +68,8 @@ const GROUPS = [
           'What are you hoping to get out of these events?',
           'What is your LinkedIn profile?',
           'Approximate assets you advise or manage (AUM)?',
-          'Do you currently allocate to alternatives or private investments?'
+          'Do you currently allocate to alternatives or private investments?',
+          'Are you an accredited investor?'
         ]
       },
       {
