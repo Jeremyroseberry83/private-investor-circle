@@ -212,11 +212,13 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               <Eyebrow color={PRIMARY} className="mb-6">What we need from you</Eyebrow>
               <ul className="space-y-4">
                 {[
-                  'A clear picture of your target investor, so we can build the list around it',
+                  'Your offering overview, emailed to us to review and diligence',
+                  'Full details of the current offering and past performance',
+                  'A clear understanding of your target investor, so we can build the list around it',
                   'The city and rough timing that suit your firm',
                   'A principal who will present in person',
                   'Materials that hold up to a sophisticated reader',
-                  'Names you already know, so we do not duplicate your own network'
+                  'Your company logo, website and copy, for marketing the gathering'
                 ].map((t) => (
                   <li key={t} className="flex gap-3" style={{ color: MUTED, fontSize: 15, lineHeight: 1.65 }}>
                     <span style={{ color: MUTED, flexShrink: 0 }}>›</span>
