@@ -64,7 +64,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
             alignItems: 'center',
             justifyContent: 'center',
             textAlign: 'center',
-            padding: '9rem 1.5rem 7rem'
+            padding: '9rem 1.5rem clamp(8rem, 15vw, 12rem)'
           }}
         >
           <div style={{ maxWidth: 880 }}>
@@ -141,6 +141,43 @@ export default function HomePage({ onContactClick, onNavigate }) {
             </div>
           </div>
         </div>
+
+        {/* Scoop — the curve is filled with a champagne-to-ivory gradient whose
+            last stop is exactly BG, so the seam with the section below is
+            invisible. A gold hairline rides the curve itself. Sits at
+            bottom:-1 because sub-pixel rounding otherwise leaves a hair of
+            video showing through. */}
+        <svg
+          viewBox="0 0 1440 200"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            bottom: -1,
+            left: 0,
+            right: 0,
+            width: '100%',
+            height: 'clamp(70px, 13vw, 200px)',
+            display: 'block'
+          }}
+        >
+          <defs>
+            <linearGradient id="heroScoop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#EFE3C6" />
+              <stop offset="45%" stopColor="#F6EFDF" />
+              <stop offset="100%" stopColor={BG} />
+            </linearGradient>
+          </defs>
+          <path d="M0,200 L0,8 C360,150 1080,150 1440,8 L1440,200 Z" fill="url(#heroScoop)" />
+          <path
+            d="M0,8 C360,150 1080,150 1440,8"
+            fill="none"
+            stroke={SECONDARY}
+            strokeWidth="2.5"
+            opacity="0.6"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
       </section>
 
       {/* THESIS */}
