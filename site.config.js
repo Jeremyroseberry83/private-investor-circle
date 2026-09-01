@@ -11,6 +11,10 @@
  * for text on ivory. GOLD #D8B46C is sampled from the PDF and is deliberately
  * restricted to hairlines and the mark: when it was doing every job at once it
  * read as mustard.
+ *
+ * NAVY is chrome only — the nav and the footer, framing the page. Content
+ * sections stay warm near-black. Don't let navy leak into a hero or a dark
+ * section band or the frame stops reading as a frame.
  */
 
 module.exports = {
@@ -47,6 +51,8 @@ module.exports = {
     GOLD: '#D8B46C',           // sampled from the Overview PDF — hairlines and the mark only
     SLATE: '#2E2A26',          // warm charcoal — headings and body on light
     MUTED: '#6E6862',          // warm grey — secondary body copy
+    NAVY: '#172645',           // sampled from the Overview PDF header — site chrome
+    NAVY_DEEP: '#0F1B33',      // the PDF's darker CTA navy — footer gradient start
     INK: '#161311',            // warm near-black — dark section grounds
     INK_LIGHT: '#221D19',      // lifted near-black — second stop in dark gradients
     BG: '#FAF7F2'              // warm ivory — page ground

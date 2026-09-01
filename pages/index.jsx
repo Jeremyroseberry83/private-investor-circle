@@ -81,7 +81,7 @@ export default function Site() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          backgroundColor: overHero ? 'transparent' : colors.INK,
+          backgroundColor: overHero ? 'transparent' : colors.NAVY,
           borderBottom: overHero ? '1px solid transparent' : `1px solid rgba(216,195,165,0.30)`
         }}
       >
@@ -178,7 +178,7 @@ export default function Site() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden" style={{ backgroundColor: colors.INK, borderTop: '1px solid rgba(216,195,165,0.30)' }}>
+          <div className="md:hidden" style={{ backgroundColor: colors.NAVY, borderTop: '1px solid rgba(216,195,165,0.30)' }}>
             <div className="px-6 py-5 flex flex-col gap-5">
               {navItems.map((item) => (
                 <button
@@ -237,7 +237,7 @@ export default function Site() {
       <footer
         className="py-12 px-6"
         style={{
-          background: `linear-gradient(120deg, ${colors.INK} 0%, ${colors.INK_LIGHT} 100%)`,
+          background: `linear-gradient(120deg, ${colors.NAVY_DEEP} 0%, ${colors.NAVY} 100%)`,
           color: 'white',
           borderTop: `3px solid ${colors.SECONDARY}`
         }}

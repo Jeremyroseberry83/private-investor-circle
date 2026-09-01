@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="theme-color" content={colors.INK} />
+        <meta name="theme-color" content={colors.NAVY} />
 
         {/* Display serif, matching the live site. Italic is loaded because the
             headline accent spans are italic. */}
