@@ -107,7 +107,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             <Person
               name="Ran Gimeno"
               title="Host · MBA, AIF®"
-              photo="/images/team/ran.svg"
+              photo="/images/team/ran.jpg"
               linkedin="https://www.linkedin.com/"
               accent={PRIMARY}
               bio={[
