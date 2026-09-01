@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Form registration</title>
+  </head>
+  <body>
+    <!--
+      Netlify scans deployed HTML at build time to register forms. Next.js
+      renders the real modal on the client, so Netlify never sees it. This
+      static file exists purely so the form gets registered; nobody visits it.
+      Field list and form name must match components/ContactForm.jsx exactly.
+    -->
+    <form name="invitation" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="invitation" />
+      <input type="text" name="bot-field" />
+      <input type="text" name="type" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="organization" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
