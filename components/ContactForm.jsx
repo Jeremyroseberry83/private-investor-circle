@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { X, Mail } from 'lucide-react';
-import { SECONDARY, SECONDARY_DEEP, SLATE, MUTED, INK } from './ui';
+import {
+  SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK
+} from './ui';
 import { company } from '../site.config';
 
 // Netlify needs the payload url-encoded, not JSON.
@@ -64,7 +66,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center z-50 p-4"
-      style={{ backgroundColor: 'rgba(14,58,68,0.72)' }}
+      style={{ backgroundColor: 'rgba(22,19,17,0.72)' }}
       onClick={onClose}
     >
       <div
@@ -80,7 +82,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
           <div className="text-center py-6">
             <div
               className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: '#F6EFDF' }}
+              style={{ backgroundColor: '#F2EADE' }}
             >
               <span style={{ color: SECONDARY_DEEP, fontSize: 26 }}>✓</span>
             </div>
@@ -93,7 +95,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
             <button
               onClick={onClose}
               className="mt-8 px-7 py-3 rounded-full text-sm font-bold"
-              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`, color: INK }}
+              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
             >
               Close
             </button>
@@ -199,7 +201,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
                 disabled={state === 'sending'}
                 className="w-full py-3.5 rounded-full font-bold"
                 style={{
-                  background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`,
+                  background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`,
                   color: INK,
                   opacity: state === 'sending' ? 0.65 : 1,
                   fontSize: 15

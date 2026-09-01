@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow,
-  PRIMARY, SECONDARY, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -244,7 +243,7 @@ export default function EveningPage({ onNavigate, onContactClick }) {
             <button
               onClick={() => onContactClick && onContactClick('Hosting a gathering', 'We would like to host a private investor evening. City and rough timing we have in mind: ')}
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`, color: INK }}
+              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
             >
               Ask about a date
               <ArrowRight size={16} />

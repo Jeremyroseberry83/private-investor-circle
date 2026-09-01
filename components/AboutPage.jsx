@@ -1,8 +1,7 @@
 import React from 'react';
 import { Mail, Linkedin, ArrowRight } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow,
-  PRIMARY, SECONDARY, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
 function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP }) {
@@ -170,7 +169,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
                 body: 'Anyone can fill a ballroom. The value shows up in the follow-up list and the warm introductions afterwards, and that is the part we are accountable for.'
               }
             ].map((c) => (
-              <div key={c.n} className="rounded-xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201,168,76,0.25)' }}>
+              <div key={c.n} className="rounded-xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}>
                 <div
                   className="mb-4"
                   style={{ color: SECONDARY, fontSize: 13, letterSpacing: '0.16em', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace' }}
@@ -205,7 +204,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           <button
             onClick={onContactClick}
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-            style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`, color: INK }}
+            style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             <Mail size={17} />
             Request an invitation

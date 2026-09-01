@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check, Mail } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow,
-  PRIMARY, SECONDARY, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
 export default function CompaniesPage({ onContactClick }) {
@@ -77,7 +76,7 @@ export default function CompaniesPage({ onContactClick }) {
             </button>
           </div>
 
-          <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F6EFDF', borderTop: `4px solid ${SECONDARY}` }}>
+          <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F2EADE', borderTop: `4px solid ${SECONDARY}` }}>
             <Eyebrow color={SECONDARY_DEEP} className="mb-3">For advisors &amp; allocators</Eyebrow>
             <h3 className="font-bold mb-4" style={{ color: SLATE, fontSize: 19, lineHeight: 1.35 }}>
               You want the conversation, not the conference.
@@ -189,7 +188,7 @@ export default function CompaniesPage({ onContactClick }) {
               </ul>
             </div>
 
-            <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F6EFDF' }}>
+            <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F2EADE' }}>
               <Eyebrow color={SECONDARY_DEEP} className="mb-6">What you get back</Eyebrow>
               <ul className="space-y-4">
                 {[
@@ -225,7 +224,7 @@ export default function CompaniesPage({ onContactClick }) {
         <button
           onClick={forFirms}
           className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`, color: INK }}
+          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
         >
           <Mail size={17} />
           Get in touch

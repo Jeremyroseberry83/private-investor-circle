@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
-  DisplayHeading, HighlightGrid,
-  PRIMARY, SECONDARY, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  DisplayHeading, HighlightGrid, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -52,7 +51,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to top, rgba(14,58,68,0.94) 0%, rgba(14,58,68,0.72) 42%, rgba(14,58,68,0.52) 100%)'
+              'linear-gradient(to top, rgba(22,19,17,0.97) 0%, rgba(22,19,17,0.88) 45%, rgba(22,19,17,0.78) 100%)'
           }}
         />
 
@@ -110,7 +109,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                   padding: '15px 30px',
                   borderRadius: 999,
                   border: 'none',
-                  background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`,
+                  background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`,
                   color: INK,
                   fontSize: 15,
                   fontWeight: 700,
@@ -163,8 +162,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
         >
           <defs>
             <linearGradient id="heroScoop" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#EFE3C6" />
-              <stop offset="45%" stopColor="#F6EFDF" />
+              <stop offset="0%" stopColor="#EFE4D2" />
+              <stop offset="45%" stopColor="#F5EFE5" />
               <stop offset="100%" stopColor={BG} />
             </linearGradient>
           </defs>
@@ -327,7 +326,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
         <button
           onClick={onContactClick}
           className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_DEEP} 100%)`, color: INK }}
+          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
         >
           Ask about a date
           <ArrowRight size={16} />

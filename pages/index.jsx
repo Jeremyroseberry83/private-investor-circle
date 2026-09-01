@@ -80,7 +80,7 @@ export default function Site() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
           backgroundColor: overHero ? 'transparent' : colors.INK,
-          borderBottom: overHero ? '1px solid transparent' : `1px solid rgba(201,168,76,0.28)`
+          borderBottom: overHero ? '1px solid transparent' : `1px solid rgba(216,195,165,0.30)`
         }}
       >
         <div className="max-w-7xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between gap-3">
@@ -141,7 +141,7 @@ export default function Site() {
                     borderBottom: `2px solid ${isActive ? colors.SECONDARY : 'transparent'}`,
                     transition: 'color 0.2s, border-color 0.2s'
                   }}
-                  onMouseOver={(e) => { if (!isActive) e.currentTarget.style.borderBottomColor = 'rgba(201,168,76,0.5)'; }}
+                  onMouseOver={(e) => { if (!isActive) e.currentTarget.style.borderBottomColor = 'rgba(216,195,165,0.55)'; }}
                   onMouseOut={(e) => { if (!isActive) e.currentTarget.style.borderBottomColor = 'transparent'; }}
                 >
                   {item.name}
@@ -156,7 +156,7 @@ export default function Site() {
               onClick={openContact}
               className="px-6 py-2.5 text-sm font-semibold rounded-full"
               style={{
-                background: `linear-gradient(90deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_DEEP} 100%)`,
+                background: `linear-gradient(90deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_MID} 100%)`,
                 color: colors.INK,
                 whiteSpace: 'nowrap'
               }}
@@ -176,7 +176,7 @@ export default function Site() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden" style={{ backgroundColor: colors.INK, borderTop: '1px solid rgba(201,168,76,0.28)' }}>
+          <div className="md:hidden" style={{ backgroundColor: colors.INK, borderTop: '1px solid rgba(216,195,165,0.30)' }}>
             <div className="px-6 py-5 flex flex-col gap-5">
               {navItems.map((item) => (
                 <button
@@ -197,7 +197,7 @@ export default function Site() {
                 onClick={() => { openContact(); setMobileMenuOpen(false); }}
                 className="px-4 py-3 text-sm font-semibold rounded-full w-full"
                 style={{
-                  background: `linear-gradient(90deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_DEEP} 100%)`,
+                  background: `linear-gradient(90deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_MID} 100%)`,
                   color: colors.INK
                 }}
               >
@@ -215,7 +215,7 @@ export default function Site() {
           onClick={openContact}
           className="fixed bottom-8 right-8 p-4 rounded-full shadow-lg z-40"
           style={{
-            background: `linear-gradient(135deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_DEEP} 100%)`,
+            background: `linear-gradient(135deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_MID} 100%)`,
             color: colors.INK
           }}
           aria-label="Request an invitation"
@@ -248,7 +248,7 @@ export default function Site() {
               gap: '1.5rem',
               paddingBottom: '1.5rem',
               marginBottom: '1.5rem',
-              borderBottom: '1px solid rgba(201,168,76,0.28)'
+              borderBottom: '1px solid rgba(216,195,165,0.30)'
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

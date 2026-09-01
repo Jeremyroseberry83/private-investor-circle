@@ -12,13 +12,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Display serif on headlines only — body copy stays sans, which is what makes
+   the contrast read as considered rather than as a themed template. h3/h4 stay
+   sans on purpose so the hierarchy has two voices, not one. */
+:root {
+  --font-display: 'Playfair Display', 'Iowan Old Style', 'Palatino Linotype',
+    Palatino, Georgia, 'Times New Roman', serif;
+}
+
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FAF8F5;
-  color: #2e2e2e;
+  background-color: #FAF7F2;
+  color: #2e2a26;
 }
 
 button {
@@ -62,7 +76,7 @@ a {
 }
 .translate-widget .goog-te-gadget .goog-te-combo {
   font-size: 13px;
-  color: #2e2e2e;
+  color: #2e2a26;
   border: 1px solid #e7e2d9;
   border-radius: 4px;
   padding: 6px 8px;
