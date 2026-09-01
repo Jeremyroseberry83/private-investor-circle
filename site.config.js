@@ -30,8 +30,12 @@ module.exports = {
     principals: 'Ran Gimeno & Jeremy Roseberry'
   },
 
-  // Cities from the Private Gathering Overview. The separate Fall Dates sheet
-  // is marked confidential and is deliberately NOT published here.
+  // Cities from the Private Gathering Overview.
+  //
+  // availableDates below is seeded from the Fall Dates 2026 sheet, which is
+  // marked PRIVATE & CONFIDENTIAL — confirm you want these public before the
+  // deploy goes out. Dates already past have been dropped. Edit this array to
+  // update the calendar; nothing else needs touching.
   cities: [
     'Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York',
     'Chicago', 'Dallas', 'Las Vegas', 'Boston', 'Newport, RI'
@@ -57,6 +61,17 @@ module.exports = {
     INK_LIGHT: '#221D19',      // lifted near-black — second stop in dark gradients
     BG: '#FAF7F2'              // warm ivory — page ground
   },
+
+  availableDates: [
+    { dates: 'Sept 1 – 6',   city: 'Beverly Hills, CA' },
+    { dates: 'Sept 8 – 11',  city: 'Palm Beach, FL' },
+    { dates: 'Sept 15 – 18', city: 'Dallas, TX' },
+    { dates: 'Sept 21 – 30', city: 'Miami / Palm Beach, FL' },
+    { dates: 'Oct 12 – 14',  city: 'Chicago, IL' },
+    { dates: 'Oct 26 – 30',  city: 'Dana Point, CA' },
+    { dates: 'Nov 1 – 10',   city: 'Palm Beach, FL' },
+    { dates: 'Nov 16 – 18',  city: 'Las Vegas, NV' }
+  ],
 
   nav: [
     { name: 'Events', id: 'events' },

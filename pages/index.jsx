@@ -5,6 +5,7 @@ import HomePage from '../components/HomePage';
 import EventsPage from '../components/EventsPage';
 import ForYouPage from '../components/ForYouPage';
 import FaqPage from '../components/FaqPage';
+import DatesPage from '../components/DatesPage';
 import AboutPage from '../components/AboutPage';
 import ContactForm from '../components/ContactForm';
 import Translate from '../components/Translate';
@@ -50,6 +51,7 @@ export default function Site() {
       case 'events':  return <EventsPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'foryou':  return <ForYouPage onContactClick={openContact} />;
       case 'faqs':    return <FaqPage onNavigate={handleNavClick} onContactClick={openContact} />;
+      case 'dates':   return <DatesPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'about':      return <AboutPage onContactClick={openContact} onNavigate={handleNavClick} />;
       default:           return <HomePage onContactClick={openContact} onNavigate={handleNavClick} />;
     }

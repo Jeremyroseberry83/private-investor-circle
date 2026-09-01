@@ -395,11 +395,11 @@ export default function EventsPage({ onNavigate, onContactClick }) {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <button
-              onClick={() => onContactClick && onContactClick('Hosting a gathering', 'We would like to host a private investor evening. City and rough timing we have in mind: ')}
+              onClick={() => onNavigate && onNavigate('dates')}
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
               style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
             >
-              Ask about a date
+              Available dates
               <ArrowRight size={16} />
             </button>
             <button

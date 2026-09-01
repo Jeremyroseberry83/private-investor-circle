@@ -103,7 +103,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: '2.5rem' }}>
               <button
-                onClick={onContactClick}
+                onClick={() => onNavigate && onNavigate('dates')}
                 style={{
                   padding: '15px 30px',
                   borderRadius: 999,
@@ -115,7 +115,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                   cursor: 'pointer'
                 }}
               >
-                Ask about a date
+                Available dates
               </button>
               <button
                 onClick={() => onNavigate && onNavigate('events')}
@@ -133,7 +133,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                   cursor: 'pointer'
                 }}
               >
-                See how the evening works
+                What We Offer
                 <ArrowRight size={16} />
               </button>
             </div>
