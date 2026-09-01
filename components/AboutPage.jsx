@@ -82,19 +82,48 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </video>
           </div>
           <div>
-            <Eyebrow color={PRIMARY} className="mb-4">Where this came from</Eyebrow>
-            <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Ran Gimeno and Jeremy Roseberry spent their careers advising firms on capital —
-              how to structure it, when to raise it, and who to raise it from. The same question kept
-              arriving from both directions: <em>who should I be talking to?</em>
+            <Eyebrow color={PRIMARY} className="mb-5">What we add</Eyebrow>
+
+            <p className="mb-6" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
+              Ran Gimeno and Jeremy Roseberry have spent their careers in capital markets, and the
+              lesson of both careers is the same: capital is not one thing. It is five, and most
+              rooms only ever trade the last of them.
             </p>
-            <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Firms wanted allocators who understood what they actually do. Allocators wanted to hear
-              from someone vouched for before it reached their desk. Both were describing the same
-              missing thing — not a platform or a database, but a room.
-            </p>
-            <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600 }}>
-              Private Investor Circle is that room, hosted deliberately.
+
+            <div style={{ borderTop: '1px solid #E7E2D9' }}>
+              {[
+                { n: '01', k: 'Relational', v: 'Who will take the call — and vouch for you when you are not in the room.' },
+                { n: '02', k: 'Socioeconomic', v: 'The standing and access that money on its own does not buy.' },
+                { n: '03', k: 'Time', v: 'The years you do not spend looking for the introduction that was always one person away.' },
+                { n: '04', k: 'Operational', v: 'People who have already solved the thing in front of you, and will say how.' },
+                { n: '05', k: 'Financial', v: 'The cheque — which tends to arrive only after the other four are in place.' }
+              ].map((c) => (
+                <div
+                  key={c.n}
+                  className="flex gap-5"
+                  style={{ borderBottom: '1px solid #E7E2D9', padding: '15px 0' }}
+                >
+                  <span
+                    style={{
+                      color: SECONDARY_DEEP,
+                      fontSize: 12.5,
+                      fontWeight: 700,
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      paddingTop: 3
+                    }}
+                  >
+                    {c.n}
+                  </span>
+                  <span>
+                    <span className="block font-bold" style={{ color: SLATE, fontSize: 16.5 }}>{c.k}</span>
+                    <span className="block mt-1" style={{ color: MUTED, fontSize: 15, lineHeight: 1.7 }}>{c.v}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-7" style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600 }}>
+              Private Investor Circle is where all five meet in one room.
             </p>
           </div>
         </div>
@@ -125,7 +154,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               name="Ran Gimeno"
               title="Host · MBA, AIF®"
               photo="/images/team/ran.jpg"
-              objectPosition="center 15%"
+              objectPosition="center 0%"
               linkedin="https://www.linkedin.com/in/rangimeno/"
               accent={PRIMARY}
               bio={[
