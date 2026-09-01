@@ -65,13 +65,6 @@ export default function HomePage({ onContactClick, onNavigate }) {
           }}
         >
           <div style={{ maxWidth: 880 }}>
-            <p
-              className="mb-7"
-              style={{ color: SECONDARY, fontSize: 11, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' }}
-            >
-              In private markets
-            </p>
-
             <h1
               style={{
                 fontSize: 'clamp(30px, 5.2vw, 56px)',
@@ -81,9 +74,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 letterSpacing: '-0.02em'
               }}
             >
-              Trusted relationships with the Accredited Investors, Principals and Registered
-              Advisors{' '}
-              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>worth knowing.</span>
+              Trusted relationships{' '}
+              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>in capital markets.</span>
             </h1>
 
             <p
@@ -97,8 +89,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 marginRight: 'auto'
               }}
             >
-              Your firm presents exclusively to a curated room — real relationships, not a booth
-              on a conference floor.
+              Curated rooms for causes, companies and capital.
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: '2.5rem' }}>
