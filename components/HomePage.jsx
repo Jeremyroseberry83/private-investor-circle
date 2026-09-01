@@ -177,8 +177,32 @@ export default function HomePage({ onContactClick, onNavigate }) {
         </svg>
       </section>
 
+      {/* CITIES */}
+      <section className="py-14 md:py-20 px-6" style={{ backgroundColor: BG }}>
+        <div className="max-w-5xl mx-auto text-center">
+          <p
+            className="mb-7"
+            style={{ color: SECONDARY_DEEP, fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase' }}
+          >
+            Cities we host in
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+            {cities.map((city, i) => (
+              <React.Fragment key={city}>
+                {i > 0 && (
+                  <span aria-hidden="true" style={{ color: SECONDARY_DEEP, opacity: 0.55 }}>·</span>
+                )}
+                <span style={{ color: SLATE, fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', fontWeight: 600 }}>
+                  {city}
+                </span>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* THESIS */}
-      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: BG }}>
+      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: 'white' }}>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <DisplayHeading
             eyebrow="Why we convene"
@@ -200,30 +224,6 @@ export default function HomePage({ onContactClick, onNavigate }) {
             <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.85, fontWeight: 600 }}>
               That is the whole practice. We build the room.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CITIES */}
-      <section className="py-14 md:py-20 px-6" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-5xl mx-auto text-center">
-          <p
-            className="mb-7"
-            style={{ color: SECONDARY_DEEP, fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase' }}
-          >
-            Cities we host in
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
-            {cities.map((city, i) => (
-              <React.Fragment key={city}>
-                {i > 0 && (
-                  <span aria-hidden="true" style={{ color: SECONDARY_DEEP, opacity: 0.55 }}>·</span>
-                )}
-                <span style={{ color: SLATE, fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', fontWeight: 600 }}>
-                  {city}
-                </span>
-              </React.Fragment>
-            ))}
           </div>
         </div>
       </section>
