@@ -76,22 +76,33 @@ const TESTIMONIALS = [
   }
 ];
 
-// Titles pulled from the Luma pages themselves. Add a new entry to put another
-// event on the page — nothing else needs touching.
+// Titles, descriptions, host firms and cover images all come from the Luma
+// pages themselves rather than the URL slugs. Covers are copied into
+// public/images/events/ rather than hotlinked, so the section keeps working if
+// an event is ever unpublished.
 const PAST_EVENTS = [
   {
-    title: 'Investor Day — Inside the Harvard/MIT Kendall Square Robotics & AI Deep Tech Ecosystem',
+    title: 'Investor Day — Harvard/MIT Kendall Square Robotics & AI',
+    firm: '4IR Group',
     place: 'Boston · September 17',
+    blurb: 'A private investor day for family offices and capital partners: lab tours across the Kendall Square robotics and AI ecosystem, direct meetings with founders, and dinner that evening.',
+    image: '/images/events/kendall-square.jpg',
     url: 'https://luma.com/bostonsept17'
   },
   {
-    title: 'Valois Salon: A Private Dinner in Boston',
+    title: 'Valois Salon — A Private Dinner in Boston',
+    firm: '4IR Group',
     place: 'Boston',
+    blurb: 'Fifteen to twenty-five allocators — family offices, venture partners and institutional investors — over dinner, on frontier technology and where capital is actually going.',
+    image: '/images/events/valois-salon.jpg',
     url: 'https://luma.com/privatedinnerboston'
   },
   {
     title: 'A Private Evening — Sunset on the Miami River',
-    place: 'Miami · The Capital Grille private dining room',
+    firm: 'OTG Asset Management',
+    place: 'Miami · The Capital Grille',
+    blurb: 'A private reception on the terrace: craft cocktails, curated cuisine, and Latin American investment opportunities discussed directly with company leadership.',
+    image: '/images/events/miami-river.jpg',
     url: 'https://luma.com/kkyvdxzh'
   }
 ];
@@ -108,12 +119,24 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         subtitle="Your firm presents exclusively to a curated room of principals, family offices, wealth managers, and RIAs — real relationships, not a booth on a conference floor."
       />
 
-      {/* A still here, not a clip — the header above already runs this
-          footage and two loops of the same room competes with itself. */}
+      {/* Different footage from the header deliberately — the header runs the
+          ballroom, so this runs the toast. Two loops of the same room on one
+          page competes with itself. */}
       <section className="pt-16 pb-16 md:pt-20 md:pb-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: INK }}>
-            <img src="/images/ballroom.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              poster="/images/toast.jpg"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            >
+              <source src="/videos/dinner.mp4" type="video/mp4" />
+            </video>
           </div>
           <div>
             <Eyebrow color={PRIMARY} className="mb-4">What this is</Eyebrow>
@@ -237,31 +260,46 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             </p>
           </div>
 
-          <div style={{ borderTop: '1px solid #E7E2D9' }}>
+          <div className="grid md:grid-cols-3 gap-7">
             {PAST_EVENTS.map((e) => (
               <a
                 key={e.url}
                 href={e.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start justify-between gap-6 group"
-                style={{ borderBottom: '1px solid #E7E2D9', padding: '24px 0' }}
+                className="rounded-xl overflow-hidden flex flex-col transition-transform hover:-translate-y-1"
+                style={{ backgroundColor: 'white', border: '1px solid #E7E2D9' }}
               >
-                <span>
-                  <span className="block font-semibold" style={{ color: SLATE, fontSize: 17.5, lineHeight: 1.4 }}>
+                <div style={{ aspectRatio: '1 / 1', backgroundColor: '#EDE8E0' }}>
+                  <img
+                    src={e.image}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-7 flex flex-col" style={{ flexGrow: 1 }}>
+                  <p
+                    className="font-bold uppercase mb-3"
+                    style={{ color: SECONDARY_DEEP, fontSize: 10.5, letterSpacing: '0.2em' }}
+                  >
+                    {e.firm}
+                  </p>
+                  <h3 className="font-semibold mb-2" style={{ color: SLATE, fontSize: 17, lineHeight: 1.35 }}>
                     {e.title}
-                  </span>
-                  <span className="block mt-1.5" style={{ color: MUTED, fontSize: 14.5 }}>
+                  </h3>
+                  <p className="mb-4" style={{ color: MUTED, fontSize: 13.5, letterSpacing: '0.02em' }}>
                     {e.place}
+                  </p>
+                  <p style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.7, flexGrow: 1 }}>{e.blurb}</p>
+                  <span
+                    className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold"
+                    style={{ color: SECONDARY_DEEP }}
+                  >
+                    View the invitation
+                    <ArrowUpRight size={15} />
                   </span>
-                </span>
-                <span
-                  className="inline-flex items-center gap-1.5 flex-shrink-0 text-sm font-semibold"
-                  style={{ color: SECONDARY_DEEP, marginTop: 3 }}
-                >
-                  View
-                  <ArrowUpRight size={15} />
-                </span>
+                </div>
               </a>
             ))}
           </div>

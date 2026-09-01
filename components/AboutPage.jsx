@@ -68,7 +68,18 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             className="rounded-2xl overflow-hidden"
             style={{ aspectRatio: '4 / 3', backgroundColor: '#EDE8E0' }}
           >
-            <img src="/images/rooftop.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              poster="/images/rooftop.jpg"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            >
+              <source src="/videos/room.mp4" type="video/mp4" />
+            </video>
           </div>
           <div>
             <Eyebrow color={PRIMARY} className="mb-4">Where this came from</Eyebrow>
@@ -114,6 +125,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               name="Ran Gimeno"
               title="Host · MBA, AIF®"
               photo="/images/team/ran.jpg"
+              objectPosition="center 15%"
               linkedin="https://www.linkedin.com/in/rangimeno/"
               accent={PRIMARY}
               bio={[
