@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Check, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Mail } from 'lucide-react';
+import { company } from '../site.config';
 import {
   VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
@@ -83,13 +84,25 @@ export default function ForYouPage({ onContactClick }) {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={forAllocators}
-              className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: SECONDARY_DEEP, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
-              Introduce yourself <ArrowRight size={14} />
-            </button>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+              <a
+                href={company.circleJoinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold"
+                style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
+              >
+                Join the Circle
+                <ArrowUpRight size={15} />
+              </a>
+              <button
+                onClick={forAllocators}
+                className="inline-flex items-center gap-2 text-sm font-semibold"
+                style={{ color: SECONDARY_DEEP, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                or introduce yourself <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -206,14 +219,26 @@ export default function ForYouPage({ onContactClick }) {
         >
           Let's start the conversation.
         </h2>
-        <button
-          onClick={forFirms}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
-        >
-          <Mail size={17} />
-          Get in touch
-        </button>
+        <div className="flex items-center justify-center gap-3 flex-wrap">
+          <button
+            onClick={forFirms}
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+            style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
+          >
+            <Mail size={17} />
+            Get in touch
+          </button>
+          <a
+            href={company.circleJoinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY }}
+          >
+            Join the Circle
+            <ArrowUpRight size={15} />
+          </a>
+        </div>
       </section>
     </div>
   );

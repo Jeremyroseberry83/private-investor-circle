@@ -27,7 +27,9 @@ module.exports = {
     // once that mailbox exists — this is the only place it's defined.
     email: 'jeremy@roseberrycapital.net',
     // Ran is listed first everywhere in the source collateral — keep that order.
-    principals: 'Ran Gimeno & Jeremy Roseberry'
+    principals: 'Ran Gimeno & Jeremy Roseberry',
+    // Luma page where advisors and allocators join the circle as attendees.
+    circleJoinUrl: 'https://luma.com/PrivateInvestorCircle'
   },
 
   // Cities from the Private Gathering Overview.
@@ -62,16 +64,31 @@ module.exports = {
     BG: '#FAF7F2'              // warm ivory — page ground
   },
 
+  // Openings by region. These follow Ran's and Jeremy's own travel, which is
+  // why they are sparse — edit this array and the Dates page follows.
   availableDates: [
-    { dates: 'Sept 1 – 6',   city: 'Beverly Hills, CA' },
-    { dates: 'Sept 8 – 11',  city: 'Palm Beach, FL' },
-    { dates: 'Sept 15 – 18', city: 'Dallas, TX' },
-    { dates: 'Sept 21 – 30', city: 'Miami / Palm Beach, FL' },
-    { dates: 'Oct 12 – 14',  city: 'Chicago, IL' },
-    { dates: 'Oct 26 – 30',  city: 'Dana Point, CA' },
-    { dates: 'Nov 1 – 10',   city: 'Palm Beach, FL' },
-    { dates: 'Nov 16 – 18',  city: 'Las Vegas, NV' }
+    {
+      region: 'South Florida — Palm Beach & Miami',
+      dates: [
+        'Tuesday, September 29',
+        'Wednesday, September 30',
+        'Thursday, October 9',
+        'Wednesday, October 21',
+        'Thursday, October 22',
+        'November 5, 10 or 11'
+      ],
+      note: 'December: the first and second weeks have limited availability.'
+    },
+    {
+      region: 'Southern California — Beverly Hills & Santa Barbara',
+      dates: ['September 25 or 26', 'October 1', 'October 2']
+    },
+    {
+      region: 'Cayman Islands',
+      dates: ['November 2 – 5']
+    }
   ],
+
 
   nav: [
     { name: 'Events', id: 'events' },
