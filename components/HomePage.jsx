@@ -1,8 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import {
-  DisplayHeading, HighlightGrid, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
-} from './ui';
+import { DisplayHeading, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG } from './ui';
 import { cities } from '../site.config';
 
 export default function HomePage({ onContactClick, onNavigate }) {
@@ -119,7 +117,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 Ask about a date
               </button>
               <button
-                onClick={() => onNavigate && onNavigate('evening')}
+                onClick={() => onNavigate && onNavigate('events')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -206,28 +204,6 @@ export default function HomePage({ onContactClick, onNavigate }) {
         </div>
       </section>
 
-      {/* WHAT THE EVENING DELIVERS — condensed; the full four blocks live on
-          the Evening page. */}
-      <HighlightGrid
-        eyebrow="What the evening delivers"
-        title="One firm. One room. One evening."
-        intro="No competing pitches, no expo hall, no panels — and a follow-up list in your hands afterwards."
-        cards={[
-          {
-            title: 'The room is yours',
-            body: 'One firm presents to 30–50 principals, family offices, wealth managers and RIAs, in a guest list we build around your target investor.'
-          },
-          {
-            title: 'Direct access',
-            body: 'The full attention of the room and real, relational conversation with the people who can actually move capital.'
-          },
-          {
-            title: 'The follow-up list',
-            body: 'Every attendee by name, firm and interest — plus warm introductions to anyone who would like to continue.'
-          }
-        ]}
-      />
-
       {/* CITIES */}
       <section className="py-14 md:py-20 px-6" style={{ backgroundColor: 'white' }}>
         <div className="max-w-5xl mx-auto text-center">
@@ -252,86 +228,6 @@ export default function HomePage({ onContactClick, onNavigate }) {
         </div>
       </section>
 
-      {/* TWO PATHS */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <h2
-            className="font-bold"
-            style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3.4vw, 2.5rem)', lineHeight: 1.15, letterSpacing: '-0.025em' }}
-          >
-            Where do you sit at the table?
-          </h2>
-        </div>
-
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-          {[
-            {
-              eyebrow: 'For firms',
-              title: 'You want the room to yourself for an evening.',
-              body: 'Your offering, presented to allocators we have invited personally — and a follow-up list in your hands the week after.',
-              accent: PRIMARY
-            },
-            {
-              eyebrow: 'For advisors & allocators',
-              title: 'You want the conversation, not the conference.',
-              body: 'A seat at rooms we have already filtered, alongside principals, family offices and RIAs we know personally. Never a mass invitation.',
-              accent: SECONDARY_DEEP
-            }
-          ].map((card) => (
-            <button
-              key={card.eyebrow}
-              onClick={() => onNavigate && onNavigate('companies')}
-              className="text-left rounded-2xl p-9 transition-transform hover:-translate-y-1"
-              style={{
-                backgroundColor: 'white',
-                border: '1px solid #E7E2D9',
-                borderTop: `3px solid ${card.accent}`,
-                cursor: 'pointer'
-              }}
-            >
-              <p className="font-bold uppercase mb-3" style={{ color: card.accent, fontSize: 11, letterSpacing: '0.2em' }}>
-                {card.eyebrow}
-              </p>
-              <h3 className="font-bold mb-4" style={{ color: SLATE, fontSize: 19, lineHeight: 1.35 }}>
-                {card.title}
-              </h3>
-              <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 20 }}>{card.body}</p>
-              <span className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: card.accent }}>
-                See how it works <ArrowRight size={14} />
-              </span>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* CLOSING */}
-      <section className="py-16 md:py-28 px-6 text-center" style={{ backgroundColor: INK }}>
-        <span
-          aria-hidden="true"
-          style={{ display: 'block', width: 46, height: 3, borderRadius: 2, backgroundColor: SECONDARY, margin: '0 auto 34px' }}
-        />
-        <h2
-          className="text-white font-bold mb-6 mx-auto"
-          style={{ fontSize: 'clamp(1.9rem, 3.6vw, 2.8rem)', letterSpacing: '-0.03em', maxWidth: '20ch', lineHeight: 1.12 }}
-        >
-          We set a date.
-        </h2>
-        <p
-          className="mx-auto mb-10"
-          style={{ color: 'rgba(255,255,255,0.72)', fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}
-        >
-          We keep dates earmarked across the cities above. Tell us which one fits, and we will lock
-          it in for your firm.
-        </p>
-        <button
-          onClick={onContactClick}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-          style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
-        >
-          Ask about a date
-          <ArrowRight size={16} />
-        </button>
-      </section>
     </div>
   );
 }

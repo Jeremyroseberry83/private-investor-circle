@@ -186,6 +186,97 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
 }
 
 /**
+ * VideoHeader — the interior-page counterpart to the home hero: a looping,
+ * muted clip under a heavy wash with the page's headline over it. Shorter than
+ * the home hero (it opens a page, it isn't the page), and the poster paints
+ * first so a slow connection sees a photograph rather than a black band.
+ */
+export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle }) {
+  const [ready, setReady] = React.useState(false);
+  return (
+    <section
+      className="relative w-full"
+      style={{
+        minHeight: 'clamp(360px, 52vh, 560px)',
+        backgroundColor: INK,
+        backgroundImage: `url(${poster})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        poster={poster}
+        onPlaying={() => setReady(true)}
+        onLoadedData={(e) => { if (e.currentTarget.readyState >= 3) setReady(true); }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: ready ? 1 : 0,
+          transition: 'opacity 900ms ease-in-out'
+        }}
+      >
+        <source src={video} type="video/mp4" />
+      </video>
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to top, rgba(22,19,17,0.97) 0%, rgba(22,19,17,0.88) 45%, rgba(22,19,17,0.80) 100%)'
+        }}
+      />
+
+      <div
+        className="relative mx-auto px-6 text-center"
+        style={{
+          maxWidth: 900,
+          minHeight: 'clamp(360px, 52vh, 560px)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: 'clamp(7rem, 13vw, 9rem)',
+          paddingBottom: 'clamp(3rem, 6vw, 4.5rem)'
+        }}
+      >
+        {eyebrow && (
+          <p
+            className="mb-6"
+            style={{ color: SECONDARY, fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase' }}
+          >
+            {eyebrow}
+          </p>
+        )}
+        <h1
+          className="text-white"
+          style={{ fontSize: 'clamp(1.9rem, 4.4vw, 3rem)', fontWeight: 700, lineHeight: 1.16, letterSpacing: '-0.015em' }}
+        >
+          {title}
+          {accent && <span style={{ color: SECONDARY, fontStyle: 'italic' }}> {accent}</span>}
+        </h1>
+        {subtitle && (
+          <p
+            className="mt-6 mx-auto"
+            style={{ color: 'rgba(255,255,255,0.84)', fontSize: 'clamp(15px, 1.7vw, 17.5px)', lineHeight: 1.75, maxWidth: '62ch' }}
+          >
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/**
  * PageTopBand — slim decorative image strip, no overlaid copy. A lighter
  * page-opening treatment than PageHero: put your real headline in the
  * page's normal flow right below it (see EveningPage.jsx / AboutPage.jsx

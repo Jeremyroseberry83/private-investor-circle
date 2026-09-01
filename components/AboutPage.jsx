@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Linkedin, ArrowRight } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
 function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP }) {
@@ -43,17 +43,13 @@ function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP }) 
 export default function AboutPage({ onContactClick, onNavigate }) {
   return (
     <div>
-      <PageTopBand image="/images/band-about.jpg" />
-
-      <section className="pt-16 pb-8 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-4">About</Eyebrow>
-          <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 700, color: SLATE, lineHeight: 1.22 }}>
-            Two capital market strategists who kept being asked{' '}
-            <span style={{ color: SECONDARY_DEEP, fontStyle: 'italic' }}>the same question</span>.
-          </h1>
-        </div>
-      </section>
+      <VideoHeader
+        video="/videos/about.mp4"
+        poster="/images/band-about.jpg"
+        eyebrow="About"
+        title="Two capital market strategists who kept being asked"
+        accent="the same question."
+      />
 
       {/* Origin */}
       <section className="pt-8 pb-16 md:pt-12 md:pb-24 px-6" style={{ backgroundColor: BG }}>
@@ -210,7 +206,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             Request an invitation
           </button>
           <button
-            onClick={() => onNavigate && onNavigate('evening')}
+            onClick={() => onNavigate && onNavigate('events')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
             style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
           >

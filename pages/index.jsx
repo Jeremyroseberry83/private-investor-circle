@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Menu, X, Mail } from 'lucide-react';
 import HomePage from '../components/HomePage';
-import EveningPage from '../components/EveningPage';
-import CompaniesPage from '../components/CompaniesPage';
+import EventsPage from '../components/EventsPage';
+import ForYouPage from '../components/ForYouPage';
+import FaqPage from '../components/FaqPage';
 import AboutPage from '../components/AboutPage';
 import ContactForm from '../components/ContactForm';
 import Translate from '../components/Translate';
@@ -46,8 +47,9 @@ export default function Site() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'evening':   return <EveningPage onNavigate={handleNavClick} onContactClick={openContact} />;
-      case 'companies':  return <CompaniesPage onContactClick={openContact} />;
+      case 'events':  return <EventsPage onNavigate={handleNavClick} onContactClick={openContact} />;
+      case 'foryou':  return <ForYouPage onContactClick={openContact} />;
+      case 'faqs':    return <FaqPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'about':      return <AboutPage onContactClick={openContact} onNavigate={handleNavClick} />;
       default:           return <HomePage onContactClick={openContact} onNavigate={handleNavClick} />;
     }

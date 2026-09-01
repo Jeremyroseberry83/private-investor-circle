@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowRight, Check, Mail } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
-export default function CompaniesPage({ onContactClick }) {
+export default function ForYouPage({ onContactClick }) {
   const forFirms = () =>
     onContactClick(
       'Company raising capital',
@@ -18,29 +18,14 @@ export default function CompaniesPage({ onContactClick }) {
 
   return (
     <div>
-      <PageTopBand image="/images/band-companies.jpg" />
-
-      <section className="pt-16 pb-8 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-4">Two sides of the room</Eyebrow>
-          <h1
-            style={{
-              fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
-              fontWeight: 700,
-              color: SLATE,
-              lineHeight: 1.2,
-              marginBottom: '1.25rem'
-            }}
-          >
-            We work with the firm presenting{' '}
-            <span style={{ color: SECONDARY_DEEP, fontStyle: 'italic' }}>and the allocators in the seats</span>.
-          </h1>
-          <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.85 }}>
-            Both start the same way: a conversation, in confidence, about what you are actually
-            trying to do. No deck required for the first call.
-          </p>
-        </div>
-      </section>
+      <VideoHeader
+        video="/videos/foryou.mp4"
+        poster="/images/band-companies.jpg"
+        eyebrow="Two sides of the room"
+        title="We work with the firm presenting"
+        accent="and the allocators in the seats."
+        subtitle="Both start the same way: a conversation, in confidence, about what you are actually trying to do. No deck required for the first call."
+      />
 
       {/* Two tracks */}
       <section className="pt-6 pb-16 px-6" style={{ backgroundColor: BG }}>

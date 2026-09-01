@@ -50,8 +50,9 @@ module.exports = {
   },
 
   nav: [
-    { name: 'The Evening', id: 'evening' },
-    { name: 'For Companies', id: 'companies' },
+    { name: 'Events', id: 'events' },
+    { name: 'For You', id: 'foryou' },
+    { name: 'FAQs', id: 'faqs' },
     { name: 'About', id: 'about' }
   ],
 

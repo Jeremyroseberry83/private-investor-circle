@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import {
-  PageTopBand, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -51,50 +51,24 @@ const DELIVERS = [
   }
 ];
 
-export default function EveningPage({ onNavigate, onContactClick }) {
+export default function EventsPage({ onNavigate, onContactClick }) {
   return (
     <div>
-      <PageTopBand image="/images/band-evening.jpg" />
+      <VideoHeader
+        video="/videos/evening.mp4"
+        poster="/images/band-evening.jpg"
+        eyebrow="Private investor event"
+        title="An evening with the advisors and allocators"
+        accent="worth being in relationship with."
+        subtitle="Your firm presents exclusively to a curated room of principals, family offices, wealth managers, and RIAs — real relationships, not a booth on a conference floor."
+      />
 
-      <section className="pt-16 pb-10 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-5">Private investor event</Eyebrow>
-          <h1
-            style={{
-              fontSize: 'clamp(1.9rem, 5vw, 2.75rem)',
-              fontWeight: 700,
-              color: SLATE,
-              lineHeight: 1.18,
-              marginBottom: '1.5rem'
-            }}
-          >
-            An evening with the advisors and allocators{' '}
-            <span style={{ color: SECONDARY_DEEP, fontStyle: 'italic' }}>worth being in relationship with.</span>
-          </h1>
-          <p style={{ fontSize: 17, color: MUTED, lineHeight: 1.85 }}>
-            Your firm presents exclusively to a curated room of principals, family offices, wealth
-            managers, and RIAs — real relationships, not a booth on a conference floor.
-          </p>
-        </div>
-      </section>
-
-      {/* The evening, on film. Muted, looping, decorative — the copy beside it
-          carries the meaning, so the video is aria-hidden. */}
-      <section className="pb-16 md:pb-24 px-6" style={{ backgroundColor: BG }}>
+      {/* A still here, not a clip — the header above already runs this
+          footage and two loops of the same room competes with itself. */}
+      <section className="pt-16 pb-16 md:pt-20 md:pb-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: INK }}>
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden="true"
-              poster="/images/band-evening.jpg"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            >
-              <source src="/videos/evening.mp4" type="video/mp4" />
-            </video>
+            <img src="/images/ballroom.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
           </div>
           <div>
             <Eyebrow color={PRIMARY} className="mb-4">What this is</Eyebrow>
@@ -249,7 +223,7 @@ export default function EveningPage({ onNavigate, onContactClick }) {
               <ArrowRight size={16} />
             </button>
             <button
-              onClick={() => onNavigate && onNavigate('companies')}
+              onClick={() => onNavigate && onNavigate('foryou')}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
               style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
             >
