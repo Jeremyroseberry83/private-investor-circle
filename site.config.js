@@ -21,7 +21,7 @@ module.exports = {
   company: {
     name: 'Private Investor Circle',
     shortName: 'PIC',
-    tagline: 'By Invitation Only',
+    tagline: 'A Capital Society',
     domain: 'privateinvestorcircle.com',
     // Swap for a branded inbox (e.g. invitations@privateinvestorcircle.com)
     // once that mailbox exists — this is the only place it's defined.
@@ -92,7 +92,7 @@ module.exports = {
 
   nav: [
     { name: 'Events', id: 'events' },
-    { name: 'For You', id: 'foryou' },
+    { name: 'Plan Yours', id: 'plan' },
     { name: 'FAQs', id: 'faqs' },
     { name: 'About', id: 'about' }
   ],

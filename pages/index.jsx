@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Menu, X, Mail } from 'lucide-react';
 import HomePage from '../components/HomePage';
 import EventsPage from '../components/EventsPage';
-import ForYouPage from '../components/ForYouPage';
+import PlanYoursPage from '../components/PlanYoursPage';
 import FaqPage from '../components/FaqPage';
 import DatesPage from '../components/DatesPage';
 import AboutPage from '../components/AboutPage';
@@ -49,7 +49,7 @@ export default function Site() {
   const renderPage = () => {
     switch (currentPage) {
       case 'events':  return <EventsPage onNavigate={handleNavClick} onContactClick={openContact} />;
-      case 'foryou':  return <ForYouPage onContactClick={openContact} />;
+      case 'plan':    return <PlanYoursPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'faqs':    return <FaqPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'dates':   return <DatesPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'about':      return <AboutPage onContactClick={openContact} onNavigate={handleNavClick} />;

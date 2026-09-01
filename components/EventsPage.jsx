@@ -431,7 +431,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
               <ArrowRight size={16} />
             </button>
             <button
-              onClick={() => onNavigate && onNavigate('foryou')}
+              onClick={() => onNavigate && onNavigate('plan')}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
               style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
             >

@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, Check, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Calendar, Check, Mail } from 'lucide-react';
 import { company } from '../site.config';
 import {
   VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
-export default function ForYouPage({ onContactClick }) {
+export default function PlanYoursPage({ onNavigate, onContactClick }) {
   const forFirms = () =>
     onContactClick(
       'Company raising capital',
@@ -22,7 +22,7 @@ export default function ForYouPage({ onContactClick }) {
       <VideoHeader
         video="/videos/foryou.mp4"
         poster="/images/band-companies.jpg"
-        eyebrow="Two sides of the room"
+        eyebrow="Plan yours"
         title="We work with the firm presenting"
         accent="and the allocators in the seats."
         subtitle="Both start the same way: a conversation, in confidence, about what you are actually trying to do. No deck required for the first call."
@@ -53,13 +53,23 @@ export default function ForYouPage({ onContactClick }) {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={forFirms}
-              className="inline-flex items-center gap-2 text-sm font-semibold"
-              style={{ color: PRIMARY, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
-              Start a conversation <ArrowRight size={14} />
-            </button>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+              <button
+                onClick={() => onNavigate && onNavigate('dates')}
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold"
+                style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK, border: 'none', cursor: 'pointer' }}
+              >
+                <Calendar size={15} />
+                See available dates
+              </button>
+              <button
+                onClick={forFirms}
+                className="inline-flex items-center gap-2 text-sm font-semibold"
+                style={{ color: PRIMARY, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              >
+                or start a conversation <ArrowRight size={14} />
+              </button>
+            </div>
           </div>
 
           <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F2EADE', borderTop: `4px solid ${SECONDARY}` }}>
@@ -258,6 +268,14 @@ export default function ForYouPage({ onContactClick }) {
           >
             <Mail size={17} />
             Get in touch
+          </button>
+          <button
+            onClick={() => onNavigate && onNavigate('dates')}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY, background: 'transparent' }}
+          >
+            <Calendar size={16} />
+            See available dates
           </button>
           <a
             href={company.circleJoinUrl}

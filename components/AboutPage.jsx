@@ -269,9 +269,8 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           We would rather meet you early.
         </h2>
         <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}>
-          Most of the introductions we are proudest of started as a conversation with nothing riding
-          on it. Building something, funding something, or you simply know who should meet whom —
-          either way, we would like to know you.
+          Most of the introductions we are proudest of started as a conversation with nothing
+          riding on it. If that sounds like the right order of things, say hello.
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
@@ -280,7 +279,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             <Mail size={17} />
-            Request an invitation
+            Say hello
           </button>
           <button
             onClick={() => onNavigate && onNavigate('events')}
