@@ -185,7 +185,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
 /**
  * PageTopBand — slim decorative image strip, no overlaid copy. A lighter
  * page-opening treatment than PageHero: put your real headline in the
- * page's normal flow right below it (see ProductPage.jsx / AboutPage.jsx
+ * page's normal flow right below it (see GatheringsPage.jsx / AboutPage.jsx
  * for the pattern), so every page opens the same way.
  */
 export function PageTopBand({ image }) {

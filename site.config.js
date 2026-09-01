@@ -28,7 +28,7 @@ module.exports = {
     PRIMARY_DEEP: '#0A1830',
     PRIMARY_LIGHT: '#EDF0F5',  // pale navy tint — card/badge grounds
     SECONDARY: '#C9A84C',      // Antique Gold — accents, rules, on-dark type
-    SECONDARY_DEEP: '#A8853A',
+    SECONDARY_DEEP: '#8A6B28',  // bronze — 4.98:1 on white, so it is safe for text
     SECONDARY_LIGHT: '#F6EFDF', // champagne tint — card/badge grounds
     SLATE: '#2E2E2E',          // Charcoal — headings and body on light
     MUTED: '#6E6A62',          // warm grey — secondary body copy
