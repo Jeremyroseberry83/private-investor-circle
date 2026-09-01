@@ -58,7 +58,18 @@ const GROUPS = [
       },
       {
         q: 'What questions do you ask invitees?',
-        a: 'You tailor three to five questions that we put to every invitee. They do two jobs: they help us curate the room before the gathering, and they hand you real context on each guest for your follow-up afterwards.'
+        a: 'Everyone answers the same set when they register, which is how we know who is actually in the room before the day. On top of these you tailor three to five questions of your own — they sharpen the curation beforehand and hand you real context on each guest for your follow-up.',
+        list: [
+          'What company do you work for?',
+          'What is your job title?',
+          'Which best describes you?',
+          'Who invited you?',
+          'What city and state are you based out of?',
+          'What are you hoping to get out of these events?',
+          'What is your LinkedIn profile?',
+          'Approximate assets you advise or manage (AUM)?',
+          'Do you currently allocate to alternatives or private investments?'
+        ]
       },
       {
         q: 'Where did your list come from?',
@@ -123,7 +134,7 @@ const GROUPS = [
   }
 ];
 
-function Item({ q, a, isOpen, onToggle }) {
+function Item({ q, a, list, isOpen, onToggle }) {
   return (
     <div style={{ borderBottom: '1px solid #E7E2D9' }}>
       <button
@@ -140,9 +151,19 @@ function Item({ q, a, isOpen, onToggle }) {
         </span>
       </button>
       {isOpen && (
-        <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, paddingBottom: 24, maxWidth: '72ch' }}>
-          {a}
-        </p>
+        <div style={{ paddingBottom: 24, maxWidth: '72ch' }}>
+          <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.8 }}>{a}</p>
+          {list && (
+            <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2">
+              {list.map((item) => (
+                <li key={item} className="flex gap-2.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
+                  <span style={{ color: SECONDARY_DEEP, flexShrink: 0 }}>›</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </div>
   );
@@ -178,6 +199,7 @@ export default function FaqPage({ onNavigate, onContactClick }) {
                       key={key}
                       q={item.q}
                       a={item.a}
+                      list={item.list}
                       isOpen={open === key}
                       onToggle={() => setOpen(open === key ? null : key)}
                     />
