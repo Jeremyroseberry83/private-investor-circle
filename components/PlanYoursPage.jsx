@@ -152,9 +152,13 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             A booth is not a relationship.{' '}
             <span style={{ color: SECONDARY, fontStyle: 'italic' }}>It is a queue.</span>
           </h2>
+          <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 18, maxWidth: '70ch' }}>
+            Conferences earn their place. They are top of funnel — broad exposure, brand presence,
+            volume — and every firm raising capital should be doing some of that.
+          </p>
           <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 32, maxWidth: '70ch' }}>
-            Three things go wrong on a conference floor, and none of them are fixed by a bigger
-            stand or a better giveaway.
+            What a floor is not built for is the conversation that comes after. Three things go
+            wrong there, and none of them are fixed by a bigger stand or a better giveaway.
           </p>
 
           <div className="grid md:grid-cols-3 gap-5 mb-14">
