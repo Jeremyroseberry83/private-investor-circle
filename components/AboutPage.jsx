@@ -82,7 +82,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </video>
           </div>
           <div>
-            <Eyebrow color={PRIMARY} className="mb-5">What we add</Eyebrow>
+            <Eyebrow color={PRIMARY} className="mb-5">Growing your capital footprint</Eyebrow>
 
             <p className="mb-6" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
               Ran and Jeremy have spent their careers in capital markets, and both careers taught a
