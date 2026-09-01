@@ -181,55 +181,75 @@ export default function AboutPage({ onContactClick, onNavigate }) {
         </div>
       </section>
 
-      {/* Principles */}
-      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: INK }}>
+      {/* PRINCIPLES — champagne ground rather than another dark band. The page
+          already opens dark and closes on ivory; a third tone here keeps the
+          four rules from reading as more of the same. */}
+      {/* Warm sand — deeper than BG ivory and clearly not white, so the band
+          reads as its own surface without another dark section. */}
+      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: '#EFE4D2' }}>
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mb-14">
-            <Eyebrow color={SECONDARY} className="mb-4">How we work</Eyebrow>
+            <Eyebrow color={SECONDARY_DEEP} className="mb-4">How we work</Eyebrow>
             <h2
-              className="text-white font-bold mb-5"
-              style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
+              className="font-bold mb-5"
+              style={{ color: SLATE, fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
             >
               Four rules we do not bend.
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 17, lineHeight: 1.8 }}>
+            <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
               They cost us business regularly. They are also the only reason the rooms are worth
               being in.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-6">
             {[
               {
                 n: '01',
-                title: 'We host, we do not broker.',
-                body: 'We convene and introduce. We are not a broker-dealer and we do not place securities. Any business that follows is settled directly between the parties, under their own counsel.'
+                title: 'We host. We do not broker.',
+                body: 'We are a neutral host in the room. We convene and introduce. We are not brokers and we do not place securities. Any business that follows is settled directly between the parties, under their own counsel.'
               },
               {
                 n: '02',
-                title: 'The list is never sold.',
-                body: 'No sponsor tables, no paid seats, no attendee list circulated afterwards. If someone is in the room it is because they belonged in it.'
+                title: 'Our invite list is never sold.',
+                body: 'No sponsor tables, no paid seats, no attendee list circulated afterwards. If someone is in the room it is because they know us and belonged in it.'
               },
               {
                 n: '03',
-                title: 'We say "not yet" out loud.',
-                body: 'A firm put in front of allocators a quarter too early burns the introduction and the relationship. We would rather lose the engagement than spend a room on it.'
+                title: 'We say “not now” out loud.',
+                body: 'In capital markets timing is everything, and nothing is worse than a one-time event asked to carry a whole relationship. We work programmatically, over six to nine month cycles. An offering placed in front of allocators a quarter too early burns your IR process and the relationship with it. We would rather say not now than deliver a poor experience.'
               },
               {
                 n: '04',
                 title: 'The follow-through is the work.',
-                body: 'Anyone can fill a ballroom. The value shows up in the follow-up list and the warm introductions afterwards, and that is the part we are accountable for.'
+                body: 'We always ask what your follow-up plan is. Anyone can fill a room with people — the value shows up in the follow-up list and in what you do with it afterwards. You need to have a plan.'
               }
             ].map((c) => (
-              <div key={c.n} className="rounded-xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}>
+              <div
+                key={c.n}
+                className="rounded-2xl p-9 md:p-10 transition-transform hover:-translate-y-1"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  borderTop: `3px solid ${SECONDARY}`,
+                  boxShadow: '0 1px 2px rgba(46,39,35,0.05), 0 12px 28px rgba(46,39,35,0.06)'
+                }}
+              >
                 <div
-                  className="mb-4"
-                  style={{ color: SECONDARY, fontSize: 13, letterSpacing: '0.16em', fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace' }}
+                  className="mb-5"
+                  style={{
+                    color: SECONDARY,
+                    fontSize: 34,
+                    lineHeight: 1,
+                    fontWeight: 700,
+                    fontFamily: "'Playfair Display', Georgia, serif"
+                  }}
                 >
                   {c.n}
                 </div>
-                <h4 className="text-white font-bold mb-3" style={{ fontSize: 17.5 }}>{c.title}</h4>
-                <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 15, lineHeight: 1.75 }}>{c.body}</p>
+                <h4 className="font-bold mb-3.5" style={{ color: SLATE, fontSize: 19, lineHeight: 1.3 }}>
+                  {c.title}
+                </h4>
+                <p style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>{c.body}</p>
               </div>
             ))}
           </div>
