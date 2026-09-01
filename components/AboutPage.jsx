@@ -85,18 +85,18 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             <Eyebrow color={PRIMARY} className="mb-5">What we add</Eyebrow>
 
             <p className="mb-6" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Ran Gimeno and Jeremy Roseberry have spent their careers in capital markets, and both
-              careers taught the same lesson: capital is not one thing. It is five — and we help
-              companies scale all five, not only the one everybody counts.
+              Ran and Jeremy have spent their careers in capital markets, and both careers taught a
+              similar lesson: capital is not one thing. It is actually scaled in five areas — and
+              they help companies grow all five, not only the one everybody counts.
             </p>
 
             <div style={{ borderTop: '1px solid #E7E2D9' }}>
               {[
-                { n: '01', k: 'Relational', v: 'Who will take the call — and vouch for you when you are not in the room.' },
-                { n: '02', k: 'Socioeconomic', v: 'The standing and access that money on its own does not buy.' },
-                { n: '03', k: 'Time', v: 'The years you do not spend looking for the introduction that was always one person away.' },
-                { n: '04', k: 'Operational', v: 'People who have already solved the thing in front of you, and will say how.' },
-                { n: '05', k: 'Financial', v: 'The cheque — which tends to arrive only after the other four are in place.' }
+                { n: '01', k: 'Relational Capital', v: 'Who will take the call — and vouch for you when you are not in the room.' },
+                { n: '02', k: 'Socioeconomic Capital', v: 'The standing and access that money on its own does not buy.' },
+                { n: '03', k: 'Time Capital', v: 'The years you do not spend looking for the introduction that was always one person away.' },
+                { n: '04', k: 'Operational Capital', v: 'People who have already solved the thing in front of you, and will say how.' },
+                { n: '05', k: 'Financial Capital', v: 'The cheque — which tends to arrive only after the other four are in place.' }
               ].map((c) => (
                 <div
                   key={c.n}
