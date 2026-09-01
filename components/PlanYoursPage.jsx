@@ -24,7 +24,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         poster="/images/band-companies.jpg"
         eyebrow="Plan yours"
         title="We work with the firm presenting"
-        accent="and the allocators in the seats."
+        accent="and curate the allocators in the seats."
         subtitle="Both start the same way: a conversation, in confidence, about what you are actually trying to do. No deck required for the first call."
       />
 
