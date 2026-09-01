@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { Plus, Minus, ArrowRight, Search } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow,
+  VideoHeader, Eyebrow, Reveal,
   SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
@@ -135,46 +135,99 @@ const GROUPS = [
   }
 ];
 
+/**
+ * One question. The open/close animation uses the grid-template-rows 0fr→1fr
+ * technique rather than max-height: it animates to the content's real height,
+ * so long answers don't snap or clip the way a guessed max-height does.
+ */
 function Item({ q, a, list, isOpen, onToggle }) {
   return (
-    <div style={{ borderBottom: '1px solid #E7E2D9' }}>
+    <div
+      style={{
+        borderBottom: '1px solid #E7E2D9',
+        borderLeft: `2px solid ${isOpen ? SECONDARY : 'transparent'}`,
+        paddingLeft: isOpen ? 18 : 0,
+        backgroundColor: isOpen ? 'rgba(216,195,165,0.07)' : 'transparent',
+        transition: 'border-color 240ms ease, padding-left 240ms ease, background-color 240ms ease'
+      }}
+    >
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
         className="w-full flex items-start justify-between gap-6 text-left"
-        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '22px 0' }}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '22px 18px 22px 0' }}
       >
         <span className="font-semibold" style={{ color: SLATE, fontSize: 17, lineHeight: 1.45 }}>
           {q}
         </span>
-        <span style={{ color: SECONDARY_DEEP, flexShrink: 0, marginTop: 2 }}>
+        <span
+          style={{
+            color: isOpen ? SECONDARY_DEEP : MUTED,
+            flexShrink: 0,
+            marginTop: 2,
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 320ms cubic-bezier(0.22,1,0.36,1), color 240ms ease'
+          }}
+        >
           {isOpen ? <Minus size={19} /> : <Plus size={19} />}
         </span>
       </button>
-      {isOpen && (
-        <div style={{ paddingBottom: 24, maxWidth: '72ch' }}>
-          <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.8 }}>{a}</p>
-          {list && (
-            <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2">
-              {list.map((item) => (
-                <li key={item} className="flex gap-2.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
-                  <span style={{ color: SECONDARY_DEEP, flexShrink: 0 }}>›</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          )}
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: isOpen ? '1fr' : '0fr',
+          transition: 'grid-template-rows 340ms cubic-bezier(0.22,1,0.36,1)'
+        }}
+      >
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{ paddingBottom: 26, paddingRight: 18, maxWidth: '72ch' }}>
+            <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.8 }}>{a}</p>
+            {list && (
+              <ul className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2">
+                {list.map((item) => (
+                  <li key={item} className="flex gap-2.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
+                    <span style={{ color: SECONDARY_DEEP, flexShrink: 0 }}>›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export default function FaqPage({ onNavigate, onContactClick }) {
-  // Keyed by "groupIndex:itemIndex" so a question can't be ambiguous across
-  // groups. First question opens by default so the page never reads as a wall
-  // of closed rows.
   const [open, setOpen] = React.useState('0:0');
+  const [query, setQuery] = React.useState('');
+
+  const q = query.trim().toLowerCase();
+  const groups = React.useMemo(
+    () =>
+      GROUPS.map((g) => ({
+        ...g,
+        items: q
+          ? g.items.filter(
+              (it) =>
+                it.q.toLowerCase().includes(q) ||
+                it.a.toLowerCase().includes(q) ||
+                (it.list || []).some((l) => l.toLowerCase().includes(q))
+            )
+          : g.items
+      })).filter((g) => g.items.length > 0),
+    [q]
+  );
+
+  const total = GROUPS.reduce((n, g) => n + g.items.length, 0);
+  const showing = groups.reduce((n, g) => n + g.items.length, 0);
+
+  const jump = (heading) => {
+    const el = document.getElementById(`faq-${heading.replace(/\s+/g, '-').toLowerCase()}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div>
@@ -188,27 +241,121 @@ export default function FaqPage({ onNavigate, onContactClick }) {
       />
 
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-4xl mx-auto">
-          {GROUPS.map((group, gi) => (
-            <div key={group.heading} className={gi === 0 ? 'mb-14' : 'mb-14'}>
-              <Eyebrow color={SECONDARY_DEEP} className="mb-6">{group.heading}</Eyebrow>
-              <div style={{ borderTop: '1px solid #E7E2D9' }}>
-                {group.items.map((item, ii) => {
-                  const key = `${gi}:${ii}`;
-                  return (
-                    <Item
-                      key={key}
-                      q={item.q}
-                      a={item.a}
-                      list={item.list}
-                      isOpen={open === key}
-                      onToggle={() => setOpen(open === key ? null : key)}
-                    />
-                  );
-                })}
-              </div>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-16 items-start">
+          {/* Rail: search, jump links and a live count. Sticks below the nav on
+              desktop so a reader never loses the map while scrolling. */}
+          <aside className="lg:sticky" style={{ top: 108 }}>
+            <div className="relative mb-7">
+              <Search
+                size={16}
+                style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: MUTED }}
+              />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search questions"
+                aria-label="Search questions"
+                style={{
+                  width: '100%',
+                  padding: '12px 14px 12px 40px',
+                  borderRadius: 999,
+                  border: '1px solid #E7E2D9',
+                  backgroundColor: '#FFFFFF',
+                  color: SLATE,
+                  fontSize: 14.5
+                }}
+              />
             </div>
-          ))}
+
+            <nav className="flex flex-wrap lg:flex-col gap-x-2 gap-y-1">
+              {groups.map((g) => (
+                <button
+                  key={g.heading}
+                  onClick={() => jump(g.heading)}
+                  className="text-left"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '9px 0',
+                    color: MUTED,
+                    fontSize: 14.5,
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    gap: 8,
+                    borderBottom: '1px solid transparent'
+                  }}
+                  onMouseOver={(e) => { e.currentTarget.style.color = SECONDARY_DEEP; }}
+                  onMouseOut={(e) => { e.currentTarget.style.color = MUTED; }}
+                >
+                  <span>{g.heading}</span>
+                  <span
+                    style={{
+                      color: SECONDARY_DEEP,
+                      fontSize: 11.5,
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace'
+                    }}
+                  >
+                    {g.items.length}
+                  </span>
+                </button>
+              ))}
+            </nav>
+
+            <p className="mt-7" style={{ color: MUTED, fontSize: 13.5, lineHeight: 1.7 }}>
+              {q ? `${showing} of ${total} questions` : `${total} questions`}
+            </p>
+          </aside>
+
+          <div>
+            {groups.length === 0 && (
+              <div className="rounded-2xl p-10 text-center" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E7E2D9' }}>
+                <p className="font-semibold mb-2" style={{ color: SLATE, fontSize: 17 }}>
+                  Nothing matches &ldquo;{query}&rdquo;.
+                </p>
+                <p className="mb-6" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.7 }}>
+                  Ask us directly and we will answer it properly.
+                </p>
+                <button
+                  onClick={() => onContactClick && onContactClick('Something else', `My question: ${query}`)}
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-bold"
+                  style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK, border: 'none', cursor: 'pointer' }}
+                >
+                  Ask this question
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+            )}
+
+            {groups.map((group, gi) => (
+              <div
+                key={group.heading}
+                id={`faq-${group.heading.replace(/\s+/g, '-').toLowerCase()}`}
+                className="mb-12"
+                style={{ scrollMarginTop: 110 }}
+              >
+                <Reveal>
+                  <Eyebrow color={SECONDARY_DEEP} className="mb-5">{group.heading}</Eyebrow>
+                  <div style={{ borderTop: '1px solid #E7E2D9' }}>
+                    {group.items.map((item, ii) => {
+                      const key = `${group.heading}:${item.q}`;
+                      return (
+                        <Item
+                          key={key}
+                          q={item.q}
+                          a={item.a}
+                          list={item.list}
+                          isOpen={open === key || (q.length > 0 && gi === 0 && ii === 0)}
+                          onToggle={() => setOpen(open === key ? null : key)}
+                        />
+                      );
+                    })}
+                  </div>
+                </Reveal>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

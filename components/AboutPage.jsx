@@ -1,10 +1,10 @@
 import React from 'react';
-import { Mail, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Linkedin, Globe, ArrowRight } from 'lucide-react';
 import {
   VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
-function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP, objectPosition = 'center' }) {
+function Person({ name, title, bio, photo, linkedin, website, websiteLabel, accent = SECONDARY_DEEP, objectPosition = 'center' }) {
   // objectPosition pulls the crop window up the frame: a tall portrait in a
   // square card would otherwise be cropped chin-to-waistband. grayscale(1) is
   // on both photos so the pair reads as one commission rather than two shoots
@@ -38,11 +38,35 @@ function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP, ob
             <Linkedin size={13} strokeWidth={2} />
           </a>
         )}
+        {website && (
+          <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${name}'s website`}
+            className="inline-flex items-center justify-center rounded-full"
+            style={{ width: 24, height: 24, color: accent, backgroundColor: 'rgba(0,0,0,0.05)', flexShrink: 0 }}
+          >
+            <Globe size={13} strokeWidth={2} />
+          </a>
+        )}
       </div>
 
-      <p className="font-semibold mb-4 uppercase" style={{ color: accent, fontSize: 11.5, letterSpacing: '0.16em' }}>
+      <p className="font-semibold uppercase" style={{ color: accent, fontSize: 11.5, letterSpacing: '0.16em' }}>
         {title}
       </p>
+      {websiteLabel && (
+        <a
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-1.5"
+          style={{ color: MUTED, fontSize: 13.5, borderBottom: `1px solid ${accent}55` }}
+        >
+          {websiteLabel}
+        </a>
+      )}
+      <div style={{ height: 16 }} />
       {bio.map((p, i) => (
         <p key={i} style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 14 }}>{p}</p>
       ))}
@@ -162,10 +186,12 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             />
             <Person
               name="Jeremy Roseberry"
-              title="Host"
+              title="Host · Founder / Entrepreneur"
               photo="/images/team/jeremy.jpg"
               objectPosition="center 6%"
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
+              website="https://jeremyroseberry.com"
+              websiteLabel="JeremyRoseberry.com"
               accent={SECONDARY_DEEP}
               bio={[
                 'Jeremy brings nearly two decades of experience across private markets, real assets, and capital formation. Rooted in Palm Beach County — where he has invested and operated across real assets for decades — he has built his career at the intersection of relationships, market depth, and global reach.',
