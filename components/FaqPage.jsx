@@ -6,9 +6,11 @@ import {
 } from './ui';
 import { cities } from '../site.config';
 
-// Answers are drawn from the Private Gathering Overview. Two carry [brackets]
-// because the collateral doesn't state them — fees and lead time — and this is
-// a page where a guessed answer would be worse than no answer.
+// Answers come from the Private Gathering Overview plus the hosts directly.
+// The pricing answer deliberately gives the structure (host fee + venue, both
+// moving with city and travel) and no figures: the real numbers vary by venue
+// and distance, and a published one would anchor every negotiation at the
+// wrong place. Don't "helpfully" add a range later.
 const GROUPS = [
   {
     heading: 'How we make money',
@@ -23,11 +25,11 @@ const GROUPS = [
       },
       {
         q: 'How much do you charge for a single event?',
-        a: '[Insert your fee or range here.] For context, an evening is often less than the cost of sponsoring a private wealth conference — where you would be one of forty stands competing for attention rather than the only firm in the room.'
+        a: 'Pricing has two parts: a flat host fee for the evening, and the venue. Both move with the city — which room, and how far we travel to reach it — so any single published number would be wrong for most firms. Tell us the city and roughly when, and you will have a firm figure in the first conversation. For context, an evening typically costs less than sponsoring a private wealth conference, where you would be one of forty stands rather than the only firm in the room.'
       },
       {
-        q: 'What about the venue — is that extra?',
-        a: '[Confirm whether the venue is included in the fee or billed at cost.] Either way we arrange the venue, catering and production ourselves. You should be talking to guests that evening, not managing vendors.'
+        q: 'Who pays for the venue?',
+        a: 'Either of us — it is negotiable, and we will structure it whichever way suits you. What is worth knowing is that we can usually secure a room for less than a firm would pay approaching it directly, through private memberships and standing relationships with the venues we host in. We pass that rate through rather than marking it up. Either way we arrange the venue, catering and production ourselves: you should be talking to guests that evening, not managing vendors.'
       }
     ]
   },
@@ -90,7 +92,7 @@ const GROUPS = [
       },
       {
         q: 'How far in advance do we need to book?',
-        a: '[State your real lead time — for example, three to six weeks from first conversation to the evening itself.] Dates are held first-come.'
+        a: 'Three to five weeks is the comfortable window from first conversation to the evening itself, and dates are held first-come. If you need to move faster we can often accommodate it in South Florida or Southern California — those are the markets where our venue relationships run deepest.'
       }
     ]
   },
