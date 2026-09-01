@@ -14,7 +14,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
       'Hosting a gathering',
       date
         ? `We would like to book ${date} — ${region}. About our firm and what we would present: `
-        : 'We would like to host an evening. City and rough timing we have in mind: '
+        : 'We would like to host a gathering. City and rough timing we have in mind: '
     );
 
   return (
@@ -22,10 +22,10 @@ export default function DatesPage({ onNavigate, onContactClick }) {
       <VideoHeader
         video="/videos/about.mp4"
         poster="/images/band-about.jpg"
-        eyebrow="Private investor evenings"
+        eyebrow="Private investor gatherings"
         title="Available dates"
         accent="for your firm."
-        subtitle="Ran and Jeremy host only a few evenings a month, so each room stays genuinely curated. These openings follow their own travel."
+        subtitle="Ran and Jeremy host only a few gatherings a month, so each room stays genuinely curated. These openings follow their own travel."
       />
 
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>

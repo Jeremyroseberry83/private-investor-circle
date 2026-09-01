@@ -162,7 +162,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
                 'Senior financial services executive with extensive experience leading national distribution, strategic partnerships, and business development across institutional asset management, retirement platforms, and alternative investments. A proven track record building relationships with RIAs, broker-dealers, family offices, and institutional investors across the United States, Canada, Latin America, and Europe.',
                 'Former senior leader with global asset managers including AllianceBernstein, AMG, ING, and Raymond James Investment Management, with deep expertise in intermediary distribution, private markets, retirement investment solutions, and advisor engagement.',
                 'A frequent speaker who has represented firms at national conferences, industry forums, and on media platforms including CNBC — known for building high-performing distribution teams and delivering investment solutions that support advisors and institutional investors.',
-                'At Private Investor Circle he co-hosts every evening: which allocators belong at a given table, what they need to see, and how a first conversation becomes a second one.'
+                'At Private Investor Circle he co-hosts every gathering: which allocators belong at a given table, what they need to see, and how a first conversation becomes a second one.'
               ]}
             />
             <Person
@@ -175,7 +175,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               bio={[
                 'Nearly two decades in private markets, real assets, and capital formation — based in Palm Beach County, operating globally.',
                 'He connects the right people to relational capital — the kind that moves through trust and mutual value over the long term.',
-                'At Private Investor Circle he co-hosts every evening: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
+                'At Private Investor Circle he co-hosts every gathering: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
               ]}
             />
           </div>
@@ -287,7 +287,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
             style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
           >
-            See how the evening works <ArrowRight size={15} />
+            See how it works <ArrowRight size={15} />
           </button>
         </div>
       </section>

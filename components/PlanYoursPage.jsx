@@ -9,7 +9,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
   const forFirms = () =>
     onContactClick(
       'Company raising capital',
-      'We are a firm interested in presenting at a private investor evening. What we do and who we are trying to reach: '
+      'We are a firm interested in presenting at a private investor gathering. What we do and who we are trying to reach: '
     );
   const forAllocators = () =>
     onContactClick(
@@ -34,11 +34,11 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
           <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: 'white', border: '1px solid #E7E2D9', borderTop: `4px solid ${PRIMARY}` }}>
             <Eyebrow color={PRIMARY} className="mb-3">For firms</Eyebrow>
             <h3 className="font-bold mb-4" style={{ color: SLATE, fontSize: 19, lineHeight: 1.35 }}>
-              You want the room to yourself for an evening.
+              You want the room to yourself.
             </h3>
             <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 20 }}>
               One firm presents — yours. We build the guest list around your target investor, host
-              the evening, and hand you the follow-up list afterwards. We will also tell you plainly
+              the gathering, and hand you the follow-up list afterwards. We will also tell you plainly
               if we think the room would be wasted on you right now.
             </p>
             <ul className="space-y-3 mb-7">
@@ -78,7 +78,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               You want the conversation, not the conference.
             </h3>
             <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, marginBottom: 20 }}>
-              An evening with one firm worth hearing, a room of peers worth knowing, and none of the
+              A gathering with one firm worth hearing, a room of peers worth knowing, and none of the
               expo-hall noise. You will never receive a mass invitation from us, and your name will
               never appear on a circulated attendee list without your say-so.
             </p>
@@ -194,8 +194,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               className="text-white font-bold mx-auto mb-4"
               style={{ fontSize: 'clamp(1.3rem, 2.4vw, 1.85rem)', lineHeight: 1.35, maxWidth: '34ch' }}
             >
-              Here, the entire room is yours for the evening — not just a booth and a few contacts at
-              a conference.
+              Here, the entire room is yours — not just a booth and a few contacts at a conference.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15 }}>
               We host and introduce. Any business that follows is settled directly between you and

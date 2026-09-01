@@ -17,7 +17,7 @@ const GROUPS = [
     items: [
       {
         q: 'What’s your business model?',
-        a: 'We charge a flat fee to host the evening. That is the whole model. We are not paid on whether you raise, so our incentive is that the room is right and you want a second one — not that a deal closes.'
+        a: 'We charge a flat fee to host the gathering. That is the whole model. We are not paid on whether you raise, so our incentive is that the room is right and you want a second one — not that a deal closes.'
       },
       {
         q: 'Do you participate in our capital raise?',
@@ -25,11 +25,11 @@ const GROUPS = [
       },
       {
         q: 'How much do you charge for a single event?',
-        a: 'Pricing has two parts: a flat host fee for the evening, and the venue. Both move with the city — which room, and how far we travel to reach it — so any single published number would be wrong for most firms. Tell us the city and roughly when, and you will have a firm figure in the first conversation. For context, an evening typically costs less than sponsoring a private wealth conference, where you would be one of forty stands rather than the only firm in the room.'
+        a: 'Pricing has two parts: a flat host fee for the gathering, and the venue. Both move with the city — which room, and how far we travel to reach it — so any single published number would be wrong for most firms. Tell us the city and roughly when, and you will have a firm figure in the first conversation. For context, a gathering typically costs less than sponsoring a private wealth conference, where you would be one of forty stands rather than the only firm in the room.'
       },
       {
         q: 'Who pays for the venue?',
-        a: 'Either of us — it is negotiable, and we will structure it whichever way suits you. What is worth knowing is that we can usually secure a room for less than a firm would pay approaching it directly, through private memberships and standing relationships with the venues we host in. We pass that rate through rather than marking it up. Either way we arrange the venue, catering and production ourselves: you should be talking to guests that evening, not managing vendors.'
+        a: 'Either of us — it is negotiable, and we will structure it whichever way suits you. What is worth knowing is that we can usually secure a room for less than a firm would pay approaching it directly, through private memberships and standing relationships with the venues we host in. We pass that rate through rather than marking it up. Either way we arrange the venue, catering and production ourselves: you should be talking to guests on the day, not managing vendors.'
       }
     ]
   },
@@ -46,11 +46,11 @@ const GROUPS = [
       },
       {
         q: 'How do you curate the room?',
-        a: 'We build the guest list around the investor you are trying to reach, and then we keep pruning it. If someone has confirmed who is not who you want in the room, we disinvite them — often weeks before the evening. A seat filled by the wrong person costs more than an empty one.'
+        a: 'We build the guest list around the investor you are trying to reach, and then we keep pruning it. If someone has confirmed who is not who you want in the room, we disinvite them — often weeks before the gathering. A seat filled by the wrong person costs more than an empty one.'
       },
       {
         q: 'What questions do you ask invitees?',
-        a: 'You tailor three to five questions that we put to every invitee. They do two jobs: they help us curate the room before the evening, and they hand you real context on each guest for your follow-up afterwards.'
+        a: 'You tailor three to five questions that we put to every invitee. They do two jobs: they help us curate the room before the gathering, and they hand you real context on each guest for your follow-up afterwards.'
       },
       {
         q: 'Where did your list come from?',
@@ -58,7 +58,7 @@ const GROUPS = [
       },
       {
         q: 'Do you sell your list?',
-        a: 'No — and we never will. The list is the practice. The moment it is for sale it stops being worth anything to the people on it, and they are the reason the evenings work.'
+        a: 'No — and we never will. The list is the practice. The moment it is for sale it stops being worth anything to the people on it, and they are the reason the gatherings work.'
       }
     ]
   },
@@ -67,11 +67,11 @@ const GROUPS = [
     items: [
       {
         q: 'Do we get the list of attendees?',
-        a: 'Yes. A digital contact list of every attendee — name, firm and their interest — delivered after the evening for your own outreach, along with warm introductions from us to anyone who would like to continue the conversation.'
+        a: 'Yes. A digital contact list of every attendee — name, firm and their interest — delivered afterwards for your own outreach, along with warm introductions from us to anyone who would like to continue the conversation.'
       },
       {
-        q: 'Is the evening photographed or filmed?',
-        a: 'Yes. A professional photographer and videographer are on-site, your firm is tagged in the social coverage, and you receive branded photo and video assets plus a final recap film of the evening.'
+        q: 'Is the gathering photographed or filmed?',
+        a: 'Yes. A professional photographer and videographer are on-site, your firm is tagged in the social coverage, and you receive branded photo and video assets plus a final recap film of the gathering.'
       },
       {
         q: 'How do you follow up?',
@@ -88,11 +88,11 @@ const GROUPS = [
       },
       {
         q: 'Which cities?',
-        a: `We host most often in ${cities.slice(0, -1).join(', ')} and ${cities[cities.length - 1]}. Those are simply where the evenings run most frequently — with enough lead time we can plan around a different city, or a date that suits your firm better.`
+        a: `We host most often in ${cities.slice(0, -1).join(', ')} and ${cities[cities.length - 1]}. Those are simply where the gatherings run most frequently — with enough lead time we can plan around a different city, or a date that suits your firm better.`
       },
       {
         q: 'How far in advance do we need to book?',
-        a: 'Three to five weeks is the comfortable window from first conversation to the evening itself, and dates are held first-come. If you need to move faster we can often accommodate it in South Florida or Southern California — those are the markets where our venue relationships run deepest.'
+        a: 'Three to five weeks is the comfortable window from first conversation to the gathering itself, and dates are held first-come. If you need to move faster we can often accommodate it in South Florida or Southern California — those are the markets where our venue relationships run deepest.'
       }
     ]
   },
@@ -101,15 +101,15 @@ const GROUPS = [
     items: [
       {
         q: 'Can I attend as an investor or advisor?',
-        a: 'Yes, by invitation. Tell us who you are and what your mandate is, and we will let you know when an evening genuinely fits it. We would rather you came to two right rooms than eight wrong ones.'
+        a: 'Yes, by invitation. Tell us who you are and what your mandate is, and we will let you know when a gathering genuinely fits it. We would rather you came to two right rooms than eight wrong ones.'
       },
       {
         q: 'Will my name be shared?',
-        a: 'The presenting firm receives a contact list of attendees after the evening — that is a deliberate part of the format and worth knowing before you accept. Beyond that we do not circulate guest lists, publish who attended, or sell your details to anyone.'
+        a: 'The presenting firm receives a contact list of attendees afterwards — that is a deliberate part of the format and worth knowing before you accept. Beyond that we do not circulate guest lists, publish who attended, or sell your details to anyone.'
       },
       {
         q: 'Who hosts these?',
-        a: 'Ran Gimeno (MBA, AIF®) and Jeremy Roseberry. Both are in the room for the whole evening, making the introductions that would not otherwise happen.'
+        a: 'Ran Gimeno (MBA, AIF®) and Jeremy Roseberry. Both are in the room throughout, making the introductions that would not otherwise happen.'
       }
     ]
   }
@@ -153,7 +153,7 @@ export default function FaqPage({ onNavigate, onContactClick }) {
         poster="/images/toast.jpg"
         eyebrow="Frequently asked"
         title="The questions we get"
-        accent="before the first evening."
+        accent="before the first gathering."
         subtitle="If yours isn't here, ask us directly — we would rather answer it properly than have you guess."
       />
 
@@ -213,7 +213,7 @@ export default function FaqPage({ onNavigate, onContactClick }) {
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
             style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY, background: 'transparent' }}
           >
-            See how the evening works
+            See how it works
           </button>
         </div>
       </section>

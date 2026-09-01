@@ -11,9 +11,9 @@ import ContactForm from '../components/ContactForm';
 import Translate from '../components/Translate';
 import { company, colors, nav as navItems } from '../site.config';
 
-const TITLE = `${company.name} — Private Investor Evenings`;
+const TITLE = `${company.name} — Private Investor Gatherings`;
 const DESCRIPTION =
-  'Your firm presents exclusively to a curated room of 30–50 principals, family offices, wealth managers and RIAs. Private investor evenings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
+  'Your firm presents exclusively to a curated room of 30–50 principals, family offices, wealth managers and RIAs. Private investor gatherings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
 
 export default function Site() {
   const [currentPage, setCurrentPage] = useState('home');

@@ -279,7 +279,7 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle })
 /**
  * PageTopBand — slim decorative image strip, no overlaid copy. A lighter
  * page-opening treatment than PageHero: put your real headline in the
- * page's normal flow right below it (see EveningPage.jsx / AboutPage.jsx
+ * page's normal flow right below it (see EventsPage.jsx / AboutPage.jsx
  * for the pattern), so every page opens the same way.
  */
 export function PageTopBand({ image }) {
