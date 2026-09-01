@@ -232,7 +232,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               <Eyebrow color={SECONDARY_DEEP} className="mb-6">What you receive</Eyebrow>
               <ul className="space-y-4">
                 {[
-                  'A pre-event list of names and contact details, so you can run your own pre-event marketing and set up your follow-up',
+                  'A pre-event list, so you can market your offering ahead of the day and open next steps — coffee on the day, or a one-to-one afterwards',
                   'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
                   'The full attention of that room — one firm presents, no competing pitches',
                   'A digital contact list of every attendee, with name, firm and interest',

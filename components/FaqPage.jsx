@@ -42,7 +42,11 @@ const GROUPS = [
       },
       {
         q: 'How do you invite people?',
-        a: 'Personally. Every invitation comes from Ran or Jeremy, by name, to someone we already know. We do not send a blast, buy a list, or paper a city hoping for RSVPs.'
+        a: 'Personally, and then through Luma. Every invitation comes from Ran or Jeremy by name, to someone we already know — Luma handles the registration and approvals behind it. We do not send a blast, buy a list, or paper a city hoping for RSVPs.'
+      },
+      {
+        q: 'Can I invite others with the link I receive?',
+        a: 'Yes. Send it to whoever you think belongs in the room. Everyone still registers through Luma and waits to be approved, so a forwarded link never becomes an open door.'
       },
       {
         q: 'How do you curate the room?',
