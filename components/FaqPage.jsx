@@ -38,7 +38,11 @@ const GROUPS = [
     items: [
       {
         q: 'Who attends?',
-        a: 'Thirty to fifty principals, family offices, wealth managers and RIAs — people with the authority to act, not delegates sent to collect brochures.'
+        a: 'Principals, family offices, wealth managers and RIAs — people with the authority to act, not delegates sent to collect brochures.'
+      },
+      {
+        q: 'How many attend?',
+        a: 'Typically thirty to fifty. But the number is whatever suits your offering: we have hosted rooms of ten to fifteen when the conversation needed to be that close, and rooms of eighty and up when the reach mattered more. Tell us which you want and we build to it.'
       },
       {
         q: 'How do you invite people?',
