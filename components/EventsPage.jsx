@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Check, Play } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow, CountUp, Reveal, GOLD, NAVY, NAVY_DEEP,
+  VideoHeader, Eyebrow, CountUp, Reveal, CityList, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
@@ -305,22 +305,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-5xl mx-auto text-center">
           <Eyebrow color={SECONDARY_DEEP} className="mb-6">Cities we host in</Eyebrow>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4">
-            {cities.map((city, i) => (
-              <React.Fragment key={city}>
-                {i > 0 && (
-                  <span aria-hidden="true" style={{ color: SECONDARY_DEEP, opacity: 0.55, fontSize: 15 }}>
-                    ·
-                  </span>
-                )}
-                <span
-                  style={{ color: SLATE, fontSize: 'clamp(1rem, 2.2vw, 1.35rem)', fontWeight: 600, letterSpacing: '-0.01em' }}
-                >
-                  {city}
-                </span>
-              </React.Fragment>
-            ))}
-          </div>
+          <CityList items={cities} />
           <p className="mx-auto mt-8" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
             These are where we host most often. With enough lead time we have the flexibility to
             plan around a different city or a date that suits your firm.

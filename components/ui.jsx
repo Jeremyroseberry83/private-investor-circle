@@ -500,6 +500,76 @@ export function CountUp({ end, duration = 1400, prefix = '', suffix = '', decima
 }
 
 /**
+ * CityList — the city names fade and rise in sequence the first time the row
+ * scrolls into view. One observer on the container drives all of them, with a
+ * per-item transition-delay, rather than one observer per name. Small travel
+ * and a short stagger on purpose: the effect should read as the list settling,
+ * not as an entrance.
+ */
+export function CityList({ items, color = SLATE, dotColor = SECONDARY_DEEP }) {
+  const ref = React.useRef(null);
+  const [shown, setShown] = React.useState(false);
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+  return (
+    <div ref={ref} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+      {items.map((city, i) => (
+        <React.Fragment key={city}>
+          {i > 0 && (
+            <span
+              aria-hidden="true"
+              style={{
+                color: dotColor,
+                opacity: shown ? 0.5 : 0,
+                transition: `opacity 520ms ${ease}`,
+                transitionDelay: `${i * 70}ms`
+              }}
+            >
+              ·
+            </span>
+          )}
+          <span
+            style={{
+              color,
+              fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
+              fontWeight: 600,
+              letterSpacing: '-0.01em',
+              opacity: shown ? 1 : 0,
+              transform: shown ? 'translateY(0)' : 'translateY(10px)',
+              transition: `opacity 620ms ${ease}, transform 620ms ${ease}`,
+              transitionDelay: `${i * 70}ms`
+            }}
+          >
+            {city}
+          </span>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+/**
  * Reveal — fades and lifts its children the first time they scroll into view,
  * with an optional stagger delay. Movement is small on purpose: enough to draw
  * the eye down the section, not enough to feel like a slideshow. Respects

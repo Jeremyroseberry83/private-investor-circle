@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
-  DisplayHeading, Reveal, GOLD, NAVY, NAVY_DEEP,
-  SECONDARY, SECONDARY_MID, SLATE, MUTED, INK, BG
+  DisplayHeading, CityList,
+  SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -172,44 +172,22 @@ export default function HomePage({ onContactClick, onNavigate }) {
         </svg>
       </section>
 
-      {/* CITIES — navy arrives on the home page as an object, not a band. A
-          full-bleed navy section here would break the hero scoop, whose last
-          gradient stop has to meet an ivory ground; a panel floating on that
-          ivory introduces the colour without touching the seam. */}
+      {/* CITIES — same block and treatment as the Events page, so the two
+          pages state the reach identically. The names animate in; the note
+          under them does the qualifying. */}
       <section className="py-14 md:py-20 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-5xl mx-auto">
-          <Reveal>
-            <div
-              className="rounded-2xl px-8 py-12 md:px-14 md:py-14 text-center"
-              style={{
-                background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 58%, #20365C 100%)`,
-                border: `1px solid ${GOLD}33`,
-                boxShadow: '0 18px 44px rgba(23,38,69,0.16)'
-              }}
-            >
-              <p
-                className="mb-7"
-                style={{ color: SECONDARY, fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase' }}
-              >
-                Cities we host in
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
-                {cities.map((city, i) => (
-                  <React.Fragment key={city}>
-                    {i > 0 && (
-                      <span aria-hidden="true" style={{ color: SECONDARY, opacity: 0.5 }}>·</span>
-                    )}
-                    <span
-                      className="text-white"
-                      style={{ fontSize: 'clamp(0.95rem, 2vw, 1.2rem)', fontWeight: 600, letterSpacing: '-0.01em' }}
-                    >
-                      {city}
-                    </span>
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+        <div className="max-w-5xl mx-auto text-center">
+          <p
+            className="mb-7"
+            style={{ color: SECONDARY_DEEP, fontSize: 11, fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase' }}
+          >
+            Cities we host in
+          </p>
+          <CityList items={cities} />
+          <p className="mx-auto mt-8" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
+            These are where we host most often. With enough lead time we have the flexibility to
+            plan around a different city or a date that suits your firm.
+          </p>
         </div>
       </section>
 
