@@ -4,14 +4,24 @@ import {
   VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
-function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP }) {
+function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP, objectPosition = 'center' }) {
+  // objectPosition pulls the crop window up the frame: a tall portrait in a
+  // square card would otherwise be cropped chin-to-waistband. grayscale(1) is
+  // on both photos so the pair reads as one commission rather than two shoots
+  // — drop the filter to restore Ran's colour.
   return (
     <div>
       <div
         className="relative rounded-2xl overflow-hidden mb-6"
         style={{ aspectRatio: '1 / 1', backgroundColor: '#EDE8E0' }}
       >
-        <img src={photo} alt={name} className="w-full h-full object-cover" loading="lazy" />
+        <img
+          src={photo}
+          alt={name}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          style={{ objectPosition, filter: 'grayscale(1)' }}
+        />
       </div>
 
       <div className="flex items-center gap-2.5 mb-1">
@@ -103,7 +113,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               name="Ran Gimeno"
               title="Host · MBA, AIF®"
               photo="/images/team/ran.jpg"
-              linkedin="https://www.linkedin.com/"
+              linkedin="https://www.linkedin.com/in/rangimeno/"
               accent={PRIMARY}
               bio={[
                 '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',
@@ -113,8 +123,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             <Person
               name="Jeremy Roseberry"
               title="Host"
-              photo="/images/team/jeremy.svg"
-              linkedin="https://www.linkedin.com/"
+              photo="/images/team/jeremy.jpg"
+              objectPosition="center 6%"
+              linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
               accent={SECONDARY_DEEP}
               bio={[
                 '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',

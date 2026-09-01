@@ -430,9 +430,9 @@ export function HighlightGrid({ eyebrow, title, intro, cards, tone = 'primary' }
               className="rounded-xl p-8 transition-transform hover:-translate-y-1"
               style={{
                 backgroundColor: i === 0 ? fill : '#FFFFFF',
-                // The filled card is navy on a teal ground — darker than what
-                // it sits on, so it needs the gold hairline to read as a card
-                // rather than a hole.
+                // The filled card is espresso on a near-black ground — barely
+                // lighter than what it sits on, so it needs the gold hairline
+                // to read as a card rather than a hole.
                 border: i === 0 ? `1px solid ${GOLD}55` : 'none'
               }}
             >
