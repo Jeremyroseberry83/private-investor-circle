@@ -32,7 +32,8 @@ module.exports = {
     SECONDARY_LIGHT: '#F6EFDF', // champagne tint — card/badge grounds
     SLATE: '#2E2E2E',          // Charcoal — headings and body on light
     MUTED: '#6E6A62',          // warm grey — secondary body copy
-    INK: '#111111',            // Noir — dark section grounds
+    INK: '#0E3A44',            // Deep Petrol Teal — dark section grounds
+    INK_LIGHT: '#14505D',      // lifted teal — second stop in dark gradients
     BG: '#FAF8F5'              // Ivory — page ground
   },
 

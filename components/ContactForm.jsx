@@ -64,7 +64,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center z-50 p-4"
-      style={{ backgroundColor: 'rgba(17,17,17,0.72)' }}
+      style={{ backgroundColor: 'rgba(14,58,68,0.72)' }}
       onClick={onClose}
     >
       <div

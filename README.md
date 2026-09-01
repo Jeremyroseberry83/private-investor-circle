@@ -28,7 +28,8 @@ shareable links, that's a structural change, not a config tweak.
 
 | Role | Color | Hex |
 |---|---|---|
-| `INK` — dark section grounds | Noir Black | `#111111` |
+| `INK` — dark section grounds | Deep Petrol Teal | `#0E3A44` |
+| `INK_LIGHT` — dark gradient second stop | Lifted Teal | `#14505D` |
 | `SLATE` — headings/body on light | Charcoal | `#2E2E2E` |
 | `PRIMARY` — buttons, links, active states | Midnight Navy | `#102542` |
 | `SECONDARY` — accents, rules, on-dark type | Antique Gold | `#C9A84C` |

@@ -235,7 +235,7 @@ export default function Site() {
       <footer
         className="py-12 px-6"
         style={{
-          background: `linear-gradient(120deg, ${colors.INK} 0%, #1C1C1C 100%)`,
+          background: `linear-gradient(120deg, ${colors.INK} 0%, ${colors.INK_LIGHT} 100%)`,
           color: 'white',
           borderTop: `3px solid ${colors.SECONDARY}`
         }}

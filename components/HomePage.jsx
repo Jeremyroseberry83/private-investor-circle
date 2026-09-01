@@ -25,7 +25,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to top, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.62) 38%, rgba(17,17,17,0.42) 100%)'
+              'linear-gradient(to top, rgba(14,58,68,0.92) 0%, rgba(14,58,68,0.62) 38%, rgba(14,58,68,0.42) 100%)'
           }}
         />
 

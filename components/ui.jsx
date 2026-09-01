@@ -12,6 +12,7 @@ export const SECONDARY_LIGHT = '#E8D6B3'; // champagne accent — used on navy g
 export const SLATE = colors.SLATE;
 export const MUTED = colors.MUTED;
 export const INK = colors.INK;
+export const INK_LIGHT = colors.INK_LIGHT;
 export const BG = colors.BG;
 
 /**
@@ -53,7 +54,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
   const wash =
     tone === 'secondary'
       ? `linear-gradient(180deg, rgba(16,37,66,0.94) 0%, rgba(16,37,66,0.89) 100%)`
-      : `linear-gradient(180deg, rgba(17,17,17,0.94) 0%, rgba(17,17,17,0.88) 100%)`;
+      : `linear-gradient(180deg, rgba(14,58,68,0.94) 0%, rgba(14,58,68,0.88) 100%)`;
   const accent = tone === 'secondary' ? SECONDARY_LIGHT : PRIMARY_LIGHT;
 
   return (
@@ -94,7 +95,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
               background:
                 tone === 'secondary'
                   ? 'linear-gradient(180deg, rgba(16,37,66,0.55) 0%, rgba(16,37,66,0.42) 100%)'
-                  : 'linear-gradient(180deg, rgba(17,17,17,0.58) 0%, rgba(17,17,17,0.44) 100%)'
+                  : 'linear-gradient(180deg, rgba(14,58,68,0.58) 0%, rgba(14,58,68,0.44) 100%)'
             }}
           />
         </>
@@ -199,7 +200,7 @@ export function PageTopBand({ image }) {
         position: 'relative'
       }}
     >
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(14,58,68,0.62)' }} />
     </section>
   );
 }
@@ -334,7 +335,13 @@ export function HighlightGrid({ eyebrow, title, intro, cards, tone = 'primary' }
             <div
               key={c.title}
               className="rounded-xl p-8 transition-transform hover:-translate-y-1"
-              style={{ backgroundColor: i === 0 ? fill : '#FFFFFF' }}
+              style={{
+                backgroundColor: i === 0 ? fill : '#FFFFFF',
+                // The filled card is navy on a teal ground — darker than what
+                // it sits on, so it needs the gold hairline to read as a card
+                // rather than a hole.
+                border: i === 0 ? `1px solid rgba(201,168,76,0.45)` : 'none'
+              }}
             >
               <h4
                 className="font-bold mb-3"
@@ -403,7 +410,7 @@ export function StatBand({ image, stats, tone = 'primary' }) {
   return (
     <section className="relative overflow-hidden" style={{ backgroundColor: INK }}>
       <img src={image} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(17,17,17,0.72)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(14,58,68,0.72)' }} />
       <div className="relative max-w-6xl mx-auto px-6 py-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
           {stats.map((s) => (
