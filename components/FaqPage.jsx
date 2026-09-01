@@ -67,7 +67,7 @@ const GROUPS = [
     items: [
       {
         q: 'Do we get the list of attendees?',
-        a: 'Yes. A digital contact list of every attendee — name, firm and their interest — delivered afterwards for your own outreach, along with warm introductions from us to anyone who would like to continue the conversation.'
+        a: 'Twice, in fact. You get a pre-event list of names and contact details so you can run your own outreach beforehand, and afterwards a digital contact list of every attendee — name, firm and their interest — along with warm introductions from us to anyone who would like to continue the conversation.'
       },
       {
         q: 'Is the gathering photographed or filmed?',

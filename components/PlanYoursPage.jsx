@@ -229,9 +229,10 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             </div>
 
             <div className="rounded-2xl p-9 md:p-10" style={{ backgroundColor: '#F2EADE' }}>
-              <Eyebrow color={SECONDARY_DEEP} className="mb-6">What you get back</Eyebrow>
+              <Eyebrow color={SECONDARY_DEEP} className="mb-6">What you receive</Eyebrow>
               <ul className="space-y-4">
                 {[
+                  'A pre-event list of names and contact details, so you can run your own pre-event marketing and set up your follow-up',
                   'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
                   'The full attention of that room — one firm presents, no competing pitches',
                   'A digital contact list of every attendee, with name, firm and interest',
