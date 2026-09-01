@@ -266,11 +266,12 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           className="font-bold mb-6 mx-auto"
           style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3.4vw, 2.4rem)', letterSpacing: '-0.03em', maxWidth: '22ch', lineHeight: 1.15 }}
         >
-          Tell us who you are.
+          We would rather meet you early.
         </h2>
         <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}>
-          Whether you are building something, funding something, or know exactly who should meet
-          whom — we would like to know you before there is a reason to call.
+          Most of the introductions we are proudest of started as a conversation with nothing riding
+          on it. Building something, funding something, or you simply know who should meet whom —
+          either way, we would like to know you.
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
