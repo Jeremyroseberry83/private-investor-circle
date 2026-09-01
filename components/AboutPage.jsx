@@ -85,9 +85,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             <Eyebrow color={PRIMARY} className="mb-5">What we add</Eyebrow>
 
             <p className="mb-6" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Ran Gimeno and Jeremy Roseberry have spent their careers in capital markets, and the
-              lesson of both careers is the same: capital is not one thing. It is five, and most
-              rooms only ever trade the last of them.
+              Ran Gimeno and Jeremy Roseberry have spent their careers in capital markets, and both
+              careers taught the same lesson: capital is not one thing. It is five — and we help
+              companies scale all five, not only the one everybody counts.
             </p>
 
             <div style={{ borderTop: '1px solid #E7E2D9' }}>
@@ -123,7 +123,8 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </div>
 
             <p className="mt-7" style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600 }}>
-              Private Investor Circle is where all five meet in one room.
+              Most rooms only ever trade the fifth. Private Investor Circle is built so all five
+              are in the room at once.
             </p>
           </div>
         </div>
