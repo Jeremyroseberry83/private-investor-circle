@@ -168,7 +168,11 @@ export default function AboutPage({ onContactClick, onNavigate }) {
 
           {/* Bios supplied by the principals — four paragraphs each, so the
               two columns now sit at roughly equal height. Keep them that way
-              if either is edited. */}
+              if either is edited.
+
+              Jeremy's website link points at the Netlify deploy until
+              jeremyroseberry.com resolves; the label still reads as the
+              domain, so only the href changes when DNS is live. */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
               name="Ran Gimeno"
@@ -190,7 +194,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               photo="/images/team/jeremy.jpg"
               objectPosition="center 6%"
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
-              website="https://jeremyroseberry.com"
+              website="https://jeremyroseberrycom.netlify.app/"
               websiteLabel="JeremyRoseberry.com"
               accent={SECONDARY_DEEP}
               bio={[
