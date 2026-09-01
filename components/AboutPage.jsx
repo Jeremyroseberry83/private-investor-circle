@@ -142,10 +142,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </p>
           </div>
 
-          {/* Bios supplied by the principals. Ran's runs roughly three times
-              longer than Jeremy's, so the two columns sit unevenly — trim his
-              for the web if that bothers you, but don't invent length for
-              Jeremy's to match. */}
+          {/* Bios supplied by the principals — four paragraphs each, so the
+              two columns now sit at roughly equal height. Keep them that way
+              if either is edited. */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
               name="Ran Gimeno"
@@ -169,8 +168,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
               accent={SECONDARY_DEEP}
               bio={[
-                'Nearly two decades in private markets, real assets, and capital formation — based in Palm Beach County, operating globally.',
-                'He connects the right people to relational capital — the kind that moves through trust and mutual value over the long term.',
+                'Jeremy brings nearly two decades of experience across private markets, real assets, and capital formation. Rooted in Palm Beach County — where he has invested and operated across real assets for decades — he has built his career at the intersection of relationships, market depth, and global reach.',
+                'His background spans acquisitions, capital structuring, investment analysis, and advisory work across a range of alternative strategies. At Access Global, Jeremy serves as a trusted advisor and capital partner to a select group of founders, allocators, and sponsors.',
+                'He focuses on identifying the right opportunities, structuring sound introductions, and building real relationships that endure well beyond transactions.',
                 'At Private Investor Circle he co-hosts every gathering: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
               ]}
             />
