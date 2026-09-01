@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, ArrowUpRight, Calendar, Check, Mail } from 'lucide-react';
 import { company } from '../site.config';
 import {
-  VideoHeader, Eyebrow, Reveal, GOLD, NAVY, NAVY_DEEP,
+  VideoHeader, Eyebrow, Reveal, CountUp, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
@@ -144,7 +144,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         />
 
         <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
-          <Eyebrow color={SECONDARY} className="mb-4">The honest version</Eyebrow>
+          <Eyebrow color={SECONDARY} className="mb-4">Compared to a conference</Eyebrow>
           <h2
             className="text-white font-bold mb-6"
             style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
@@ -160,26 +160,68 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
           <div className="grid md:grid-cols-3 gap-5 mb-14">
             {[
               {
-                lead: 'You are one of forty',
-                body: 'Competing pitches on either side, and an audience pacing itself across a hall. Nobody gives you their full attention because nobody can.'
+                lead: 'You are one of twenty-five',
+                ticker: true,
+                body: 'Sponsors competing for space on the same floor, with pitches on either side of you and an audience pacing itself across a hall. Nobody gives you their full attention because nobody can.'
               },
               {
                 lead: 'The wrong badges',
-                body: 'Conversations with people whose mandate, cheque size or authority never fit — polite exchanges that could not have ended in a yes.'
+                body: 'Conversations with people whose roles, mandate, check size or authority never fit — polite exchanges that could not have ended in a yes.'
               },
               {
-                lead: 'A list of strangers',
-                body: 'Scanned badges with no context and no warmth. Interest cools in the two weeks nobody knew how to follow up.'
+                lead: 'A list of service providers',
+                body: 'Most badges in the hall are selling something too. On a good day you meet one to three real investors — and then you are cold-emailing a spreadsheet of scanned badges with no context and no warmth. Interest cools in the two weeks nobody knew how to follow up.'
               }
-            ].map((c) => (
-              <div
-                key={c.lead}
-                className="rounded-xl p-7"
-                style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(216,195,165,0.26)' }}
-              >
-                <p className="text-white font-bold mb-2.5" style={{ fontSize: 16 }}>{c.lead}</p>
-                <p style={{ color: 'rgba(255,255,255,0.74)', fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
-              </div>
+            ].map((c, i) => (
+              <Reveal key={c.lead} delay={i * 90}>
+                <div
+                  className="h-full rounded-xl p-7"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(216,195,165,0.26)' }}
+                >
+                  {/* The ratio is the argument for this card — show it, don't
+                      just assert it in the prose underneath. */}
+                  {c.ticker && (
+                    <div className="flex items-baseline gap-2.5 mb-4">
+                      <span
+                        style={{
+                          color: SECONDARY,
+                          fontSize: 40,
+                          fontWeight: 700,
+                          lineHeight: 1,
+                          fontFamily: "'Playfair Display', Georgia, serif"
+                        }}
+                      >
+                        1
+                      </span>
+                      <span style={{ color: 'rgba(255,255,255,0.34)', fontSize: 24, lineHeight: 1 }}>/</span>
+                      <span
+                        style={{
+                          color: SECONDARY,
+                          fontSize: 40,
+                          fontWeight: 700,
+                          lineHeight: 1,
+                          fontFamily: "'Playfair Display', Georgia, serif"
+                        }}
+                      >
+                        <CountUp end={25} suffix="+" />
+                      </span>
+                      <span
+                        style={{
+                          color: 'rgba(255,255,255,0.5)',
+                          fontSize: 11.5,
+                          letterSpacing: '0.16em',
+                          textTransform: 'uppercase',
+                          marginLeft: 4
+                        }}
+                      >
+                        sponsors
+                      </span>
+                    </div>
+                  )}
+                  <p className="text-white font-bold mb-2.5" style={{ fontSize: 16 }}>{c.lead}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.74)', fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
 
