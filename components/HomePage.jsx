@@ -69,7 +69,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
               className="mb-7"
               style={{ color: SECONDARY, fontSize: 11, fontWeight: 700, letterSpacing: '0.32em', textTransform: 'uppercase' }}
             >
-              Private Investor Event
+              In private markets
             </p>
 
             <h1
@@ -81,8 +81,9 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 letterSpacing: '-0.02em'
               }}
             >
-              An evening with the advisors and allocators{' '}
-              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>worth being in relationship with.</span>
+              Trusted relationships with the Accredited Investors, Principals and Registered
+              Advisors{' '}
+              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>worth knowing.</span>
             </h1>
 
             <p
@@ -96,8 +97,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 marginRight: 'auto'
               }}
             >
-              Your firm presents exclusively to a curated room of principals, family offices, wealth
-              managers, and RIAs — real relationships, not a booth on a conference floor.
+              Your firm presents exclusively to a curated room — real relationships, not a booth
+              on a conference floor.
             </p>
 
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: '2.5rem' }}>
