@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Play } from 'lucide-react';
 import {
   VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
@@ -48,6 +48,51 @@ const DELIVERS = [
       'Branded photo & video assets delivered to you',
       'A final recap film of the evening'
     ]
+  }
+];
+
+// Quotes are placeholders — replace with what each of them actually said.
+// `video` is empty until you have a URL; the Watch button only renders once
+// one is filled in, so nothing breaks in the meantime. Any URL works — Vimeo,
+// YouTube, a file on this site.
+const TESTIMONIALS = [
+  {
+    name: 'Joe Colura',
+    firm: '4IR Group',
+    quote: '[Placeholder — two or three sentences in Joe\u2019s own words. The most useful version names what the evening produced for 4IR, not how nice it was.]',
+    video: ''
+  },
+  {
+    name: 'Mauricio Alvarez',
+    firm: 'OTG',
+    quote: '[Placeholder — two or three sentences in Mauricio\u2019s own words. Specifics beat superlatives: who he met, what happened afterwards.]',
+    video: ''
+  },
+  {
+    name: 'Tom Blair',
+    firm: 'Hudson Capital',
+    quote: '[Placeholder — two or three sentences in Tom\u2019s own words. If he can compare it to a conference he has sponsored, that contrast does the selling.]',
+    video: ''
+  }
+];
+
+// Titles pulled from the Luma pages themselves. Add a new entry to put another
+// event on the page — nothing else needs touching.
+const PAST_EVENTS = [
+  {
+    title: 'Investor Day — Inside the Harvard/MIT Kendall Square Robotics & AI Deep Tech Ecosystem',
+    place: 'Boston · September 17',
+    url: 'https://luma.com/bostonsept17'
+  },
+  {
+    title: 'Valois Salon: A Private Dinner in Boston',
+    place: 'Boston',
+    url: 'https://luma.com/privatedinnerboston'
+  },
+  {
+    title: 'A Private Evening — Sunset on the Miami River',
+    place: 'Miami · The Capital Grille private dining room',
+    url: 'https://luma.com/kkyvdxzh'
   }
 ];
 
@@ -121,6 +166,103 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                   ))}
                 </ul>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: INK }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mb-14">
+            <Eyebrow color={SECONDARY} className="mb-4">From the hosts who have done this</Eyebrow>
+            <h2
+              className="text-white font-bold"
+              style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
+            >
+              What the firms say afterwards.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t) => (
+              <figure
+                key={t.name}
+                className="rounded-xl p-8 flex flex-col"
+                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}
+              >
+                <span aria-hidden="true" style={{ color: SECONDARY, fontSize: 34, lineHeight: 1, marginBottom: 14 }}>
+                  &ldquo;
+                </span>
+                <blockquote
+                  style={{ color: 'rgba(255,255,255,0.86)', fontSize: 15.5, lineHeight: 1.75, flexGrow: 1 }}
+                >
+                  {t.quote}
+                </blockquote>
+                <figcaption className="mt-7 pt-6" style={{ borderTop: '1px solid rgba(216,195,165,0.24)' }}>
+                  <div className="text-white font-bold" style={{ fontSize: 16 }}>{t.name}</div>
+                  <div style={{ color: SECONDARY, fontSize: 13, marginTop: 2 }}>{t.firm}</div>
+                  {t.video && (
+                    <a
+                      href={t.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 text-sm font-semibold"
+                      style={{ color: SECONDARY }}
+                    >
+                      <Play size={13} fill={SECONDARY} strokeWidth={0} />
+                      Watch
+                    </a>
+                  )}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PAST EVENTS */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-2xl mb-12">
+            <Eyebrow color={SECONDARY_DEEP} className="mb-4">Past events</Eyebrow>
+            <h2
+              className="font-bold mb-5"
+              style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
+            >
+              Evenings we have hosted.
+            </h2>
+            <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
+              A sense of the rooms, the cities and the company they keep.
+            </p>
+          </div>
+
+          <div style={{ borderTop: '1px solid #E7E2D9' }}>
+            {PAST_EVENTS.map((e) => (
+              <a
+                key={e.url}
+                href={e.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start justify-between gap-6 group"
+                style={{ borderBottom: '1px solid #E7E2D9', padding: '24px 0' }}
+              >
+                <span>
+                  <span className="block font-semibold" style={{ color: SLATE, fontSize: 17.5, lineHeight: 1.4 }}>
+                    {e.title}
+                  </span>
+                  <span className="block mt-1.5" style={{ color: MUTED, fontSize: 14.5 }}>
+                    {e.place}
+                  </span>
+                </span>
+                <span
+                  className="inline-flex items-center gap-1.5 flex-shrink-0 text-sm font-semibold"
+                  style={{ color: SECONDARY_DEEP, marginTop: 3 }}
+                >
+                  View
+                  <ArrowUpRight size={15} />
+                </span>
+              </a>
             ))}
           </div>
         </div>
