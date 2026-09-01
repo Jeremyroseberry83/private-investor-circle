@@ -105,7 +105,8 @@ export default function DatesPage({ onNavigate, onContactClick }) {
           className="mx-auto mb-9"
           style={{ color: 'rgba(255,255,255,0.72)', fontSize: 16, lineHeight: 1.8, maxWidth: '52ch' }}
         >
-          Tell us the city and roughly when, and we will build an evening around it.
+          Let&rsquo;s connect on your preferred city and roughly when, and we&rsquo;ll try to
+          accommodate.
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
