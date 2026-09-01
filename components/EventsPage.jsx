@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, ArrowUpRight, Check, Play } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow, CountUp, Reveal, GOLD,
+  VideoHeader, Eyebrow, CountUp, Reveal, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
@@ -185,7 +185,12 @@ export default function EventsPage({ onNavigate, onContactClick }) {
       {/* THE VALUE PROPOSITION — this is the page's argument, so it gets the
           weight: a dark ground, counters that animate in, and the four blocks
           staggered rather than dumped as four equal columns of text. */}
-      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: INK }}>
+      <section
+        className="py-16 md:py-28 px-6"
+        style={{
+          background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 52%, #20365C 100%)`
+        }}
+      >
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="max-w-3xl">
@@ -385,51 +390,6 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             <p className="mt-5" style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600, fontStyle: 'italic' }}>
               Here, the entire room is yours — not just a booth and a few contacts at a conference.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* BEYOND THE INVESTOR GATHERING */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-5xl mx-auto">
-          <div className="max-w-2xl mb-12">
-            <Eyebrow color={PRIMARY} className="mb-4">Beyond the investor gathering</Eyebrow>
-            <h2
-              className="font-bold mb-5"
-              style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
-            >
-              The same room-building, other occasions.
-            </h2>
-            <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-              The private investor gathering is what we run most. The underlying craft — curating a
-              guest list and hosting it properly — carries to other gatherings just as well.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Galas & benefits',
-                body: 'Larger black-tie convenings around a cause or a milestone, where the philanthropy is genuine and the relationships outlast the night.'
-              },
-              {
-                title: 'Relational connecting',
-                body: 'Introductions made deliberately and off-calendar, between people who should know each other well before either needs something.'
-              },
-              {
-                title: 'Capital raising support',
-                body: 'The room, the follow-up list and the warm handoffs that turn a good first conversation into a second one.'
-              }
-            ].map((c) => (
-              <div
-                key={c.title}
-                className="rounded-xl p-8"
-                style={{ backgroundColor: 'white', border: '1px solid #E7E2D9', borderTop: `3px solid ${SECONDARY}` }}
-              >
-                <h4 className="font-bold mb-3" style={{ color: SLATE, fontSize: 17 }}>{c.title}</h4>
-                <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7 }}>{c.body}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

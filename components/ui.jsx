@@ -15,6 +15,8 @@ export const SLATE = colors.SLATE;
 export const MUTED = colors.MUTED;
 export const INK = colors.INK;
 export const INK_LIGHT = colors.INK_LIGHT;
+export const NAVY = colors.NAVY;
+export const NAVY_DEEP = colors.NAVY_DEEP;
 export const BG = colors.BG;
 
 /**

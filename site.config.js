@@ -12,9 +12,10 @@
  * restricted to hairlines and the mark: when it was doing every job at once it
  * read as mustard.
  *
- * NAVY is chrome only — the nav and the footer, framing the page. Content
- * sections stay warm near-black. Don't let navy leak into a hero or a dark
- * section band or the frame stops reading as a frame.
+ * NAVY carries the chrome — nav and footer — plus exactly one content band:
+ * the value-proposition section on the Events page, which is deliberately the
+ * loudest thing on the site. Every other dark section stays warm near-black.
+ * If navy spreads further, the frame stops reading as a frame.
  */
 
 module.exports = {
