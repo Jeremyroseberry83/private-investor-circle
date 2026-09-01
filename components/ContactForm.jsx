@@ -88,7 +88,7 @@ export default function ContactForm({ onClose, initialType, initialMessage }) {
               Thank you — your note is with us.
             </h2>
             <p style={{ color: MUTED, fontSize: 15, lineHeight: 1.7 }}>
-              Jeremy or Ran reads every message personally. Expect a reply within two business days.
+              Ran or Jeremy reads every message personally. Expect a reply within two business days.
             </p>
             <button
               onClick={onClose}

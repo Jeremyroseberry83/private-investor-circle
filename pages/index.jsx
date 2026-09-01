@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Menu, X, Mail } from 'lucide-react';
 import HomePage from '../components/HomePage';
-import GatheringsPage from '../components/GatheringsPage';
+import EveningPage from '../components/EveningPage';
 import CompaniesPage from '../components/CompaniesPage';
 import AboutPage from '../components/AboutPage';
 import ContactForm from '../components/ContactForm';
 import Translate from '../components/Translate';
 import { company, colors, nav as navItems } from '../site.config';
 
-const TITLE = `${company.name} — Private Gatherings for Capital and Connection`;
+const TITLE = `${company.name} — Private Investor Evenings`;
 const DESCRIPTION =
-  'Private Investor Circle convenes founders, operators and private capital in rooms small enough to matter — curated dinners, capital forums and galas hosted by Jeremy Roseberry and Ran Gimeno.';
+  'Your firm presents exclusively to a curated room of 30–50 principals, family offices, wealth managers and RIAs. Private investor evenings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
 
 export default function Site() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -46,7 +46,7 @@ export default function Site() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'gatherings': return <GatheringsPage onNavigate={handleNavClick} onContactClick={openContact} />;
+      case 'evening':   return <EveningPage onNavigate={handleNavClick} onContactClick={openContact} />;
       case 'companies':  return <CompaniesPage onContactClick={openContact} />;
       case 'about':      return <AboutPage onContactClick={openContact} onNavigate={handleNavClick} />;
       default:           return <HomePage onContactClick={openContact} onNavigate={handleNavClick} />;

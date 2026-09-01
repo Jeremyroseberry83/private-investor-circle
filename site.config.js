@@ -20,8 +20,13 @@ module.exports = {
     // Swap for a branded inbox (e.g. invitations@privateinvestorcircle.com)
     // once that mailbox exists — this is the only place it's defined.
     email: 'jeremy@roseberrycapital.net',
-    principals: 'Jeremy Roseberry & Ran Gimeno'
+    // Ran is listed first everywhere in the source collateral — keep that order.
+    principals: 'Ran Gimeno & Jeremy Roseberry'
   },
+
+  // Cities from the Private Gathering Overview. The separate Fall Dates sheet
+  // is marked confidential and is deliberately NOT published here.
+  cities: ['Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York', 'Chicago', 'Dallas'],
 
   colors: {
     PRIMARY: '#102542',        // Midnight Navy — buttons, links, active states
@@ -38,7 +43,7 @@ module.exports = {
   },
 
   nav: [
-    { name: 'Gatherings', id: 'gatherings' },
+    { name: 'The Evening', id: 'evening' },
     { name: 'For Companies', id: 'companies' },
     { name: 'About', id: 'about' }
   ],

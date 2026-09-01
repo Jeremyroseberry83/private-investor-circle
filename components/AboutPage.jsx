@@ -44,7 +44,7 @@ function Person({ name, title, bio, photo, linkedin, accent = SECONDARY_DEEP }) 
 export default function AboutPage({ onContactClick, onNavigate }) {
   return (
     <div>
-      <PageTopBand image="/images/band-about.svg" />
+      <PageTopBand image="/images/band-about.jpg" />
 
       <section className="pt-16 pb-8 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-3xl mx-auto text-center">
@@ -63,19 +63,19 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             className="rounded-2xl overflow-hidden"
             style={{ aspectRatio: '4 / 3', backgroundColor: '#EDE8E0' }}
           >
-            <img src="/images/origin.svg" alt="" className="w-full h-full object-cover" loading="lazy" />
+            <img src="/images/rooftop.jpg" alt="" className="w-full h-full object-cover" loading="lazy" />
           </div>
           <div>
             <Eyebrow color={PRIMARY} className="mb-4">Where this came from</Eyebrow>
             <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Jeremy Roseberry and Ran Gimeno spent their careers advising companies on capital —
+              Ran Gimeno and Jeremy Roseberry spent their careers advising firms on capital —
               how to structure it, when to raise it, and who to raise it from. The same question kept
               arriving from both directions: <em>who should I be talking to?</em>
             </p>
             <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              Founders wanted capital that understood their business. Investors wanted opportunities
-              that had been looked at by someone they trusted before it reached their desk. Both were
-              describing the same missing thing — not a platform or a database, but a room.
+              Firms wanted allocators who understood what they actually do. Allocators wanted to hear
+              from someone vouched for before it reached their desk. Both were describing the same
+              missing thing — not a platform or a database, but a room.
             </p>
             <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600 }}>
               Private Investor Circle is that room, hosted deliberately.
@@ -105,25 +105,25 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               outside the brackets is safe to keep as written. */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
-              name="Jeremy Roseberry"
-              title="Co-founder · Capital Market Strategist"
-              photo="/images/team/jeremy.svg"
+              name="Ran Gimeno"
+              title="Host · MBA, AIF®"
+              photo="/images/team/ran.svg"
               linkedin="https://www.linkedin.com/"
               accent={PRIMARY}
               bio={[
-                '[One or two sentences of verified background — firms, sectors, and the kind of capital work he is known for.]',
-                'At Private Investor Circle he leads the capital side of the room: which investors belong at a given table, what they actually need to see, and how a first conversation becomes a second one.'
+                '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',
+                'At Private Investor Circle he co-hosts every evening: which allocators belong at a given table, what they need to see, and how a first conversation becomes a second one.'
               ]}
             />
             <Person
-              name="Ran Gimeno"
-              title="Co-founder · Capital Market Strategist"
-              photo="/images/team/ran.svg"
+              name="Jeremy Roseberry"
+              title="Host"
+              photo="/images/team/jeremy.svg"
               linkedin="https://www.linkedin.com/"
               accent={SECONDARY_DEEP}
               bio={[
-                '[One or two sentences of verified background — firms, sectors, and the kind of capital work he is known for.]',
-                'At Private Investor Circle he leads the company side: what a business needs to be ready for a room like this, how the story should be told in it, and what happens in the weeks that follow.'
+                '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',
+                'At Private Investor Circle he co-hosts every evening: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
               ]}
             />
           </div>
@@ -152,7 +152,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               {
                 n: '01',
                 title: 'We host, we do not broker.',
-                body: 'We convene and introduce. We are not a broker-dealer, we do not place securities, and we do not take a cut of a deal. Terms are settled between the parties, under their own counsel.'
+                body: 'We convene and introduce. We are not a broker-dealer and we do not place securities. Any business that follows is settled directly between the parties, under their own counsel.'
               },
               {
                 n: '02',
@@ -162,12 +162,12 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               {
                 n: '03',
                 title: 'We say "not yet" out loud.',
-                body: 'A company put in front of capital a quarter too early burns the introduction and the relationship. We would rather lose the engagement than spend a room on it.'
+                body: 'A firm put in front of allocators a quarter too early burns the introduction and the relationship. We would rather lose the engagement than spend a room on it.'
               },
               {
                 n: '04',
                 title: 'The follow-through is the work.',
-                body: 'Anyone can fill a ballroom. The value shows up in the two weeks afterwards, and that is the part we are accountable for.'
+                body: 'Anyone can fill a ballroom. The value shows up in the follow-up list and the warm introductions afterwards, and that is the part we are accountable for.'
               }
             ].map((c) => (
               <div key={c.n} className="rounded-xl p-8" style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(201,168,76,0.25)' }}>
@@ -211,11 +211,11 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             Request an invitation
           </button>
           <button
-            onClick={() => onNavigate && onNavigate('gatherings')}
+            onClick={() => onNavigate && onNavigate('evening')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
             style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
           >
-            See the gatherings <ArrowRight size={15} />
+            See how the evening works <ArrowRight size={15} />
           </button>
         </div>
       </section>
