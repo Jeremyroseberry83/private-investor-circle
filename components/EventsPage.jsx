@@ -119,131 +119,6 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         subtitle="Your firm presents exclusively to a curated room of principals, family offices, wealth managers, and RIAs — real relationships, not a booth on a conference floor."
       />
 
-      {/* Different footage from the header deliberately — the header runs the
-          ballroom, so this runs the toast. Two loops of the same room on one
-          page competes with itself. */}
-      <section className="pt-16 pb-16 md:pt-20 md:pb-24 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: INK }}>
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-hidden="true"
-              poster="/images/toast.jpg"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            >
-              <source src="/videos/dinner.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div>
-            <Eyebrow color={PRIMARY} className="mb-4">What this is</Eyebrow>
-            <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.85 }}>
-              A single firm presents its offering to a room we have built around it. Thirty to fifty
-              principals, family offices, wealth managers and RIAs — people with the authority to
-              act, not delegates sent to collect brochures.
-            </p>
-            <p className="mb-5" style={{ color: MUTED, fontSize: 17, lineHeight: 1.85 }}>
-              Then dinner, and the part that actually matters: unhurried conversation with allocators
-              who came because they were personally invited.
-            </p>
-            <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.85, fontWeight: 600, fontStyle: 'italic' }}>
-              Here, the entire room is yours for the evening — not just a booth and a few contacts at
-              a conference.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT THE EVENING DELIVERS */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-6xl mx-auto">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-10">What the evening delivers</Eyebrow>
-
-          <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
-            {DELIVERS.map((d) => (
-              <div key={d.n}>
-                <div
-                  className="mb-3"
-                  style={{
-                    color: SECONDARY_DEEP,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    letterSpacing: '0.16em',
-                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace'
-                  }}
-                >
-                  {d.n}
-                </div>
-                <h3 className="font-bold mb-5" style={{ color: SLATE, fontSize: 21 }}>
-                  {d.title}
-                </h3>
-                <ul className="space-y-3.5">
-                  {d.points.map((pt) => (
-                    <li key={pt} className="flex gap-3" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
-                      <Check size={16} style={{ color: SECONDARY_DEEP, flexShrink: 0, marginTop: 3 }} />
-                      <span>{pt}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: INK }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl mb-14">
-            <Eyebrow color={SECONDARY} className="mb-4">From the hosts who have done this</Eyebrow>
-            <h2
-              className="text-white font-bold"
-              style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
-            >
-              What the firms say afterwards.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <figure
-                key={t.name}
-                className="rounded-xl p-8 flex flex-col"
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}
-              >
-                <span aria-hidden="true" style={{ color: SECONDARY, fontSize: 34, lineHeight: 1, marginBottom: 14 }}>
-                  &ldquo;
-                </span>
-                <blockquote
-                  style={{ color: 'rgba(255,255,255,0.86)', fontSize: 15.5, lineHeight: 1.75, flexGrow: 1 }}
-                >
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-7 pt-6" style={{ borderTop: '1px solid rgba(216,195,165,0.24)' }}>
-                  <div className="text-white font-bold" style={{ fontSize: 16 }}>{t.name}</div>
-                  <div style={{ color: SECONDARY, fontSize: 13, marginTop: 2 }}>{t.firm}</div>
-                  {t.video && (
-                    <a
-                      href={t.video}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 text-sm font-semibold"
-                      style={{ color: SECONDARY }}
-                    >
-                      <Play size={13} fill={SECONDARY} strokeWidth={0} />
-                      Watch
-                    </a>
-                  )}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PAST EVENTS */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-5xl mx-auto">
@@ -301,6 +176,159 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                   </span>
                 </div>
               </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT THE EVENING DELIVERS */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: 'white' }}>
+        <div className="max-w-6xl mx-auto">
+          <Eyebrow color={SECONDARY_DEEP} className="mb-10">What the evening delivers</Eyebrow>
+
+          <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
+            {DELIVERS.map((d) => (
+              <div key={d.n}>
+                <div
+                  className="mb-3"
+                  style={{
+                    color: SECONDARY_DEEP,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    letterSpacing: '0.16em',
+                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace'
+                  }}
+                >
+                  {d.n}
+                </div>
+                <h3 className="font-bold mb-5" style={{ color: SLATE, fontSize: 21 }}>
+                  {d.title}
+                </h3>
+                <ul className="space-y-3.5">
+                  {d.points.map((pt) => (
+                    <li key={pt} className="flex gap-3" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>
+                      <Check size={16} style={{ color: SECONDARY_DEEP, flexShrink: 0, marginTop: 3 }} />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* THE FORMAT — a plain run of show does more for a prospective host
+          than adjectives about the evening ever could. */}
+      <section className="pt-16 pb-16 md:pt-20 md:pb-24 px-6" style={{ backgroundColor: BG }}>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16 / 9', backgroundColor: INK }}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+              poster="/images/toast.jpg"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            >
+              <source src="/videos/dinner.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div>
+            <Eyebrow color={PRIMARY} className="mb-6">The format</Eyebrow>
+
+            <div style={{ borderTop: '1px solid #E7E2D9' }}>
+              {[
+                { time: '6:30', label: 'Arrival, meet and greet' },
+                { time: '7:15', label: 'The company presents' },
+                { time: '8:00', label: 'Networking' },
+                { time: '8:30', label: 'Close' }
+              ].map((row) => (
+                <div
+                  key={row.time}
+                  className="flex items-baseline gap-6"
+                  style={{ borderBottom: '1px solid #E7E2D9', padding: '16px 0' }}
+                >
+                  <span
+                    className="font-bold"
+                    style={{
+                      color: SECONDARY_DEEP,
+                      fontSize: 15,
+                      minWidth: 62,
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      letterSpacing: '0.02em'
+                    }}
+                  >
+                    {row.time}
+                  </span>
+                  <span className="font-semibold" style={{ color: SLATE, fontSize: 17 }}>
+                    {row.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-7" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>
+              A typical evening. Timings shift with the venue and the city, but the shape does not:
+              one firm presents, and the rest of the night is conversation.
+            </p>
+
+            <p className="mt-5" style={{ color: SLATE, fontSize: 17, lineHeight: 1.8, fontWeight: 600, fontStyle: 'italic' }}>
+              Here, the entire room is yours for the evening — not just a booth and a few contacts at
+              a conference.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: INK }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mb-14">
+            <Eyebrow color={SECONDARY} className="mb-4">From the hosts who have done this</Eyebrow>
+            <h2
+              className="text-white font-bold"
+              style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
+            >
+              What the firms say afterwards.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t) => (
+              <figure
+                key={t.name}
+                className="rounded-xl p-8 flex flex-col"
+                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}
+              >
+                <span aria-hidden="true" style={{ color: SECONDARY, fontSize: 34, lineHeight: 1, marginBottom: 14 }}>
+                  &ldquo;
+                </span>
+                <blockquote
+                  style={{ color: 'rgba(255,255,255,0.86)', fontSize: 15.5, lineHeight: 1.75, flexGrow: 1 }}
+                >
+                  {t.quote}
+                </blockquote>
+                <figcaption className="mt-7 pt-6" style={{ borderTop: '1px solid rgba(216,195,165,0.24)' }}>
+                  <div className="text-white font-bold" style={{ fontSize: 16 }}>{t.name}</div>
+                  <div style={{ color: SECONDARY, fontSize: 13, marginTop: 2 }}>{t.firm}</div>
+                  {t.video && (
+                    <a
+                      href={t.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 text-sm font-semibold"
+                      style={{ color: SECONDARY }}
+                    >
+                      <Play size={13} fill={SECONDARY} strokeWidth={0} />
+                      Watch
+                    </a>
+                  )}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>

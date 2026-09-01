@@ -107,18 +107,41 @@ export default function ForYouPage({ onContactClick }) {
         </div>
       </section>
 
-      {/* Why the conference floor fails */}
-      <section className="pt-4 pb-16 md:pb-24 px-6" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-6xl mx-auto">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-4">The honest version</Eyebrow>
+      {/* THE HONEST VERSION — video runs the full block at low opacity under a
+          heavy wash, so the copy stays the subject and the footage is texture. */}
+      <section className="relative overflow-hidden" style={{ backgroundColor: INK }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          poster="/images/band-companies.jpg"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.22
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(180deg, rgba(22,19,17,0.86) 0%, rgba(22,19,17,0.92) 100%)' }}
+        />
+
+        <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
+          <Eyebrow color={SECONDARY} className="mb-4">The honest version</Eyebrow>
           <h2
-            className="font-bold mb-6"
-            style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
+            className="text-white font-bold mb-6"
+            style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
           >
             A booth is not a relationship.{' '}
-            <span style={{ color: SECONDARY_DEEP, fontStyle: 'italic' }}>It is a queue.</span>
+            <span style={{ color: SECONDARY, fontStyle: 'italic' }}>It is a queue.</span>
           </h2>
-          <p style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, marginBottom: 32, maxWidth: '70ch' }}>
+          <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 32, maxWidth: '70ch' }}>
             Three things go wrong on a conference floor, and none of them are fixed by a bigger
             stand or a better giveaway.
           </p>
@@ -138,35 +161,43 @@ export default function ForYouPage({ onContactClick }) {
                 body: 'Scanned badges with no context and no warmth. Interest cools in the two weeks nobody knew how to follow up.'
               }
             ].map((c) => (
-              <div key={c.lead} className="rounded-xl p-7" style={{ backgroundColor: BG, border: '1px solid #E7E2D9' }}>
-                <p className="font-bold mb-2.5" style={{ color: SLATE, fontSize: 16 }}>{c.lead}</p>
-                <p style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
+              <div
+                key={c.lead}
+                className="rounded-xl p-7"
+                style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(216,195,165,0.26)' }}
+              >
+                <p className="text-white font-bold mb-2.5" style={{ fontSize: 16 }}>{c.lead}</p>
+                <p style={{ color: 'rgba(255,255,255,0.74)', fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
               </div>
             ))}
           </div>
 
           <div
             style={{
-              borderTop: '1px solid #E7E2D9',
-              borderBottom: '1px solid #E7E2D9',
+              borderTop: '1px solid rgba(216,195,165,0.3)',
+              borderBottom: '1px solid rgba(216,195,165,0.3)',
               padding: '2.5rem 0',
-              textAlign: 'center',
-              marginBottom: 48
+              textAlign: 'center'
             }}
           >
             <p
-              className="font-bold mx-auto mb-4"
-              style={{ color: SLATE, fontSize: 'clamp(1.3rem, 2.4vw, 1.85rem)', lineHeight: 1.35, maxWidth: '34ch' }}
+              className="text-white font-bold mx-auto mb-4"
+              style={{ fontSize: 'clamp(1.3rem, 2.4vw, 1.85rem)', lineHeight: 1.35, maxWidth: '34ch' }}
             >
               Here, the entire room is yours for the evening — not just a booth and a few contacts at
               a conference.
             </p>
-            <p style={{ color: MUTED, fontSize: 15 }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15 }}>
               We host and introduce. Any business that follows is settled directly between you and
               the investor, under your own counsel.
             </p>
           </div>
+        </div>
+      </section>
 
+      {/* WHAT WE NEED / WHAT YOU GET */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: 'white' }}>
+        <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl p-9 md:p-10" style={{ border: '1px solid #E7E2D9', backgroundColor: 'white' }}>
               <Eyebrow color={PRIMARY} className="mb-6">What we need from you</Eyebrow>

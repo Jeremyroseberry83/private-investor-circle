@@ -13,7 +13,7 @@ import { cities } from '../site.config';
 // wrong place. Don't "helpfully" add a range later.
 const GROUPS = [
   {
-    heading: 'How we make money',
+    heading: 'How we are profitable',
     items: [
       {
         q: 'What’s your business model?',
