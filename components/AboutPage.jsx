@@ -105,9 +105,10 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </p>
           </div>
 
-          {/* TODO before launch: replace the [bracketed] lines with verified
-              specifics — firms, sectors, years, deal experience. Everything
-              outside the brackets is safe to keep as written. */}
+          {/* Bios supplied by the principals. Ran's runs roughly three times
+              longer than Jeremy's, so the two columns sit unevenly — trim his
+              for the web if that bothers you, but don't invent length for
+              Jeremy's to match. */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
               name="Ran Gimeno"
@@ -116,7 +117,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               linkedin="https://www.linkedin.com/in/rangimeno/"
               accent={PRIMARY}
               bio={[
-                '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',
+                'Senior financial services executive with extensive experience leading national distribution, strategic partnerships, and business development across institutional asset management, retirement platforms, and alternative investments. A proven track record building relationships with RIAs, broker-dealers, family offices, and institutional investors across the United States, Canada, Latin America, and Europe.',
+                'Former senior leader with global asset managers including AllianceBernstein, AMG, ING, and Raymond James Investment Management, with deep expertise in intermediary distribution, private markets, retirement investment solutions, and advisor engagement.',
+                'A frequent speaker who has represented firms at national conferences, industry forums, and on media platforms including CNBC — known for building high-performing distribution teams and delivering investment solutions that support advisors and institutional investors.',
                 'At Private Investor Circle he co-hosts every evening: which allocators belong at a given table, what they need to see, and how a first conversation becomes a second one.'
               ]}
             />
@@ -128,7 +131,8 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
               accent={SECONDARY_DEEP}
               bio={[
-                '[One or two sentences of verified background — firms, sectors, and the capital work he is known for.]',
+                'Nearly two decades in private markets, real assets, and capital formation — based in Palm Beach County, operating globally.',
+                'He connects the right people to relational capital — the kind that moves through trust and mutual value over the long term.',
                 'At Private Investor Circle he co-hosts every evening: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
               ]}
             />
