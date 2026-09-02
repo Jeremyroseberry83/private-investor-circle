@@ -101,12 +101,12 @@ export default function Site() {
             />
             <div style={{ textAlign: 'left' }}>
               <div
-                className="font-bold"
                 style={{
                   color: '#FFFFFF',
-                  fontSize: 'clamp(12px, 3.2vw, 17px)',
-                  letterSpacing: '0.14em',
-                  lineHeight: 1.1,
+                  fontSize: 'clamp(10.5px, 2.6vw, 14px)',
+                  fontWeight: 300,
+                  letterSpacing: '0.26em',
+                  lineHeight: 1.15,
                   whiteSpace: 'nowrap'
                 }}
               >
@@ -114,12 +114,12 @@ export default function Site() {
               </div>
               <div
                 style={{
-                  fontSize: '9px',
-                  fontWeight: 600,
-                  letterSpacing: '1.6px',
+                  fontSize: '8px',
+                  fontWeight: 400,
+                  letterSpacing: '0.24em',
                   textTransform: 'uppercase',
                   color: colors.SECONDARY,
-                  lineHeight: 1.6,
+                  lineHeight: 1.8,
                   whiteSpace: 'nowrap'
                 }}
               >
@@ -258,10 +258,10 @@ export default function Site() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <img src="/images/monogram.svg" alt="" style={{ height: 32, width: 32 }} />
               <div>
-                <div style={{ fontWeight: 700, fontSize: 13, letterSpacing: '0.14em' }}>
+                <div style={{ fontWeight: 300, fontSize: 12, letterSpacing: '0.26em' }}>
                   {company.name.toUpperCase()}
                 </div>
-                <div style={{ fontSize: 11, color: colors.SECONDARY, letterSpacing: '1.4px', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: 9, fontWeight: 400, color: colors.SECONDARY, letterSpacing: '0.24em', textTransform: 'uppercase', marginTop: 3 }}>
                   {company.tagline}
                 </div>
               </div>
