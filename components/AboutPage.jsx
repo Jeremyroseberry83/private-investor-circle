@@ -176,7 +176,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
               name="Ran Gimeno"
-              title="Host · MBA, AIF®"
+              title="Host · Founder · MBA, AIF®"
               photo="/images/team/ran.jpg"
               objectPosition="center 0%"
               linkedin="https://www.linkedin.com/in/rangimeno/"
@@ -190,7 +190,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             />
             <Person
               name="Jeremy Roseberry"
-              title="Host · Founder / Entrepreneur"
+              title="Host · Founder · Capital Strategist"
               photo="/images/team/jeremy.jpg"
               objectPosition="center 6%"
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
