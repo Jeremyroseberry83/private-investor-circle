@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, Check, Play } from 'lucide-react';
+import { ArrowRight, Check, Play } from 'lucide-react';
 import {
   VideoHeader, Eyebrow, CountUp, Reveal, CityList, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
@@ -81,6 +81,10 @@ const TESTIMONIALS = [
 // pages themselves rather than the URL slugs. Covers are copied into
 // public/images/events/ rather than hotlinked, so the section keeps working if
 // an event is ever unpublished.
+//
+// The cards are deliberately NOT links — a past guest list is more exposure
+// than a public page should carry. `url` is kept only so the source is
+// recorded and the links can be restored later.
 const PAST_EVENTS = [
   {
     title: 'Investor Day — Harvard/MIT Kendall Square Robotics & AI',
@@ -138,12 +142,9 @@ export default function EventsPage({ onNavigate, onContactClick }) {
 
           <div className="grid md:grid-cols-3 gap-7">
             {PAST_EVENTS.map((e) => (
-              <a
+              <div
                 key={e.url}
-                href={e.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl overflow-hidden flex flex-col transition-transform hover:-translate-y-1"
+                className="rounded-xl overflow-hidden flex flex-col"
                 style={{ backgroundColor: 'white', border: '1px solid #E7E2D9' }}
               >
                 <div style={{ aspectRatio: '1 / 1', backgroundColor: '#EDE8E0' }}>
@@ -168,15 +169,8 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                     {e.place}
                   </p>
                   <p style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.7, flexGrow: 1 }}>{e.blurb}</p>
-                  <span
-                    className="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold"
-                    style={{ color: SECONDARY_DEEP }}
-                  >
-                    View the invitation
-                    <ArrowUpRight size={15} />
-                  </span>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
