@@ -133,10 +133,10 @@ export default function EventsPage({ onNavigate, onContactClick }) {
               className="font-bold mb-5"
               style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
             >
-              Private Gatherings we have hosted.
+              Past Gatherings we have hosted.
             </h2>
             <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-              A sense of the rooms, the cities and the company they keep.
+              A sense of the rooms, cities and companies we have worked with.
             </p>
           </div>
 
