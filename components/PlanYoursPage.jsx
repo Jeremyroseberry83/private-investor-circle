@@ -120,7 +120,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
 
       {/* THE HONEST VERSION — video runs the full block at low opacity under a
           heavy wash, so the copy stays the subject and the footage is texture. */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: INK }}>
+      <section className="relative overflow-hidden" style={{ backgroundColor: NAVY_DEEP }}>
         <video
           autoPlay
           muted
@@ -140,7 +140,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         />
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(180deg, rgba(22,19,17,0.86) 0%, rgba(22,19,17,0.92) 100%)' }}
+          style={{ background: 'linear-gradient(180deg, rgba(15,27,51,0.86) 0%, rgba(23,38,69,0.93) 100%)' }}
         />
 
         <div className="relative max-w-6xl mx-auto px-6 py-16 md:py-24">
@@ -229,25 +229,30 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             ))}
           </div>
 
-          <div
-            style={{
-              borderTop: '1px solid rgba(216,195,165,0.3)',
-              borderBottom: '1px solid rgba(216,195,165,0.3)',
-              padding: '2.5rem 0',
-              textAlign: 'center'
-            }}
-          >
+        </div>
+      </section>
+
+      {/* THE TURN — lifted out of the block above and given the lighter
+          sapphire so the resolution reads as a change of key, not a paragraph
+          at the end of the complaint. Same family, clearly a different tone. */}
+      <section className="py-16 md:py-20 px-6" style={{ background: 'linear-gradient(155deg, #1E3A5F 0%, #24456E 100%)' }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <Reveal>
+            <span
+              aria-hidden="true"
+              style={{ display: 'block', width: 46, height: 3, borderRadius: 2, backgroundColor: SECONDARY, margin: '0 auto 28px' }}
+            />
             <p
-              className="text-white font-bold mx-auto mb-4"
-              style={{ fontSize: 'clamp(1.3rem, 2.4vw, 1.85rem)', lineHeight: 1.35, maxWidth: '34ch' }}
+              className="text-white font-bold mx-auto mb-5"
+              style={{ fontSize: 'clamp(1.4rem, 2.6vw, 2rem)', lineHeight: 1.32, maxWidth: '34ch' }}
             >
               Here, the entire room is yours — not just a booth and a few contacts at a conference.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 15 }}>
+            <p className="mx-auto" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15.5, lineHeight: 1.75, maxWidth: '62ch' }}>
               We host and introduce. Any business that follows is settled directly between you and
               the investor, under your own counsel.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
