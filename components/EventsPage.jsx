@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Check, Play } from 'lucide-react';
+import { ArrowRight, Check, Mail } from 'lucide-react';
 import {
   VideoHeader, Eyebrow, CountUp, Reveal, CityList, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
@@ -52,10 +52,10 @@ const DELIVERS = [
   }
 ];
 
-// Quotes are placeholders — replace with what each of them actually said.
-// `video` is empty until you have a URL; the Watch button only renders once
-// one is filled in, so nothing breaks in the meantime. Any URL works — Vimeo,
-// YouTube, a file on this site.
+// Kept, not rendered. The testimonials section is pulled from the page while
+// the site is live because placeholder quotes attributed to named people are
+// worse than no quotes at all. Fill these in and restore the section — the
+// names, firms and the optional `video` field are all still here.
 const TESTIMONIALS = [
   {
     name: 'Joe Colura',
@@ -373,56 +373,6 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: INK }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl mb-14">
-            <Eyebrow color={SECONDARY} className="mb-4">From the hosts who have done this</Eyebrow>
-            <h2
-              className="text-white font-bold"
-              style={{ fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
-            >
-              What the firms say afterwards.
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <figure
-                key={t.name}
-                className="rounded-xl p-8 flex flex-col"
-                style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(216,195,165,0.28)' }}
-              >
-                <span aria-hidden="true" style={{ color: SECONDARY, fontSize: 34, lineHeight: 1, marginBottom: 14 }}>
-                  &ldquo;
-                </span>
-                <blockquote
-                  style={{ color: 'rgba(255,255,255,0.86)', fontSize: 15.5, lineHeight: 1.75, flexGrow: 1 }}
-                >
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-7 pt-6" style={{ borderTop: '1px solid rgba(216,195,165,0.24)' }}>
-                  <div className="text-white font-bold" style={{ fontSize: 16 }}>{t.name}</div>
-                  <div style={{ color: SECONDARY, fontSize: 13, marginTop: 2 }}>{t.firm}</div>
-                  {t.video && (
-                    <a
-                      href={t.video}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 text-sm font-semibold"
-                      style={{ color: SECONDARY }}
-                    >
-                      <Play size={13} fill={SECONDARY} strokeWidth={0} />
-                      Watch
-                    </a>
-                  )}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* NEXT STEP */}
       <section className="py-16 md:py-28 px-6 text-center" style={{ backgroundColor: 'white' }}>
         <div className="max-w-3xl mx-auto">
@@ -456,6 +406,45 @@ export default function EventsPage({ onNavigate, onContactClick }) {
           </div>
         </div>
       </section>
+
+      {/* A softer close after "We set a date." — that section asks for a
+          booking, this one catches everyone not ready to make one. */}
+      <section className="py-16 md:py-24 px-6 text-center" style={{ backgroundColor: BG }}>
+        <Reveal>
+          <span
+            aria-hidden="true"
+            style={{ display: 'block', width: 46, height: 3, borderRadius: 2, backgroundColor: SECONDARY, margin: '0 auto 30px' }}
+          />
+          <h2
+            className="font-bold mb-6 mx-auto"
+            style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3.4vw, 2.4rem)', letterSpacing: '-0.03em', maxWidth: '22ch', lineHeight: 1.15 }}
+          >
+            We would rather meet you early.
+          </h2>
+          <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}>
+            Most of the introductions we are proudest of started as a conversation with nothing
+            riding on it. If that sounds like the right order of things, say hello.
+          </p>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <button
+              onClick={() => onContactClick && onContactClick('Something else', '')}
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
+            >
+              <Mail size={17} />
+              Say hello
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('plan')}
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+              style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
+            >
+              Plan yours <ArrowRight size={15} />
+            </button>
+          </div>
+        </Reveal>
+      </section>
+
     </div>
   );
 }
