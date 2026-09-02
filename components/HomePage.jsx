@@ -196,15 +196,15 @@ export default function HomePage({ onContactClick, onNavigate }) {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <DisplayHeading
             eyebrow="Why we convene"
-            light="The introduction is"
+            light="The relational introduction is"
             bold="the whole asset."
             tone="secondary"
           />
           <div>
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
-              Firms rarely fail to raise because the offering was wrong. They fail because the right
-              thirty people never sat down together — the principal with the mandate, the advisor
-              with the client, the allocator who has funded this exact thing before.
+              Firms rarely stall because the strategy was wrong. They stall because the right thirty
+              people never sat down together — the operator who has already solved this, the advisor
+              whose clients would care, the allocator whose mandate already fits.
             </p>
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
               That room does not assemble itself, and it will not be found on a conference floor. It
@@ -212,7 +212,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
               table they would not sit at.
             </p>
             <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.85, fontWeight: 600 }}>
-              That is the whole practice. We build the room.
+              That is the practice: rooms that grow relational, socioeconomic, time and operational
+              capital. The financial kind tends to follow.
             </p>
           </div>
         </div>
