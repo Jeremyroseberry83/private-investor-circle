@@ -21,7 +21,7 @@ const GROUPS = [
       },
       {
         q: 'Do you participate in our capital raise?',
-        a: 'No. We take no success fee, no promote and no carried interest, and we are not a registered broker-dealer or investment adviser. We host the room and make the introductions; anything that follows is settled directly between you and the investor, under your own counsel.'
+        a: 'No. We take no success fee, no promote and no carried interest. Private Investor Circle is not a registered broker-dealer or investment adviser — we host the room and make the introductions, and anything that follows is settled directly between you and the investor, under your own counsel. Ran Gimeno is separately a registered representative of Nobles & Richards, a broker-dealer; that is a distinct capacity and not the basis on which we host.'
       },
       {
         q: 'How much do you charge for a single event?',

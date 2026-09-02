@@ -184,6 +184,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               bio={[
                 'Senior financial services executive with extensive experience leading national distribution, strategic partnerships, and business development across institutional asset management, retirement platforms, and alternative investments. A proven track record building relationships with RIAs, broker-dealers, family offices, and institutional investors across the United States, Canada, Latin America, and Europe.',
                 'Former senior leader with global asset managers including AllianceBernstein, AMG, ING, and Raymond James Investment Management, with deep expertise in intermediary distribution, private markets, retirement investment solutions, and advisor engagement.',
+                'Ran is a registered representative of Nobles & Richards, a broker-dealer. That is a separate capacity from his role here: Private Investor Circle hosts gatherings and does not place securities.',
                 'A frequent speaker who has represented firms at national conferences, industry forums, and on media platforms including CNBC — known for building high-performing distribution teams and delivering investment solutions that support advisors and institutional investors.',
                 'At Private Investor Circle he co-hosts every gathering: which allocators belong at a given table, what they need to see, and how a first conversation becomes a second one.'
               ]}
@@ -234,7 +235,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               {
                 n: '01',
                 title: 'We host. We do not broker.',
-                body: 'We are a neutral host in the room. We convene and introduce. We are not brokers and we do not place securities. Any business that follows is settled directly between the parties, under their own counsel.'
+                body: 'We are a neutral host in the room. We convene and introduce. Private Investor Circle is not a broker-dealer and does not place securities, and hosting is never contingent on a transaction. Any business that follows is settled directly between the parties, under their own counsel.'
               },
               {
                 n: '02',
