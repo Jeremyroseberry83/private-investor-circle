@@ -118,7 +118,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               {[
                 { n: '01', k: 'Relational Capital', v: 'Building relationships with people you know, like and trust — and who know, like and trust you.' },
                 { n: '02', k: 'Socioeconomic Capital', v: 'The goodwill generosity earns — the causes you back, and the doors you open for people who cannot repay you.' },
-                { n: '03', k: 'Time Capital', v: 'The years you do not spend looking for the introduction that was always one person away.' },
+                { n: '03', k: 'Time Capital', v: 'The one kind you cannot buy more of. You can only spend it better — and how well you spend it is what scales a business.' },
                 { n: '04', k: 'Operational Capital', v: 'People who have already solved the thing in front of you, and will say how.' },
                 { n: '05', k: 'Financial Capital', v: 'The cheque — which tends to arrive only after the other four are in place.' }
               ].map((c) => (
