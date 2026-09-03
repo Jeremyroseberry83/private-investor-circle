@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
   DisplayHeading, CityList,
-  SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  SECONDARY, SECONDARY_MID, SECONDARY_DEEP, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -83,9 +83,12 @@ export default function HomePage({ onContactClick, onNavigate }) {
 
             <p
               style={{
-                fontSize: 'clamp(16px, 2vw, 19px)',
+                fontSize: 'clamp(12px, 1.5vw, 15px)',
+                fontWeight: 500,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.88)',
-                lineHeight: 1.7,
+                lineHeight: 1.9,
                 marginTop: '1.75rem',
                 maxWidth: 680,
                 marginLeft: 'auto',
@@ -206,14 +209,9 @@ export default function HomePage({ onContactClick, onNavigate }) {
               people never sat down together — the operator who has already solved this, the advisor
               whose clients would care, the allocator whose mandate already fits.
             </p>
-            <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
-              That room does not assemble itself, and it will not be found on a conference floor. It
-              is built one relationship at a time, by people who will not put their own name behind a
-              table they would not sit at.
-            </p>
-            <p style={{ color: SLATE, fontSize: 17, lineHeight: 1.85, fontWeight: 600 }}>
-              That is the practice: rooms that grow relational, socioeconomic, time and operational
-              capital. The financial kind tends to follow.
+            <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85 }}>
+              That kind of room takes time to build. We have spent years getting to know the people
+              in it, and we still make every invitation ourselves.
             </p>
           </div>
         </div>
