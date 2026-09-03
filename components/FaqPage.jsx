@@ -12,7 +12,24 @@ import { cities } from '../site.config';
 // and distance, and a published one would anchor every negotiation at the
 // wrong place. Don't "helpfully" add a range later.
 const GROUPS = [
-  {
+{
+    heading: 'For advisors and allocators',
+    items: [
+      {
+        q: 'Can I attend as an investor or advisor?',
+        a: 'Yes, by invitation. Tell us who you are and what your mandate is, and we will let you know when a gathering genuinely fits it. We would rather you came to two right rooms than eight wrong ones.'
+      },
+      {
+        q: 'Will my name be shared?',
+        a: 'Only with the presenting firm, and only because you agreed to it — every invitation carries a clause you acknowledge when you register, so nothing is shared that you did not consent to. Beyond that we do not circulate guest lists, publish who attended, or sell your details to anyone.'
+      },
+      {
+        q: 'Who hosts these?',
+        a: 'Ran Gimeno (MBA, AIF®) and Jeremy Roseberry. Both are in the room throughout, making the introductions that would not otherwise happen.'
+      }
+    ]
+  },
+{
     heading: 'Event economics',
     items: [
       {
@@ -126,23 +143,6 @@ const GROUPS = [
       {
         q: 'How far in advance do we need to book?',
         a: 'Three to five weeks is the comfortable window from first conversation to the gathering itself, and dates are held first-come. If you need to move faster we can often accommodate it in South Florida or Southern California — those are the markets where our venue relationships run deepest.'
-      }
-    ]
-  },
-  {
-    heading: 'For advisors and allocators',
-    items: [
-      {
-        q: 'Can I attend as an investor or advisor?',
-        a: 'Yes, by invitation. Tell us who you are and what your mandate is, and we will let you know when a gathering genuinely fits it. We would rather you came to two right rooms than eight wrong ones.'
-      },
-      {
-        q: 'Will my name be shared?',
-        a: 'The presenting firm receives a contact list of attendees afterwards — that is a deliberate part of the format and worth knowing before you accept. Beyond that we do not circulate guest lists, publish who attended, or sell your details to anyone.'
-      },
-      {
-        q: 'Who hosts these?',
-        a: 'Ran Gimeno (MBA, AIF®) and Jeremy Roseberry. Both are in the room throughout, making the introductions that would not otherwise happen.'
       }
     ]
   }
