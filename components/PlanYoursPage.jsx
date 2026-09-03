@@ -287,22 +287,70 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                 border: `1px solid ${GOLD}3D`
               }}
             >
-              <div className="grid md:grid-cols-2 gap-x-14 gap-y-1">
+              {/* Two explicit columns rather than a two-column grid: the grid
+                  flows row-wise, which would run the order across the page
+                  instead of down each side. */}
+              <div className="grid md:grid-cols-2 gap-x-14">
                 {[
-                  'The guest list ahead of the day, so you know who will be in the room before you walk into it',
-                  'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
-                  'The full attention of that room — one firm presents, no competing pitches',
-                  'Introductions made in the room on the day — Ran and Jeremy walk you over, rather than emailing later',
-                  'Contact details for everyone who attended, with their permission — their firm and their interest',
-                  'Photographer and videographer on-site, with branded assets and a recap film'
-                ].map((t) => (
-                  <div
-                    key={t}
-                    className="flex gap-4"
-                    style={{ padding: '15px 0', borderBottom: '1px solid rgba(216,195,165,0.16)' }}
-                  >
-                    <Check size={17} style={{ color: SECONDARY, flexShrink: 0, marginTop: 3 }} />
-                    <span style={{ color: 'rgba(255,255,255,0.88)', fontSize: 15.5, lineHeight: 1.65 }}>{t}</span>
+                  [
+                    {
+                      t: 'Pre-event',
+                      d: 'The guest list ahead of the day, so you know who will be in the room before you walk into it.'
+                    },
+                    {
+                      t: 'No other sponsors',
+                      d: 'The full attention of that room — one firm presents, and there are no competing pitches on either side of you.'
+                    },
+                    {
+                      t: 'Curated list',
+                      d: 'Contact details for everyone who attended, with their permission — their firm, their interest, and their answers to the questions you chose for your follow-up.'
+                    }
+                  ],
+                  [
+                    {
+                      t: 'Curated invites',
+                      d: 'A room of 30–50 principals, family offices, wealth managers and RIAs, each invited personally on an invitation branded to your firm.'
+                    },
+                    {
+                      t: 'Warm introductions',
+                      d: 'Made in the room on the day — Ran and Jeremy walk you over, rather than emailing later.'
+                    },
+                    {
+                      t: 'Marketing assets',
+                      d: 'Photographer and videographer on-site, with branded photo and video assets and a recap film you keep.'
+                    }
+                  ]
+                ].map((column, ci) => (
+                  <div key={ci}>
+                    {column.map((item, i) => (
+                      <div
+                        key={item.t}
+                        className="flex gap-4"
+                        style={{
+                          padding: '18px 0',
+                          borderBottom: i === column.length - 1 ? 'none' : '1px solid rgba(216,195,165,0.16)'
+                        }}
+                      >
+                        <Check size={17} style={{ color: SECONDARY, flexShrink: 0, marginTop: 4 }} />
+                        <div>
+                          <div
+                            style={{
+                              color: SECONDARY,
+                              fontSize: 11.5,
+                              fontWeight: 700,
+                              letterSpacing: '0.18em',
+                              textTransform: 'uppercase',
+                              marginBottom: 7
+                            }}
+                          >
+                            {item.t}
+                          </div>
+                          <div style={{ color: 'rgba(255,255,255,0.84)', fontSize: 15.5, lineHeight: 1.65 }}>
+                            {item.d}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
