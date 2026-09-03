@@ -364,42 +364,8 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
-      {/* NEXT STEP */}
-      <section className="py-16 md:py-28 px-6 text-center" style={{ backgroundColor: 'white' }}>
-        <div className="max-w-3xl mx-auto">
-          <Eyebrow color={SECONDARY_DEEP} className="mb-6">Next step</Eyebrow>
-          <h2
-            className="font-bold mb-5"
-            style={{ color: SLATE, fontSize: 'clamp(1.9rem, 3.6vw, 2.7rem)', letterSpacing: '-0.03em', lineHeight: 1.1 }}
-          >
-            We set a date.
-          </h2>
-          <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8, maxWidth: '54ch' }}>
-            We keep dates earmarked across the cities above. Tell us which city and roughly when, and
-            we will lock one in for your firm.
-          </p>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            <button
-              onClick={() => onNavigate && onNavigate('dates')}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
-              style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
-            >
-              Available dates
-              <ArrowRight size={16} />
-            </button>
-            <button
-              onClick={() => onNavigate && onNavigate('plan')}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
-              style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
-            >
-              Is this right for my firm?
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* A softer close after "We set a date." — that section asks for a
-          booking, this one catches everyone not ready to make one. */}
+      {/* The page's only close. It carries the dates route, which is not in
+          the nav and would otherwise be unreachable from here. */}
       <section className="py-16 md:py-24 px-6 text-center" style={{ backgroundColor: BG }}>
         <Reveal>
           <span
@@ -426,11 +392,11 @@ export default function EventsPage({ onNavigate, onContactClick }) {
               Say hello
             </button>
             <button
-              onClick={() => onNavigate && onNavigate('plan')}
+              onClick={() => onNavigate && onNavigate('dates')}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
               style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
             >
-              Plan yours <ArrowRight size={15} />
+              Available dates <ArrowRight size={15} />
             </button>
           </div>
         </Reveal>
