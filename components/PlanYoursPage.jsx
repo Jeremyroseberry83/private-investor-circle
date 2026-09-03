@@ -118,6 +118,28 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
+      {/* THE QUOTE — one line, the darkest surface on the page. It states the
+          claim; the block after it argues for it. */}
+      <section
+        className="py-16 md:py-24 px-6"
+        style={{ background: 'linear-gradient(155deg, #09121F 0%, #101C33 100%)' }}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <Reveal>
+            <span
+              aria-hidden="true"
+              style={{ display: 'block', width: 46, height: 3, borderRadius: 2, backgroundColor: SECONDARY, margin: '0 auto 30px' }}
+            />
+            <p
+              className="font-display text-white"
+              style={{ fontSize: 'clamp(1.6rem, 3.6vw, 2.7rem)', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.02em' }}
+            >
+              Here, the entire room is yours.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* THE HONEST VERSION — video runs the full block at low opacity under a
           heavy wash, so the copy stays the subject and the footage is texture. */}
       <section className="relative overflow-hidden" style={{ backgroundColor: NAVY_DEEP }}>
@@ -180,7 +202,11 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               <Reveal key={c.lead} delay={i * 90}>
                 <div
                   className="h-full rounded-xl p-7"
-                  style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(216,195,165,0.26)' }}
+                  style={{
+                    background: 'linear-gradient(160deg, #FFFFFF 0%, #F6F2EA 100%)',
+                    border: `1px solid ${GOLD}3D`,
+                    boxShadow: '0 16px 38px rgba(8,16,34,0.28)'
+                  }}
                 >
                   {/* The ratio is the argument for this card — show it, don't
                       just assert it in the prose underneath. */}
@@ -188,7 +214,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                     <div className="flex items-baseline gap-2.5 mb-4">
                       <span
                         style={{
-                          color: SECONDARY,
+                          color: SECONDARY_DEEP,
                           fontSize: 40,
                           fontWeight: 700,
                           lineHeight: 1,
@@ -197,21 +223,21 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                       >
                         1
                       </span>
-                      <span style={{ color: 'rgba(255,255,255,0.34)', fontSize: 24, lineHeight: 1 }}>/</span>
+                      <span style={{ color: MUTED, opacity: 0.5, fontSize: 24, lineHeight: 1 }}>/</span>
                       <span
                         style={{
-                          color: SECONDARY,
+                          color: SECONDARY_DEEP,
                           fontSize: 40,
                           fontWeight: 700,
                           lineHeight: 1,
                           fontFamily: "'Playfair Display', Georgia, serif"
                         }}
                       >
-                        <CountUp end={25} suffix="+" />
+                        <CountUp end={25} suffix="+" duration={1800} />
                       </span>
                       <span
                         style={{
-                          color: 'rgba(255,255,255,0.5)',
+                          color: MUTED,
                           fontSize: 11.5,
                           letterSpacing: '0.16em',
                           textTransform: 'uppercase',
@@ -222,37 +248,13 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                       </span>
                     </div>
                   )}
-                  <p className="text-white font-bold mb-2.5" style={{ fontSize: 16 }}>{c.lead}</p>
-                  <p style={{ color: 'rgba(255,255,255,0.74)', fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
+                  <p className="font-bold mb-2.5" style={{ color: SLATE, fontSize: 16 }}>{c.lead}</p>
+                  <p style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.7 }}>{c.body}</p>
                 </div>
               </Reveal>
             ))}
           </div>
 
-        </div>
-      </section>
-
-      {/* THE TURN — lifted out of the block above and given the lighter
-          sapphire so the resolution reads as a change of key, not a paragraph
-          at the end of the complaint. Same family, clearly a different tone. */}
-      <section className="py-16 md:py-20 px-6" style={{ background: 'linear-gradient(155deg, #1E3A5F 0%, #24456E 100%)' }}>
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <span
-              aria-hidden="true"
-              style={{ display: 'block', width: 46, height: 3, borderRadius: 2, backgroundColor: SECONDARY, margin: '0 auto 28px' }}
-            />
-            <p
-              className="text-white font-bold mx-auto mb-5"
-              style={{ fontSize: 'clamp(1.4rem, 2.6vw, 2rem)', lineHeight: 1.32, maxWidth: '34ch' }}
-            >
-              Here, the entire room is yours — not just a booth and a few contacts at a conference.
-            </p>
-            <p className="mx-auto" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 15.5, lineHeight: 1.75, maxWidth: '62ch' }}>
-              We host and introduce. Any business that follows is settled directly between you and
-              the investor, under your own counsel.
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -351,11 +353,11 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                 <Eyebrow color={SECONDARY} className="mb-7">You receive</Eyebrow>
                 <ul>
                   {[
-                    'A pre-event list, so you can market your offering ahead of the day and open next steps — coffee on the day, or a one-to-one afterwards',
+                    'The guest list ahead of the day, so you know who will be in the room before you walk into it',
                     'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
                     'The full attention of that room — one firm presents, no competing pitches',
-                    'A digital contact list of every attendee, with name, firm and interest',
-                    'Warm introductions to anyone who would like to continue',
+                    'Contact details for everyone who attended, with their firm and their interest',
+                    'Introductions made in the room on the day — Ran and Jeremy walk you over, rather than emailing later',
                     'Photographer and videographer on-site, with branded assets and a recap film'
                   ].map((t, i) => (
                     <li

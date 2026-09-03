@@ -140,6 +140,16 @@ const GROUPS = [
  * technique rather than max-height: it animates to the content's real height,
  * so long answers don't snap or clip the way a guessed max-height does.
  */
+// Group tints — warm, low-saturation, and deliberately close in value so the
+// page still reads as one surface rather than five stacked cards.
+const GROUP_TINTS = [
+  { bg: '#FFFFFF', bar: '#7A6752' },
+  { bg: '#F7F3EC', bar: '#C2A986' },
+  { bg: '#FFFFFF', bar: '#172645' },
+  { bg: '#F7F3EC', bar: '#1E3A5F' },
+  { bg: '#FFFFFF', bar: '#D8B46C' }
+];
+
 function Item({ q, a, list, isOpen, onToggle }) {
   return (
     <div
@@ -332,8 +342,16 @@ export default function FaqPage({ onNavigate, onContactClick }) {
               <div
                 key={group.heading}
                 id={`faq-${group.heading.replace(/\s+/g, '-').toLowerCase()}`}
-                className="mb-12"
-                style={{ scrollMarginTop: 110 }}
+                className="mb-8 rounded-2xl px-6 py-7 md:px-8 md:py-8"
+                style={{
+                  // Alternating tints, each with its own accent bar, so the eye
+                  // can find where one group of questions ends and the next
+                  // begins without counting headings.
+                  backgroundColor: GROUP_TINTS[gi % GROUP_TINTS.length].bg,
+                  border: '1px solid #EFE9E0',
+                  borderLeft: `3px solid ${GROUP_TINTS[gi % GROUP_TINTS.length].bar}`,
+                  scrollMarginTop: 110
+                }}
               >
                 <Reveal>
                   <Eyebrow color={SECONDARY_DEEP} className="mb-5">{group.heading}</Eyebrow>
