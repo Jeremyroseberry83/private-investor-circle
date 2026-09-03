@@ -81,8 +81,8 @@ export default function AboutPage({ onContactClick, onNavigate }) {
         video="/videos/about.mp4"
         poster="/images/band-about.jpg"
         eyebrow="About"
-        title="Two capital market strategists who kept being asked"
-        accent="the same question."
+        title="Two capital market strategists who host"
+        accent="the rooms they would want to be in."
       />
 
       {/* Origin */}
@@ -222,7 +222,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               className="font-bold mb-5"
               style={{ color: SLATE, fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
             >
-              Four rules we do not bend.
+              Four guidelines that help us shape relational connections.
             </h2>
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
               They cost us business regularly. They are also the only reason the rooms are worth
@@ -244,13 +244,13 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               },
               {
                 n: '03',
-                title: 'We say “not now” out loud.',
+                title: 'We say “not now” often.',
                 body: 'In capital markets timing is everything, and nothing is worse than a one-time event asked to carry a whole relationship. We work programmatically, over six to nine month cycles. An offering placed in front of allocators a quarter too early burns your IR process and the relationship with it. We would rather say not now than deliver a poor experience.'
               },
               {
                 n: '04',
-                title: 'The follow-through is the work.',
-                body: 'We always ask what your follow-up plan is. Anyone can fill a room with people — the value shows up in the follow-up list and in what you do with it afterwards. You need to have a plan.'
+                title: 'Your follow-through is the value and the work.',
+                body: 'We can consult and advise, but we always ask what your follow-up plan is. What is your relational way of connecting beyond the first gathering? Anyone can fill a room with people — the value shows up in the natural follow-up and your relational focus afterwards. You need to have a plan, and we do not apologise for helping you think it through.'
               }
             ].map((c) => (
               <div
