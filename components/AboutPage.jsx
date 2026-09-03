@@ -116,7 +116,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
 
             <div style={{ borderTop: '1px solid #E7E2D9' }}>
               {[
-                { n: '01', k: 'Relational Capital', v: 'Who will take the call — and vouch for you when you are not in the room.' },
+                { n: '01', k: 'Relational Capital', v: 'Building relationships with people you know, like and trust — and who know, like and trust you.' },
                 { n: '02', k: 'Socioeconomic Capital', v: 'The goodwill generosity earns — the causes you back, and the doors you open for people who cannot repay you.' },
                 { n: '03', k: 'Time Capital', v: 'The years you do not spend looking for the introduction that was always one person away.' },
                 { n: '04', k: 'Operational Capital', v: 'People who have already solved the thing in front of you, and will say how.' },
