@@ -20,6 +20,10 @@ const GROUPS = [
         a: 'Yes, by invitation. Tell us who you are and what your mandate is, and we will let you know when a gathering genuinely fits it. We would rather you came to two right rooms than eight wrong ones.'
       },
       {
+        q: 'Can I bring a +1?',
+        a: 'Not on your own registration — every seat is chosen, and the balance of the room is the point of it. But do send them the link. If they register and are approved we would be glad to have them, and someone you would vouch for is someone we want to know anyway.'
+      },
+      {
         q: 'Will my name be shared?',
         a: 'Only with the presenting firm, and only because you agreed to it — every invitation carries a clause you acknowledge when you register, so nothing is shared that you did not consent to. Beyond that we do not circulate guest lists, publish who attended, or sell your details to anyone.'
       },
