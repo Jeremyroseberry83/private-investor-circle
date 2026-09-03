@@ -214,9 +214,10 @@ export default function HomePage({ onContactClick, onNavigate }) {
           </Reveal>
           <Reveal delay={90}>
             <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
-              Firms rarely stall because the strategy was wrong. They stall because the right thirty
-              people never sat down together — the operator who has already solved this, the advisor
-              whose clients would care, the allocator whose mandate already fits.
+              Firms rarely stall because their deal was bad or their strategy was wrong. They stall
+              because the right thirty people never sat down together — the allocator whose mandate
+              already fits, the advisor whose clients would care, or the operator who has already
+              solved their problem.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 17, lineHeight: 1.85 }}>
               That kind of room takes time to build. We have spent years getting to know the people
