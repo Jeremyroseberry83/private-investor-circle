@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Check, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow, CountUp, Reveal, CityList, GOLD, NAVY, NAVY_DEEP,
+  VideoHeader, Eyebrow, CountUp, Reveal, CityList, StaggerCheckList, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
@@ -258,14 +258,15 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                 <div
                   className="h-full rounded-2xl p-8 md:p-9"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.045)',
-                    border: '1px solid rgba(216,195,165,0.22)'
+                    background: 'linear-gradient(160deg, #FFFFFF 0%, #F6F2EA 100%)',
+                    border: `1px solid ${GOLD}3D`,
+                    boxShadow: '0 16px 38px rgba(8,16,34,0.28)'
                   }}
                 >
                   <div className="flex items-baseline gap-4 mb-5">
                     <span
                       style={{
-                        color: SECONDARY,
+                        color: SECONDARY_DEEP,
                         fontSize: 26,
                         fontWeight: 700,
                         lineHeight: 1,
@@ -274,22 +275,11 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                     >
                       {d.n}
                     </span>
-                    <h3 className="text-white font-bold" style={{ fontSize: 20, letterSpacing: '-0.01em' }}>
+                    <h3 className="font-bold" style={{ color: SLATE, fontSize: 20, letterSpacing: '-0.01em' }}>
                       {d.title}
                     </h3>
                   </div>
-                  <ul className="space-y-3">
-                    {d.points.map((pt) => (
-                      <li
-                        key={pt}
-                        className="flex gap-3"
-                        style={{ color: 'rgba(255,255,255,0.78)', fontSize: 15.5, lineHeight: 1.65 }}
-                      >
-                        <Check size={16} style={{ color: SECONDARY, flexShrink: 0, marginTop: 3 }} />
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <StaggerCheckList items={d.points} />
                 </div>
               </Reveal>
             ))}

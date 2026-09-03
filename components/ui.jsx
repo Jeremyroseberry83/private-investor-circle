@@ -1,4 +1,5 @@
 import React from 'react';
+import { Check } from 'lucide-react';
 import { colors } from '../site.config';
 
 // Re-exported from site.config so every page imports colors from one place
@@ -510,6 +511,62 @@ export function CountUp({ end, duration = 1400, prefix = '', suffix = '', decima
       {value.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
       {suffix}
     </span>
+  );
+}
+
+/**
+ * StaggerCheckList — ticks appear in sequence the first time the list scrolls
+ * into view. One observer on the <ul> drives all of them via per-item
+ * transition-delay, so a page full of these does not spawn an observer per
+ * bullet. Renders finished immediately under prefers-reduced-motion.
+ */
+export function StaggerCheckList({ items, checkColor = SECONDARY_DEEP, textColor = MUTED, step = 110, fontSize = 15.5 }) {
+  const ref = React.useRef(null);
+  const [shown, setShown] = React.useState(false);
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+  return (
+    <ul ref={ref} className="space-y-3">
+      {items.map((item, i) => (
+        <li
+          key={item}
+          className="flex gap-3"
+          style={{
+            color: textColor,
+            fontSize,
+            lineHeight: 1.65,
+            opacity: shown ? 1 : 0,
+            transform: shown ? 'translateY(0)' : 'translateY(6px)',
+            transition: `opacity 480ms ${ease}, transform 480ms ${ease}`,
+            transitionDelay: `${i * step}ms`
+          }}
+        >
+          <Check size={16} style={{ color: checkColor, flexShrink: 0, marginTop: 3 }} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
