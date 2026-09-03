@@ -129,15 +129,16 @@ export default function EventsPage({ onNavigate, onContactClick }) {
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-5xl mx-auto">
           <div className="max-w-2xl mb-12">
-            <Eyebrow color={SECONDARY_DEEP} className="mb-4">Recent events</Eyebrow>
+            <Eyebrow color={SECONDARY_DEEP} className="mb-4">Recent gatherings</Eyebrow>
             <h2
               className="font-bold mb-5"
               style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
             >
-              Past Gatherings we have hosted.
+              Firms we have hosted.
             </h2>
             <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-              A sense of the rooms, cities and companies we have worked with.
+              A sense of the rooms, the cities and the companies we have worked with —
+              ask any of them.
             </p>
           </div>
 
