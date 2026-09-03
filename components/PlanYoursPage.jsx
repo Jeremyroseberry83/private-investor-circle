@@ -177,7 +177,8 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 18, maxWidth: '70ch' }}>
             Conferences earn their place. They are top of funnel — broad exposure, brand presence,
-            volume — and every firm raising capital should be doing some of that.
+            volume — and every firm looking to increase its distribution footprint or raise capital
+            should be doing some of that.
           </p>
           <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 32, maxWidth: '70ch' }}>
             What a floor is not built for is the conversation that comes after. Three things go
