@@ -181,8 +181,9 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             should be doing some of that.
           </p>
           <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 32, maxWidth: '70ch' }}>
-            What a floor is not built for is the conversation that comes after. Three things go
-            wrong there, and none of them are fixed by a bigger stand or a better giveaway.
+            What a conference floor is not specifically built for is the follow-up — the
+            conversation that comes after. Three things go wrong there, and none of them are fixed
+            by a bigger stand or a better giveaway.
           </p>
 
           <div className="grid md:grid-cols-3 gap-5 mb-14">
