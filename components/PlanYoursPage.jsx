@@ -293,7 +293,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                   'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
                   'The full attention of that room — one firm presents, no competing pitches',
                   'Introductions made in the room on the day — Ran and Jeremy walk you over, rather than emailing later',
-                  'Contact details for everyone who attended, with their firm and their interest',
+                  'Contact details for everyone who attended, with their permission — their firm and their interest',
                   'Photographer and videographer on-site, with branded assets and a recap film'
                 ].map((t) => (
                   <div
