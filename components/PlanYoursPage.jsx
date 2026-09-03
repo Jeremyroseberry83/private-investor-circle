@@ -192,12 +192,12 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
                 body: 'Sponsors competing for space on the same floor, with pitches on either side of you and an audience pacing itself across a hall. Nobody gives you their full attention because nobody can.'
               },
               {
-                lead: 'The wrong badges',
-                body: 'Conversations with people whose roles, mandate, check size or authority never fit — polite exchanges that could not have ended in a yes.'
+                lead: 'Wrong connections',
+                body: 'Not a failing of the format — a conference is built for broad exposure, so the room is wide by design. You meet good people whose role, mandate, check size or authority never lines up with what you are raising. Pleasant conversations that could not have ended in a yes, and rarely the return you sponsored for.'
               },
               {
                 lead: 'A list of service providers',
-                body: 'Most badges in the hall are selling something too. On a good day you meet one to three real investors — and then you are cold-emailing a spreadsheet of scanned badges with no context and no warmth. Interest cools in the two weeks nobody knew how to follow up.'
+                body: 'Most of the hall is selling something too. On a good day you meet one to three real investors — and afterwards you are cold-emailing a list of names with no context and no warmth. Interest cools in the two weeks nobody knew how to follow up.'
               }
             ].map((c, i) => (
               <Reveal key={c.lead} delay={i * 90}>
