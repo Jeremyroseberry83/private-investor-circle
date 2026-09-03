@@ -258,9 +258,10 @@ export default function FaqPage({ onNavigate, onContactClick }) {
         video="/videos/faqs.mp4"
         poster="/images/toast.jpg"
         eyebrow="Frequently asked"
-        title="The questions we get"
-        accent="before the first gathering."
-        subtitle="If yours isn't here, ask us directly — we would rather answer it properly than have you guess."
+        title="The questions we receive"
+        accent="before your first gathering."
+        subtitle="We would rather answer it properly than have you guess"
+        subtitleCaps
       />
 
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
