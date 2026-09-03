@@ -1,8 +1,8 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
-  DisplayHeading, CityList, Reveal, NAVY, NAVY_DEEP,
-  SECONDARY, SECONDARY_MID, SECONDARY_DEEP, MUTED, INK, BG
+  DisplayHeading, CityList, Reveal, NAVY,
+  SECONDARY, SECONDARY_DEEP, MUTED, INK, BG
 } from './ui';
 import { cities } from '../site.config';
 
@@ -104,9 +104,9 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 style={{
                   padding: '15px 30px',
                   borderRadius: 999,
-                  border: 'none',
-                  background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`,
-                  color: INK,
+                  border: `1.5px solid ${NAVY}`,
+                  backgroundColor: '#FFFFFF',
+                  color: NAVY,
                   fontSize: 15,
                   fontWeight: 700,
                   cursor: 'pointer'
@@ -195,13 +195,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
       </section>
 
       {/* THESIS */}
-      {/* Navy lands here rather than in the cities band above, because the hero
-          scoop has to meet an ivory section or the seam shows. The footer's
-          champagne rule keeps this from merging into it. */}
-      <section
-        className="py-16 md:py-28 px-6"
-        style={{ background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 55%, #20365C 100%)` }}
-      >
+      <section className="py-16 md:py-28 px-6" style={{ backgroundColor: 'white' }}>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
             <DisplayHeading
@@ -209,17 +203,16 @@ export default function HomePage({ onContactClick, onNavigate }) {
               light="The relational introduction is"
               bold="the whole asset."
               tone="secondary"
-              dark
             />
           </Reveal>
           <Reveal delay={90}>
-            <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
+            <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85, marginBottom: '1.5rem' }}>
               Firms rarely stall because their deal was bad or their strategy was wrong. They stall
               because the right thirty people never sat down together — the allocator whose mandate
               already fits, the advisor whose clients would care, or the operator who has already
               solved their problem.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 17, lineHeight: 1.85 }}>
+            <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.85 }}>
               That kind of room takes time to build. We have spent years getting to know the people
               in it, and we still make every invitation ourselves.
             </p>

@@ -137,8 +137,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
               Firms we have hosted.
             </h2>
             <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-              A sense of the rooms, the cities and the companies we have worked with —
-              ask any of them.
+              A sense of the rooms, the cities and the companies we have worked with.
             </p>
           </div>
 
@@ -391,7 +390,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             <button
               onClick={() => onNavigate && onNavigate('plan')}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
-              style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
+              style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
             >
               Is this right for my firm?
             </button>
@@ -429,7 +428,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             <button
               onClick={() => onNavigate && onNavigate('plan')}
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
-              style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
+              style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
             >
               Plan yours <ArrowRight size={15} />
             </button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Linkedin, Globe, ArrowRight } from 'lucide-react';
 import {
-  VideoHeader, Eyebrow, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
+  VideoHeader, Eyebrow, NAVY, PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
 
 function Person({ name, title, bio, photo, linkedin, website, websiteLabel, accent = SECONDARY_DEEP, objectPosition = 'center' }) {
@@ -312,7 +312,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           <button
             onClick={() => onNavigate && onNavigate('events')}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
-            style={{ border: `1.5px solid ${SECONDARY_DEEP}`, color: SECONDARY_DEEP, background: 'transparent' }}
+            style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
           >
             See how it works <ArrowRight size={15} />
           </button>
