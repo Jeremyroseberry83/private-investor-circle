@@ -59,7 +59,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
   const wash =
     tone === 'secondary'
       ? `linear-gradient(180deg, rgba(16,37,66,0.94) 0%, rgba(16,37,66,0.89) 100%)`
-      : `linear-gradient(180deg, rgba(22,19,17,0.94) 0%, rgba(22,19,17,0.88) 100%)`;
+      : `linear-gradient(180deg, rgba(17,20,27,0.94) 0%, rgba(17,20,27,0.88) 100%)`;
   const accent = tone === 'secondary' ? SECONDARY_LIGHT : PRIMARY_LIGHT;
 
   return (
@@ -100,7 +100,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
               background:
                 tone === 'secondary'
                   ? 'linear-gradient(180deg, rgba(16,37,66,0.55) 0%, rgba(16,37,66,0.42) 100%)'
-                  : 'linear-gradient(180deg, rgba(22,19,17,0.58) 0%, rgba(22,19,17,0.44) 100%)'
+                  : 'linear-gradient(180deg, rgba(17,20,27,0.58) 0%, rgba(17,20,27,0.44) 100%)'
             }}
           />
         </>
@@ -234,7 +234,7 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, s
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(to top, rgba(22,19,17,0.97) 0%, rgba(22,19,17,0.88) 45%, rgba(22,19,17,0.80) 100%)'
+            'linear-gradient(to top, rgba(17,20,27,0.97) 0%, rgba(17,20,27,0.88) 45%, rgba(17,20,27,0.80) 100%)'
         }}
       />
 
@@ -310,7 +310,7 @@ export function PageTopBand({ image }) {
         position: 'relative'
       }}
     >
-      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(22,19,17,0.62)' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(17,20,27,0.62)' }} />
     </section>
   );
 }
@@ -690,7 +690,7 @@ export function StatBand({ image, stats, tone = 'primary' }) {
   return (
     <section className="relative overflow-hidden" style={{ backgroundColor: INK }}>
       <img src={image} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(22,19,17,0.72)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(17,20,27,0.72)' }} />
       <div className="relative max-w-6xl mx-auto px-6 py-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8">
           {stats.map((s) => (

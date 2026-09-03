@@ -4,7 +4,7 @@
  * The palette follows the live site, not the Private Gathering Overview PDF —
  * the two are different systems and the live one is what prospects meet, and
  * what the circle logo was drawn for:
- *   Near-black #161311 · Champagne #D8C3A5 · Warm ivory #FAF7F2
+ *   Near-black #12151C · Champagne #D8C3A5 · Warm ivory #FAF7F2
  *
  * Champagne carries the accent weight on dark grounds (11:1 on INK) and deep
  * taupe carries it on light (5.1:1 on BG) — champagne itself is far too pale
@@ -60,8 +60,8 @@ module.exports = {
     MUTED: '#6E6862',          // warm grey — secondary body copy
     NAVY: '#172645',           // sampled from the Overview PDF header — site chrome
     NAVY_DEEP: '#0F1B33',      // the PDF's darker CTA navy — footer gradient start
-    INK: '#161311',            // warm near-black — dark section grounds
-    INK_LIGHT: '#221D19',      // lifted near-black — second stop in dark gradients
+    INK: '#12151C',            // cool near-black — dark section grounds
+    INK_LIGHT: '#1C212B',      // lifted near-black — second stop in dark gradients
     BG: '#FAF7F2'              // warm ivory — page ground
   },
 

@@ -259,121 +259,53 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
-      {/* THE EXCHANGE — two panels read as a trade rather than two lists:
-          the left quiet and numbered (work you do), the right on the navy
-          gradient (what comes back). The arrow between them carries the idea
-          on desktop and is hidden on mobile, where the stack already implies
-          the order. */}
+      {/* THE VALUE — one panel, not two. An exchange framing led with what the
+          firm has to hand over; this leads with what it gets. What we need is
+          answered in the FAQ, where a prospect looks for it rather than being
+          shown it before they have decided anything. */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-6xl mx-auto">
           <Reveal>
-            <div className="max-w-3xl mb-14">
-              <Eyebrow color={SECONDARY_DEEP} className="mb-4">The exchange</Eyebrow>
+            <div className="max-w-3xl mb-12">
+              <Eyebrow color={SECONDARY_DEEP} className="mb-4">The value</Eyebrow>
               <h2
                 className="font-bold"
                 style={{ color: SLATE, fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
               >
-                What we need.{' '}
-                <span style={{ color: SECONDARY_DEEP, fontStyle: 'italic' }}>What you receive.</span>
+                What you receive.
               </h2>
             </div>
           </Reveal>
 
-          <div className="relative grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            <Reveal>
-              <div
-                className="h-full rounded-2xl p-9 md:p-10"
-                style={{ backgroundColor: '#FFFFFF', border: '1px solid #E7E2D9' }}
-              >
-                <Eyebrow color={MUTED} className="mb-7">You provide</Eyebrow>
-                <ul>
-                  {[
-                    'Your offering overview, emailed to us to review and diligence',
-                    'Full details of the current offering and past performance',
-                    'A clear understanding of your target investor, so we can build the list around it',
-                    'The city and rough timing that suit your firm',
-                    'A principal who will present in person',
-                    'Materials that hold up to a sophisticated reader',
-                    'Your company logo, website and copy, for marketing the gathering'
-                  ].map((t, i) => (
-                    <li
-                      key={t}
-                      className="flex gap-4"
-                      style={{ padding: '13px 0', borderBottom: i === 6 ? 'none' : '1px solid #F0EBE3' }}
-                    >
-                      <span
-                        style={{
-                          color: SECONDARY_DEEP,
-                          fontSize: 11.5,
-                          fontWeight: 700,
-                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                          paddingTop: 4,
-                          flexShrink: 0
-                        }}
-                      >
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <span style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.65 }}>{t}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-
-            {/* Sits on the seam between the two panels at md+ only. */}
+          <Reveal delay={90}>
             <div
-              aria-hidden="true"
-              className="hidden md:flex"
+              className="rounded-2xl p-9 md:p-12"
               style={{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 2,
-                width: 46,
-                height: 46,
-                borderRadius: '50%',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: SECONDARY,
-                color: NAVY_DEEP,
-                boxShadow: '0 6px 18px rgba(23,38,69,0.22)'
+                background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 60%, #20365C 100%)`,
+                border: `1px solid ${GOLD}3D`
               }}
             >
-              <ArrowRight size={20} strokeWidth={2.2} />
-            </div>
-
-            <Reveal delay={110}>
-              <div
-                className="h-full rounded-2xl p-9 md:p-10"
-                style={{
-                  background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 60%, #20365C 100%)`,
-                  border: `1px solid ${GOLD}3D`
-                }}
-              >
-                <Eyebrow color={SECONDARY} className="mb-7">You receive</Eyebrow>
-                <ul>
-                  {[
-                    'The guest list ahead of the day, so you know who will be in the room before you walk into it',
-                    'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
-                    'The full attention of that room — one firm presents, no competing pitches',
-                    'Contact details for everyone who attended, with their firm and their interest',
-                    'Introductions made in the room on the day — Ran and Jeremy walk you over, rather than emailing later',
-                    'Photographer and videographer on-site, with branded assets and a recap film'
-                  ].map((t, i) => (
-                    <li
-                      key={t}
-                      className="flex gap-4"
-                      style={{ padding: '13px 0', borderBottom: i === 5 ? 'none' : '1px solid rgba(216,195,165,0.18)' }}
-                    >
-                      <Check size={17} style={{ color: SECONDARY, flexShrink: 0, marginTop: 3 }} />
-                      <span style={{ color: 'rgba(255,255,255,0.86)', fontSize: 15.5, lineHeight: 1.65 }}>{t}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="grid md:grid-cols-2 gap-x-14 gap-y-1">
+                {[
+                  'The guest list ahead of the day, so you know who will be in the room before you walk into it',
+                  'A curated room of 30–50 principals, family offices, wealth managers & RIAs',
+                  'The full attention of that room — one firm presents, no competing pitches',
+                  'Introductions made in the room on the day — Ran and Jeremy walk you over, rather than emailing later',
+                  'Contact details for everyone who attended, with their firm and their interest',
+                  'Photographer and videographer on-site, with branded assets and a recap film'
+                ].map((t) => (
+                  <div
+                    key={t}
+                    className="flex gap-4"
+                    style={{ padding: '15px 0', borderBottom: '1px solid rgba(216,195,165,0.16)' }}
+                  >
+                    <Check size={17} style={{ color: SECONDARY, flexShrink: 0, marginTop: 3 }} />
+                    <span style={{ color: 'rgba(255,255,255,0.88)', fontSize: 15.5, lineHeight: 1.65 }}>{t}</span>
+                  </div>
+                ))}
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

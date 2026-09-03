@@ -111,6 +111,19 @@ const GROUPS = [
         a: `We host most often in ${cities.slice(0, -1).join(', ')} and ${cities[cities.length - 1]}. Those are simply where the gatherings run most frequently — with enough lead time we can plan around a different city, or a date that suits your firm better.`
       },
       {
+        q: 'What do you need from us?',
+        a: 'Enough to build the room properly and to market the gathering. None of it is onerous, and we ask for it after a first conversation, not before.',
+        list: [
+          'Your offering overview, emailed to us to review and diligence',
+          'Full details of the current offering and past performance',
+          'A clear understanding of your target investor, so we can build the list around it',
+          'The city and rough timing that suit your firm',
+          'A principal who will present in person',
+          'Materials that hold up to a sophisticated reader',
+          'Your company logo, website and copy, for marketing the gathering'
+        ]
+      },
+      {
         q: 'How far in advance do we need to book?',
         a: 'Three to five weeks is the comfortable window from first conversation to the gathering itself, and dates are held first-come. If you need to move faster we can often accommodate it in South Florida or Southern California — those are the markets where our venue relationships run deepest.'
       }
@@ -143,10 +156,10 @@ const GROUPS = [
 // Group tints — warm, low-saturation, and deliberately close in value so the
 // page still reads as one surface rather than five stacked cards.
 const GROUP_TINTS = [
-  { bg: '#FFFFFF', bar: '#7A6752' },
-  { bg: '#F7F3EC', bar: '#C2A986' },
   { bg: '#FFFFFF', bar: '#172645' },
-  { bg: '#F7F3EC', bar: '#1E3A5F' },
+  { bg: '#F7F3EC', bar: '#C2A986' },
+  { bg: '#EEF1F7', bar: '#1E3A5F' },
+  { bg: '#F7F3EC', bar: '#7A6752' },
   { bg: '#FFFFFF', bar: '#D8B46C' }
 ];
 
