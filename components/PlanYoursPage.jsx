@@ -26,7 +26,8 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         eyebrow="Plan yours"
         title="We work with the firm presenting"
         accent="and curate the allocators attending."
-        subtitle="Both start the same way: a conversation, in confidence, about what you are actually trying to do. No deck required for the first call."
+        subtitle="Both start the same way: a conversation"
+        subtitleCaps
       />
 
       {/* Two tracks */}
