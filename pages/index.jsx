@@ -165,7 +165,7 @@ export default function Site() {
                 whiteSpace: 'nowrap'
               }}
             >
-              Book Now
+              Start a conversation
             </button>
           </div>
 
@@ -205,7 +205,7 @@ export default function Site() {
                   color: colors.INK
                 }}
               >
-                Book Now
+                Start a conversation
               </button>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default function Site() {
             background: `linear-gradient(135deg, ${colors.SECONDARY} 0%, ${colors.SECONDARY_MID} 100%)`,
             color: colors.INK
           }}
-          aria-label="Book Now"
+          aria-label="Start a conversation"
         >
           <Mail size={24} />
         </button>
