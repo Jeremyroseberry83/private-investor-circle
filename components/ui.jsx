@@ -193,7 +193,7 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
  * the home hero (it opens a page, it isn't the page), and the poster paints
  * first so a slow connection sees a photograph rather than a black band.
  */
-export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle }) {
+export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, subtitleCaps }) {
   const [ready, setReady] = React.useState(false);
   return (
     <section
@@ -268,7 +268,21 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle })
         {subtitle && (
           <p
             className="mt-6 mx-auto"
-            style={{ color: 'rgba(255,255,255,0.84)', fontSize: 'clamp(15px, 1.7vw, 17.5px)', lineHeight: 1.75, maxWidth: '62ch' }}
+            style={
+              subtitleCaps
+                ? {
+                    // Caps at body size shouts. Smaller, tracked and lighter
+                    // reads as a standfirst under the headline instead.
+                    color: 'rgba(255,255,255,0.86)',
+                    fontSize: 'clamp(12px, 1.5vw, 15px)',
+                    fontWeight: 500,
+                    letterSpacing: '0.2em',
+                    textTransform: 'uppercase',
+                    lineHeight: 1.9,
+                    maxWidth: '48ch'
+                  }
+                : { color: 'rgba(255,255,255,0.84)', fontSize: 'clamp(15px, 1.7vw, 17.5px)', lineHeight: 1.75, maxWidth: '62ch' }
+            }
           >
             {subtitle}
           </p>

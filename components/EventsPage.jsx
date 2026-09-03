@@ -119,9 +119,10 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         video="/videos/evening.mp4"
         poster="/images/band-evening.jpg"
         eyebrow="Private investor event"
-        title="A gathering with the advisors and allocators"
+        title="A capital gathering with the principals and advisors"
         accent="worth being in relationship with."
-        subtitle="Your firm presents exclusively to a curated room of principals, family offices, wealth managers, and RIAs — real relationships, not a booth on a conference floor."
+        subtitle="Only one company presents"
+        subtitleCaps
       />
 
       {/* PAST EVENTS */}
