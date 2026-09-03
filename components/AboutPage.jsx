@@ -120,7 +120,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
                 { n: '02', k: 'Socioeconomic Capital', v: 'The goodwill generosity earns — the causes you back, and the doors you open for people who cannot repay you.' },
                 { n: '03', k: 'Time Capital', v: 'The one kind you cannot buy more of. You can only spend it better — and how well you spend it is what scales a business.' },
                 { n: '04', k: 'Operational Capital', v: 'Systems scale success — and so does knowing the people who have already solved the thing in front of you.' },
-                { n: '05', k: 'Financial Capital', v: 'The cheque — which tends to arrive only after the other four are in place.' }
+                { n: '05', k: 'Financial Capital', v: 'The allocation — built on the foundation of the other four, and multiplying from that source.' }
               ].map((c) => (
                 <div
                   key={c.n}
