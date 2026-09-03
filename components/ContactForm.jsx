@@ -20,6 +20,7 @@ const TYPES = [
   'Hosting a gathering',
   'Company raising capital',
   'Investor or connector',
+  'Accounts — W-9 request',
   'Press or partnership',
   'Something else'
 ];
