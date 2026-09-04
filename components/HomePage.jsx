@@ -88,7 +88,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.88)',
-                lineHeight: 1.9,
+                lineHeight: 1.6,
                 marginTop: '1.75rem',
                 maxWidth: 680,
                 marginLeft: 'auto',
@@ -101,6 +101,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: '2.5rem' }}>
               <button
                 onClick={() => onNavigate && onNavigate('dates')}
+                className="w-full sm:w-auto"
                 style={{
                   padding: '15px 30px',
                   borderRadius: 999,
@@ -109,15 +110,18 @@ export default function HomePage({ onContactClick, onNavigate }) {
                   color: NAVY,
                   fontSize: 15,
                   fontWeight: 700,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  boxShadow: `inset 0 0 0 3px #FFFFFF, inset 0 0 0 4px ${NAVY}59`
                 }}
               >
                 Available dates
               </button>
               <button
                 onClick={() => onNavigate && onNavigate('events')}
+                className="w-full sm:w-auto"
                 style={{
                   display: 'inline-flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
                   gap: 8,
                   padding: '15px 30px',
@@ -202,7 +206,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
             <DisplayHeading
-              eyebrow="Why we convene"
+              eyebrow="What we do"
               light="The relational introduction is"
               bold="the whole asset."
               tone="secondary"

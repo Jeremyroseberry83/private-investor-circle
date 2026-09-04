@@ -166,8 +166,8 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             </p>
           </div>
 
-          {/* Bios supplied by the principals — four paragraphs each, so the
-              two columns now sit at roughly equal height. Keep them that way
+          {/* Bios supplied by the principals — five paragraphs each, so the
+              two columns sit at roughly equal height. Keep them that way
               if either is edited.
 
               Jeremy's website link points at the Netlify deploy until
@@ -191,7 +191,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
             />
             <Person
               name="Jeremy Roseberry"
-              title="Host · Founder · Capital Strategist"
+              title="Host · Founder-Broker · Capital Strategist"
               photo="/images/team/jeremy.jpg"
               objectPosition="center 6%"
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
@@ -200,8 +200,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               accent={SECONDARY_DEEP}
               bio={[
                 'Jeremy brings nearly two decades of experience across private markets, real assets, and capital formation. Rooted in Palm Beach County — where he has invested and operated across real assets for decades — he has built his career at the intersection of relationships, market depth, and global reach.',
-                'His background spans acquisitions, capital structuring, investment analysis, and advisory work across a range of alternative strategies. At Access Global, Jeremy serves as a trusted advisor and capital partner to a select group of founders, allocators, and sponsors.',
+                'His background spans acquisitions, capital structuring, investment analysis, and advisory work across a range of alternative strategies.',
                 'He focuses on identifying the right opportunities, structuring sound introductions, and building real relationships that endure well beyond transactions.',
+                'He is founder-broker of RoseberryProperties.com and Chief Business Officer of 4IR Studios, a capital markets PR and marketing firm.',
                 'At Private Investor Circle he co-hosts every gathering: what a firm needs to be ready for a room like this, how the offering should be presented in it, and what happens in the weeks that follow.'
               ]}
             />
@@ -217,16 +218,15 @@ export default function AboutPage({ onContactClick, onNavigate }) {
       <section className="py-16 md:py-28 px-6" style={{ backgroundColor: '#EFE4D2' }}>
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mb-14">
-            <Eyebrow color={SECONDARY_DEEP} className="mb-4">How we work</Eyebrow>
+            <Eyebrow color={SECONDARY_DEEP} className="mb-4">Our guardrails</Eyebrow>
             <h2
               className="font-bold mb-5"
               style={{ color: SLATE, fontSize: 'clamp(1.8rem, 3.2vw, 2.6rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
             >
-              Four guidelines that help us shape relational connections.
+              that help us shape relational connections.
             </h2>
             <p style={{ color: MUTED, fontSize: 17, lineHeight: 1.8 }}>
-              They cost us business regularly. They are also the only reason the rooms are worth
-              being in.
+              And deliver value to you.
             </p>
           </div>
 
@@ -294,16 +294,17 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           className="font-bold mb-6 mx-auto"
           style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3.4vw, 2.4rem)', letterSpacing: '-0.03em', maxWidth: '22ch', lineHeight: 1.15 }}
         >
-          We would rather meet you early.
+          Tell us what you are working on.
         </h2>
         <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}>
-          Most of the introductions we are proudest of started as a conversation with nothing
-          riding on it. If that sounds like the right order of things, say hello.
+          Some of the introductions we are proudest of began as a conversation with nothing
+          riding on it — no timeline, no pitch. If you would like to talk it through, Ran or
+          Jeremy will answer.
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
             onClick={onContactClick}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+            className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
             style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             <Mail size={17} />
@@ -311,7 +312,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           </button>
           <button
             onClick={() => onNavigate && onNavigate('events')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
             style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
           >
             See how it works <ArrowRight size={15} />

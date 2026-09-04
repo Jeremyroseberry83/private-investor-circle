@@ -34,6 +34,10 @@ export default function Site() {
   // that the nav would disappear into.
   const overHero = !scrolled && currentPage === 'home';
 
+  // Home isn't in navItems (the wordmark carries it), so the footer adds it
+  // back — a footer that can't get you home isn't a footer.
+  const footerLinks = [{ name: 'Home', id: 'home' }, ...navItems];
+
   const handleNavClick = (pageId) => {
     setCurrentPage(pageId);
     setMobileMenuOpen(false);
@@ -267,14 +271,39 @@ export default function Site() {
               </div>
             </div>
 
-            <a
-              href={`mailto:${company.email}`}
-              className="flex items-center gap-2 transition-opacity hover:opacity-100"
-              style={{ fontSize: 13, opacity: 0.82 }}
+            {/* The address used to sit here. Every page is one tap from the
+                footer instead — the contact button is never more than a
+                thumb away, and the inbox is not a public target. */}
+            <nav
+              aria-label="Footer"
+              className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3.5"
             >
-              <Mail size={14} strokeWidth={1.8} />
-              {company.email}
-            </a>
+              {footerLinks.map((item) => {
+                const isActive = currentPage === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavClick(item.id)}
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      color: isActive ? colors.SECONDARY : 'rgba(255,255,255,0.76)',
+                      background: 'transparent',
+                      cursor: 'pointer',
+                      paddingBottom: 3,
+                      borderBottom: `1px solid ${isActive ? colors.SECONDARY : 'transparent'}`,
+                      transition: 'color 0.2s, border-color 0.2s'
+                    }}
+                    onMouseOver={(e) => { e.currentTarget.style.color = colors.SECONDARY; }}
+                    onMouseOut={(e) => { if (!isActive) e.currentTarget.style.color = 'rgba(255,255,255,0.76)'; }}
+                  >
+                    {item.name}
+                  </button>
+                );
+              })}
+            </nav>
           </div>
 
           {/* Capital-raising context means this disclaimer isn't optional

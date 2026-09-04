@@ -1,10 +1,194 @@
 import React from 'react';
-import { ArrowRight, ArrowUpRight, Calendar, Check, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Calendar, Mail } from 'lucide-react';
 import { company } from '../site.config';
 import {
-  VideoHeader, Eyebrow, Reveal, CountUp, GOLD, NAVY, NAVY_DEEP,
+  VideoHeader, Eyebrow, Reveal, CountUp, useInView, GOLD, NAVY, NAVY_DEEP,
   PRIMARY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
+
+
+// Two explicit columns rather than a two-column grid: the grid flows row-wise,
+// which would run the reading order across the page instead of down each side.
+const VALUE_COLUMNS = [
+  [
+    {
+      n: '01',
+      t: 'Pre-event',
+      d: 'The guest list ahead of the day, so you know who will be in the room before you walk into it.'
+    },
+    {
+      n: '02',
+      t: 'No other sponsors',
+      d: 'The full attention of that room \u2014 one firm presents, and there are no competing pitches on either side of you.'
+    },
+    {
+      n: '03',
+      t: 'Curated list',
+      d: 'Contact details for everyone who attended, with their permission \u2014 their firm, their interest, and their answers to the questions you chose for your follow-up.'
+    }
+  ],
+  [
+    {
+      n: '04',
+      t: 'Curated invites',
+      d: 'A room of 30\u201350 principals, family offices, wealth managers and RIAs, each invited personally on an invitation branded to your firm.'
+    },
+    {
+      n: '05',
+      t: 'Warm introductions',
+      d: 'Made in the room on the day \u2014 Ran and Jeremy walk you over, rather than emailing later.'
+    },
+    {
+      n: '06',
+      t: 'Marketing assets',
+      d: 'Photographer and videographer on-site, with branded photo and video assets and a recap film you keep.'
+    }
+  ]
+];
+
+/**
+ * One row of the value panel. Hover state lives here rather than in a
+ * stylesheet so the tint, the medallion and the left rule all move together
+ * on the same event — a single gesture, not three coincidences.
+ */
+function ValueItem({ item, shown, delay, last }) {
+  const [hover, setHover] = React.useState(false);
+  const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+  return (
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="px-0 py-5 sm:px-4"
+      style={{
+        borderRadius: 12,
+        borderBottom: last ? '1px solid transparent' : '1px solid rgba(216,195,165,0.14)',
+        backgroundColor: hover ? 'rgba(255,255,255,0.045)' : 'transparent',
+        boxShadow: hover ? `inset 2px 0 0 ${SECONDARY}` : 'inset 0 0 0 0 transparent',
+        opacity: shown ? 1 : 0,
+        transform: shown ? 'translateY(0)' : 'translateY(14px)',
+        transition:
+          `opacity 620ms ${ease} ${delay}ms, transform 620ms ${ease} ${delay}ms,` +
+          ' background-color 260ms ease, box-shadow 260ms ease'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 10 }}>
+        <span
+          aria-hidden="true"
+          style={{
+            flexShrink: 0,
+            width: 42,
+            height: 42,
+            borderRadius: 999,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: SECONDARY,
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontSize: 15,
+            fontWeight: 700,
+            letterSpacing: '0.02em',
+            border: `1px solid rgba(216,195,165,${hover ? 0.55 : 0.3})`,
+            backgroundColor: `rgba(216,195,165,${hover ? 0.16 : 0.07})`,
+            transition: 'background-color 260ms ease, border-color 260ms ease'
+          }}
+        >
+          {item.n}
+        </span>
+        <div
+          style={{
+            color: SECONDARY,
+            fontSize: 11.5,
+            fontWeight: 700,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase'
+          }}
+        >
+          {item.t}
+        </div>
+      </div>
+      {/* Indents under the label only where there is width to spare; on a
+          phone it runs the full column instead of down a 24-character gutter. */}
+      <div
+        className="pl-0 sm:pl-[58px]"
+        style={{ color: 'rgba(255,255,255,0.84)', fontSize: 15.5, lineHeight: 1.65 }}
+      >
+        {item.d}
+      </div>
+    </div>
+  );
+}
+
+function ValuePanel() {
+  const [ref, shown] = useInView(0.12);
+
+  return (
+    <div
+      ref={ref}
+      className="relative overflow-hidden rounded-2xl p-6 sm:p-9 md:p-12"
+      style={{
+        background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 60%, #20365C 100%)`,
+        border: `1px solid ${GOLD}3D`,
+        boxShadow: '0 30px 70px rgba(8,16,34,0.28)',
+        opacity: shown ? 1 : 0,
+        transform: shown ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 700ms cubic-bezier(0.22,1,0.36,1)'
+      }}
+    >
+      {/* Champagne glow off the top-right corner, and a lit top edge. Both are
+          decoration only, so they sit behind the content and take no clicks. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          background:
+            'radial-gradient(120% 80% at 88% 0%, rgba(216,195,165,0.16) 0%, rgba(216,195,165,0) 58%)'
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '8%',
+          right: '8%',
+          height: 1,
+          pointerEvents: 'none',
+          background: 'linear-gradient(90deg, rgba(216,195,165,0) 0%, rgba(216,195,165,0.55) 50%, rgba(216,195,165,0) 100%)'
+        }}
+      />
+
+      {/* No grid gap: each column pads itself instead, so the hairline on the
+          second one lands centred between them rather than hugging its edge.
+          Both the padding and the rule are md-and-up — stacked, a vertical
+          line would cut the list in half. */}
+      <div className="relative grid md:grid-cols-2">
+        {VALUE_COLUMNS.map((column, ci) => (
+          <div
+            key={ci}
+            className={
+              ci === 0
+                ? 'md:pr-7 lg:pr-10'
+                : 'md:pl-7 lg:pl-10 md:border-l md:border-[rgba(216,195,165,0.14)]'
+            }
+          >
+            {column.map((item, i) => (
+              <ValueItem
+                key={item.n}
+                item={item}
+                shown={shown}
+                delay={(ci * 3 + i) * 90}
+                last={i === column.length - 1}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function PlanYoursPage({ onNavigate, onContactClick }) {
   const forFirms = () =>
@@ -191,11 +375,11 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               {
                 lead: 'You are one of twenty-five',
                 ticker: true,
-                body: 'Sponsors competing for space on the same floor, with pitches on either side of you and an audience pacing itself across a hall. Nobody gives you their full attention because nobody can.'
+                body: 'Sponsors competing for space on the same floor, with pitches on either side of you and an audience pacing itself across a hall. Nobody gives you their full attention because nobody\u00A0can.'
               },
               {
                 lead: 'Wrong connections',
-                body: 'Not a failing of the format — a conference is built for broad exposure, so the room is wide by design. You meet good people whose role, mandate, check size or authority never lines up with what you are raising. Pleasant conversations that could not have ended in a yes, and rarely the return you sponsored for.'
+                body: 'Not a failing of the format — a conference is built for broad exposure, so the room is wide by design. You meet good people whose role, mandate, check size or authority never lines up with what you are raising. Pleasant conversations that could not have ended in a yes, and rarely the return you\u00A0sponsored\u00A0for.'
               },
               {
                 lead: 'A list of service providers',
@@ -264,7 +448,12 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
       {/* THE VALUE — one panel, not two. An exchange framing led with what the
           firm has to hand over; this leads with what it gets. What we need is
           answered in the FAQ, where a prospect looks for it rather than being
-          shown it before they have decided anything. */}
+          shown it before they have decided anything.
+
+          The panel is the loudest navy on the site, so it earns some depth:
+          a lit top edge, a champagne glow off the top-right corner, serif
+          numerals in the same face the guardrails and the 1/25+ ticker use,
+          and a stagger that runs DOWN each column rather than across. */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
         <div className="max-w-6xl mx-auto">
           <Reveal>
@@ -276,86 +465,13 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
               >
                 What you receive.
               </h2>
+              <p className="mt-5" style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8, maxWidth: '58ch' }}>
+                Every gathering includes all six. Nothing here is an upgrade or an add-on.
+              </p>
             </div>
           </Reveal>
 
-          <Reveal delay={90}>
-            <div
-              className="rounded-2xl p-9 md:p-12"
-              style={{
-                background: `linear-gradient(155deg, ${NAVY_DEEP} 0%, ${NAVY} 60%, #20365C 100%)`,
-                border: `1px solid ${GOLD}3D`
-              }}
-            >
-              {/* Two explicit columns rather than a two-column grid: the grid
-                  flows row-wise, which would run the order across the page
-                  instead of down each side. */}
-              <div className="grid md:grid-cols-2 gap-x-14">
-                {[
-                  [
-                    {
-                      t: 'Pre-event',
-                      d: 'The guest list ahead of the day, so you know who will be in the room before you walk into it.'
-                    },
-                    {
-                      t: 'No other sponsors',
-                      d: 'The full attention of that room — one firm presents, and there are no competing pitches on either side of you.'
-                    },
-                    {
-                      t: 'Curated list',
-                      d: 'Contact details for everyone who attended, with their permission — their firm, their interest, and their answers to the questions you chose for your follow-up.'
-                    }
-                  ],
-                  [
-                    {
-                      t: 'Curated invites',
-                      d: 'A room of 30–50 principals, family offices, wealth managers and RIAs, each invited personally on an invitation branded to your firm.'
-                    },
-                    {
-                      t: 'Warm introductions',
-                      d: 'Made in the room on the day — Ran and Jeremy walk you over, rather than emailing later.'
-                    },
-                    {
-                      t: 'Marketing assets',
-                      d: 'Photographer and videographer on-site, with branded photo and video assets and a recap film you keep.'
-                    }
-                  ]
-                ].map((column, ci) => (
-                  <div key={ci}>
-                    {column.map((item, i) => (
-                      <div
-                        key={item.t}
-                        className="flex gap-4"
-                        style={{
-                          padding: '18px 0',
-                          borderBottom: i === column.length - 1 ? 'none' : '1px solid rgba(216,195,165,0.16)'
-                        }}
-                      >
-                        <Check size={17} style={{ color: SECONDARY, flexShrink: 0, marginTop: 4 }} />
-                        <div>
-                          <div
-                            style={{
-                              color: SECONDARY,
-                              fontSize: 11.5,
-                              fontWeight: 700,
-                              letterSpacing: '0.18em',
-                              textTransform: 'uppercase',
-                              marginBottom: 7
-                            }}
-                          >
-                            {item.t}
-                          </div>
-                          <div style={{ color: 'rgba(255,255,255,0.84)', fontSize: 15.5, lineHeight: 1.65 }}>
-                            {item.d}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+          <ValuePanel />
         </div>
       </section>
 
@@ -374,7 +490,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
             onClick={forFirms}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+            className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
             style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             <Mail size={17} />
@@ -382,7 +498,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
           </button>
           <button
             onClick={() => onNavigate && onNavigate('dates')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
             style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY, background: 'transparent' }}
           >
             <Calendar size={16} />
@@ -392,7 +508,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             href={company.circleJoinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
             style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY }}
           >
             Join the Circle

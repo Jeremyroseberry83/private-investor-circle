@@ -109,6 +109,16 @@ const PAST_EVENTS = [
     blurb: 'A private reception on the terrace: craft cocktails, curated cuisine, and Latin American investment opportunities discussed directly with company leadership.',
     image: '/images/events/miami-river.jpg',
     url: 'https://luma.com/kkyvdxzh'
+  },
+  {
+    // No presenting firm on this one — Ran and Jeremy hosted the table
+    // themselves, so the eyebrow says so rather than naming a client.
+    title: 'A Private Dinner — Thursday in Nashville',
+    firm: 'Hosted by Ran & Jeremy',
+    place: 'Nashville, TN',
+    blurb: 'A table of six to eight by invitation — founders, principals and friends of the Circle. No agenda beyond conversation and what each person is building.',
+    image: '/images/events/nashville-dinner.jpg',
+    url: 'https://luma.com/nashvilledinner'
   }
 ];
 
@@ -123,11 +133,15 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         accent="worth being in relationship with."
         subtitle="Only one company presents"
         subtitleCaps
+        maxWidth={1160}
+        titleSize="clamp(1.9rem, 3.4vw, 2.55rem)"
       />
 
-      {/* PAST EVENTS */}
+      {/* PAST EVENTS — four cards across at lg, which is why this section runs
+          to max-w-6xl while the rest of the page sits at 5xl. Narrower and the
+          blurbs drop to about twenty-five characters a line. */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
             <Eyebrow color={SECONDARY_DEEP} className="mb-4">Recent gatherings</Eyebrow>
             <h2
@@ -141,7 +155,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-7">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {PAST_EVENTS.map((e) => (
               <div
                 key={e.url}
@@ -156,7 +170,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                     loading="lazy"
                   />
                 </div>
-                <div className="p-7 flex flex-col" style={{ flexGrow: 1 }}>
+                <div className="p-6 flex flex-col" style={{ flexGrow: 1 }}>
                   <p
                     className="font-bold uppercase mb-3"
                     style={{ color: SECONDARY_DEEP, fontSize: 10.5, letterSpacing: '0.2em' }}
@@ -376,16 +390,17 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             className="font-bold mb-6 mx-auto"
             style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3.4vw, 2.4rem)', letterSpacing: '-0.03em', maxWidth: '22ch', lineHeight: 1.15 }}
           >
-            We would rather meet you early.
+            Tell us what you are working on.
           </h2>
           <p className="mx-auto mb-9" style={{ color: MUTED, fontSize: 16, lineHeight: 1.8, maxWidth: '54ch' }}>
-            Most of the introductions we are proudest of started as a conversation with nothing
-            riding on it. If that sounds like the right order of things, say hello.
+            Some of the introductions we are proudest of began as a conversation with nothing
+            riding on it — no timeline, no pitch. If you would like to talk it through, Ran or
+            Jeremy will answer.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <button
               onClick={() => onContactClick && onContactClick('Something else', '')}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+              className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
               style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
             >
               <Mail size={17} />
@@ -393,8 +408,13 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             </button>
             <button
               onClick={() => onNavigate && onNavigate('dates')}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
-              style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
+              className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
+              style={{
+                border: `1.5px solid ${NAVY}`,
+                color: NAVY,
+                background: 'transparent',
+                boxShadow: `inset 0 0 0 3px ${BG}, inset 0 0 0 4px ${NAVY}59`
+              }}
             >
               Available dates <ArrowRight size={15} />
             </button>

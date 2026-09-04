@@ -408,15 +408,21 @@ export default function FaqPage({ onNavigate, onContactClick }) {
         </h2>
         <p
           className="mx-auto mb-9"
-          style={{ color: 'rgba(255,255,255,0.72)', fontSize: 16, lineHeight: 1.8, maxWidth: '52ch' }}
+          style={{
+            color: SECONDARY,
+            fontSize: 'clamp(12px, 1.6vw, 15px)',
+            fontWeight: 600,
+            letterSpacing: '0.28em',
+            textTransform: 'uppercase',
+            lineHeight: 1.6
+          }}
         >
-          Ran or Jeremy reads every note personally. Ask the awkward one — it is usually the one
-          worth answering.
+          Just ask
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
             onClick={() => onContactClick && onContactClick('Something else', 'My question: ')}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold"
+            className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
             style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             Ask us directly
@@ -424,7 +430,7 @@ export default function FaqPage({ onNavigate, onContactClick }) {
           </button>
           <button
             onClick={() => onNavigate && onNavigate('events')}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold"
+            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
             style={{ border: '1.5px solid rgba(216,195,165,0.55)', color: SECONDARY, background: 'transparent' }}
           >
             See how it works

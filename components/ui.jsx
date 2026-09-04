@@ -198,7 +198,14 @@ export function PageHero({ eyebrow, title, subtitle, image, video, videoOpacity 
  * the home hero (it opens a page, it isn't the page), and the poster paints
  * first so a slow connection sees a photograph rather than a black band.
  */
-export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, subtitleCaps }) {
+export function VideoHeader({
+  video, poster, eyebrow, title, accent, subtitle, subtitleCaps,
+  // A long headline needs a wider measure and a smaller face to hold its
+  // line count. Pass both together — widening alone just makes the type
+  // look stranded, and shrinking alone loses the display weight.
+  maxWidth = 900,
+  titleSize = 'clamp(1.9rem, 4.4vw, 3rem)'
+}) {
   const [ready, setReady] = React.useState(false);
   return (
     <section
@@ -245,7 +252,7 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, s
       <div
         className="relative mx-auto px-6 text-center"
         style={{
-          maxWidth: 900,
+          maxWidth,
           minHeight: 'clamp(360px, 52vh, 560px)',
           display: 'flex',
           flexDirection: 'column',
@@ -265,7 +272,7 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, s
         )}
         <h1
           className="text-white"
-          style={{ fontSize: 'clamp(1.9rem, 4.4vw, 3rem)', fontWeight: 700, lineHeight: 1.16, letterSpacing: '-0.015em' }}
+          style={{ fontSize: titleSize, fontWeight: 700, lineHeight: 1.16, letterSpacing: '-0.015em' }}
         >
           {title}
           {accent && <span style={{ color: SECONDARY, fontStyle: 'italic' }}> {accent}</span>}
@@ -278,12 +285,16 @@ export function VideoHeader({ video, poster, eyebrow, title, accent, subtitle, s
                 ? {
                     // Caps at body size shouts. Smaller, tracked and lighter
                     // reads as a standfirst under the headline instead.
+                    //
+                    // 1.6 leading, not 1.9: on one line the difference is
+                    // invisible, and on the two lines mobile wraps it to, 1.9
+                    // opens a gap that reads as an empty row.
                     color: 'rgba(255,255,255,0.86)',
                     fontSize: 'clamp(12px, 1.5vw, 15px)',
                     fontWeight: 500,
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
-                    lineHeight: 1.9,
+                    lineHeight: 1.6,
                     maxWidth: '48ch'
                   }
                 : { color: 'rgba(255,255,255,0.84)', fontSize: 'clamp(15px, 1.7vw, 17.5px)', lineHeight: 1.75, maxWidth: '62ch' }
@@ -608,40 +619,74 @@ export function CityList({ items, color = SLATE, dotColor = SECONDARY_DEEP }) {
   const ease = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
   return (
-    <div ref={ref} className="flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+    <div ref={ref} className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-3 gap-y-3">
       {items.map((city, i) => (
-        <React.Fragment key={city}>
+        <span
+          key={city}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 12,
+            color,
+            fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            opacity: shown ? 1 : 0,
+            transform: shown ? 'translateY(0)' : 'translateY(10px)',
+            transition: `opacity 620ms ${ease}, transform 620ms ${ease}`,
+            transitionDelay: `${i * 70}ms`
+          }}
+        >
+          {/* Hidden on a phone, where the list wraps to four lines and the
+              separators do more harm than good; the gap carries the rhythm
+              instead. */}
           {i > 0 && (
             <span
               aria-hidden="true"
-              style={{
-                color: dotColor,
-                opacity: shown ? 0.5 : 0,
-                transition: `opacity 520ms ${ease}`,
-                transitionDelay: `${i * 70}ms`
-              }}
+              className="hidden sm:inline"
+              style={{ color: dotColor, opacity: 0.5 }}
             >
               ·
             </span>
           )}
-          <span
-            style={{
-              color,
-              fontSize: 'clamp(0.95rem, 2vw, 1.2rem)',
-              fontWeight: 600,
-              letterSpacing: '-0.01em',
-              opacity: shown ? 1 : 0,
-              transform: shown ? 'translateY(0)' : 'translateY(10px)',
-              transition: `opacity 620ms ${ease}, transform 620ms ${ease}`,
-              transitionDelay: `${i * 70}ms`
-            }}
-          >
-            {city}
-          </span>
-        </React.Fragment>
+          {city}
+        </span>
       ))}
     </div>
   );
+}
+
+/**
+ * useInView — true once the returned ref's element has scrolled into view, and
+ * true immediately under prefers-reduced-motion. One observer serves a whole
+ * list: give the children their own transition-delay off this single flag
+ * rather than mounting an observer per child.
+ */
+export function useInView(threshold = 0.15) {
+  const ref = React.useRef(null);
+  const [shown, setShown] = React.useState(false);
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShown(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, shown];
 }
 
 /**
