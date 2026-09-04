@@ -95,20 +95,20 @@ const PAST_EVENTS = [
     url: 'https://luma.com/bostonsept17'
   },
   {
-    title: 'Valois Salon — A Private Dinner in Boston',
-    firm: '4IR Group',
-    place: 'Boston',
-    blurb: 'Fifteen to twenty-five allocators — family offices, venture partners and institutional investors — over dinner, on frontier technology and where capital is actually going.',
-    image: '/images/events/valois-salon.jpg',
-    url: 'https://luma.com/privatedinnerboston'
-  },
-  {
     title: 'A Private Evening — Sunset on the Miami River',
     firm: 'OTG Asset Management',
     place: 'Miami · The Capital Grille',
     blurb: 'A private reception on the terrace: craft cocktails, curated cuisine, and Latin American investment opportunities discussed directly with company leadership.',
     image: '/images/events/miami-river.jpg',
     url: 'https://luma.com/kkyvdxzh'
+  },
+  {
+    title: 'Valois Salon — A Private Dinner in Boston',
+    firm: '4IR Group',
+    place: 'Boston',
+    blurb: 'Fifteen to twenty-five allocators — family offices, venture partners and institutional investors — over dinner, on frontier technology and where capital is actually going.',
+    image: '/images/events/valois-salon.jpg',
+    url: 'https://luma.com/privatedinnerboston'
   },
   {
     // No presenting firm on this one — Ran and Jeremy hosted the table
