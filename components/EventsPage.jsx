@@ -77,10 +77,15 @@ const TESTIMONIALS = [
   }
 ];
 
-// Titles, descriptions, host firms and cover images all come from the Luma
-// pages themselves rather than the URL slugs. Covers are copied into
-// public/images/events/ rather than hotlinked, so the section keeps working if
-// an event is ever unpublished.
+// Titles, descriptions and cover images come from the Luma pages themselves
+// rather than the URL slugs. Covers are copied into public/images/events/
+// rather than hotlinked, so the section keeps working if an event is ever
+// unpublished.
+//
+// `firm` is the eyebrow above each title, and it names the SECTOR, not the
+// client — the presenting companies are not identified here. Note that the
+// cover images are the events' own branded graphics and several still carry
+// client logos, so this is a lighter touch than real de-identification.
 //
 // The cards are deliberately NOT links — a past guest list is more exposure
 // than a public page should carry. `url` is kept only so the source is
@@ -88,7 +93,7 @@ const TESTIMONIALS = [
 const PAST_EVENTS = [
   {
     title: 'Investor Day — Harvard/MIT Kendall Square Robotics & AI',
-    firm: '4IR Group',
+    firm: 'Bio-Technology Group',
     place: 'Boston',
     blurb: 'A private investor day for family offices and capital partners: lab tours across the Kendall Square robotics and AI ecosystem, direct meetings with founders, and dinner to close the day.',
     image: '/images/events/kendall-square.jpg',
@@ -96,7 +101,7 @@ const PAST_EVENTS = [
   },
   {
     title: 'A Private Evening — Sunset on the Miami River',
-    firm: 'OTG Asset Management',
+    firm: 'ETF',
     place: 'Miami · The Capital Grille',
     blurb: 'A private reception on the terrace: craft cocktails, curated cuisine, and Latin American investment opportunities discussed directly with company leadership.',
     image: '/images/events/miami-river.jpg',
