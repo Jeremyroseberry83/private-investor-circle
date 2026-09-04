@@ -52,7 +52,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to top, rgba(17,20,27,0.97) 0%, rgba(17,20,27,0.88) 45%, rgba(17,20,27,0.78) 100%)'
+              'linear-gradient(to top, rgba(22,19,17,0.97) 0%, rgba(22,19,17,0.88) 45%, rgba(22,19,17,0.78) 100%)'
           }}
         />
 
@@ -178,7 +178,10 @@ export default function HomePage({ onContactClick, onNavigate }) {
       {/* CITIES — same block and treatment as the Events page, so the two
           pages state the reach identically. The names animate in; the note
           under them does the qualifying. */}
-      <section className="py-14 md:py-20 px-6" style={{ backgroundColor: BG }}>
+      <section
+        className="py-14 md:py-20 px-6"
+        style={{ backgroundColor: BG, borderTop: `1px solid ${NAVY}` }}
+      >
         <div className="max-w-5xl mx-auto text-center">
           <p
             className="mb-7"
