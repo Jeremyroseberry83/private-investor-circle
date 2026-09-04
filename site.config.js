@@ -98,12 +98,13 @@ module.exports = {
       label: 'October',
       year: 2026,
       month: 10,
+      cities: 'Palm Beach · Miami · Beverly Hills · New York · Salt Lake City',
       openings: [
-        { days: [1], city: 'Southern California', status: 'open' },
-        { days: [2], city: 'Southern California', status: 'open' },
-        { days: [9], city: 'South Florida', status: 'open' },
-        { days: [21], city: 'South Florida', status: 'open' },
-        { days: [22], city: 'South Florida', status: 'open' }
+        { days: [1], status: 'open' },
+        { days: [2], status: 'open' },
+        { days: [9], status: 'open' },
+        { days: [21], status: 'open' },
+        { days: [22], status: 'open' }
       ]
     },
     {

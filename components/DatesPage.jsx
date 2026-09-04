@@ -8,11 +8,6 @@ import { calendar } from '../site.config';
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-// Regions rather than cities on the open dates, because the city inside a
-// region is settled with the firm. Spelled out once, under the calendar.
-const REGION_NOTE =
-  'South Florida covers Palm Beach and Miami; Southern California covers Beverly Hills and Santa Barbara.';
-
 /** Day-of-week for the 1st, and the length of the month. UTC on purpose — a
  *  local-midnight Date shifts a day for anyone west of Greenwich. */
 function monthShape(year, month) {
@@ -305,10 +300,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
           </div>
 
           <Reveal>
-            <p className="mt-10" style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.8 }}>
-              {REGION_NOTE}
-            </p>
-            <p className="mt-4" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, fontStyle: 'italic' }}>
+            <p className="mt-10" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, fontStyle: 'italic' }}>
               These dates coincide with Ran&rsquo;s and Jeremy&rsquo;s own travel. With enough lead
               time we can plan around another date or city — and in South Florida or Southern
               California we can often move faster.
