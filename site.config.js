@@ -33,12 +33,9 @@ module.exports = {
     circleJoinUrl: 'https://luma.com/PrivateInvestorCircle'
   },
 
-  // Cities from the Private Gathering Overview.
-  //
-  // availableDates below is seeded from the Fall Dates 2026 sheet, which is
-  // marked PRIVATE & CONFIDENTIAL — confirm you want these public before the
-  // deploy goes out. Dates already past have been dropped. Edit this array to
-  // update the calendar; nothing else needs touching.
+  // Cities from the Private Gathering Overview. These are where we host most
+  // often, which is not the same list as the calendar below — a one-off like
+  // Nashville belongs on the Events page, not here.
   cities: [
     'Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York',
     'Chicago', 'Dallas', 'Las Vegas', 'Boston', 'Newport, RI'
@@ -65,31 +62,80 @@ module.exports = {
     BG: '#FAF7F2'              // warm ivory — page ground
   },
 
-  // Openings by region. These follow Ran's and Jeremy's own travel, which is
-  // why they are sparse — edit this array and the Dates page follows.
-  availableDates: [
+  // The calendar the Dates page draws.
+  //
+  // One entry per month, in the order they should appear. Each opening owns
+  // the day cells it covers, so a window like Cayman's 2-5 highlights four
+  // days and still reads as one gathering rather than four.
+  //
+  // status: 'open'   -> champagne cell, "Book now"
+  //         'booked' -> navy cell, "Booked", not clickable. Booked dates stay
+  //                     on the calendar on purpose: a month that is spoken
+  //                     for is evidence, and it dates the page for a reader.
+  //
+  // `city` names the settled city on a booked date and the region on an open
+  // one, because the city inside a region is chosen with the firm. 'Your city'
+  // means the date is not tied to a region at all. REGION_NOTE in
+  // DatesPage.jsx explains both under the calendar.
+  //
+  // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
+  // CONFIDENTIAL - confirm you want these public before a deploy. Edit this
+  // array to update the calendar; nothing else needs touching.
+  calendar: [
     {
-      region: 'South Florida — Palm Beach & Miami',
-      dates: [
-        'Tuesday, September 29',
-        'Wednesday, September 30',
-        'Thursday, October 9',
-        'Wednesday, October 21',
-        'Thursday, October 22',
-        'November 5, 10 or 11'
-      ],
-      note: 'December: the first and second weeks have limited availability.'
+      label: 'September',
+      year: 2026,
+      month: 9,
+      openings: [
+        { days: [9], city: 'Miami', status: 'booked' },
+        { days: [17], city: 'Boston', status: 'booked' },
+        { days: [29], city: 'Palm Beach', status: 'booked' },
+        { days: [30], city: 'Beverly Hills', status: 'booked' }
+      ]
     },
     {
-      region: 'Southern California — Beverly Hills & Santa Barbara',
-      dates: ['September 25 or 26', 'October 1', 'October 2']
+      label: 'October',
+      year: 2026,
+      month: 10,
+      openings: [
+        { days: [1], city: 'Southern California', status: 'open' },
+        { days: [2], city: 'Southern California', status: 'open' },
+        { days: [9], city: 'South Florida', status: 'open' },
+        { days: [21], city: 'South Florida', status: 'open' },
+        { days: [22], city: 'South Florida', status: 'open' }
+      ]
     },
     {
-      region: 'Cayman Islands',
-      dates: ['November 2 – 5']
+      label: 'November',
+      year: 2026,
+      month: 11,
+      openings: [
+        { days: [2, 3, 4, 5], city: 'Cayman Islands', status: 'open' },
+        { days: [10], city: 'South Florida', status: 'open' },
+        { days: [11], city: 'South Florida', status: 'open' },
+        { days: [16], city: 'Your city', status: 'open' },
+        { days: [17], city: 'Your city', status: 'open' }
+      ]
+    },
+    {
+      label: 'December',
+      year: 2026,
+      month: 12,
+      openings: [
+        { days: [1], city: 'Your city', status: 'open' },
+        { days: [2], city: 'Your city', status: 'open' },
+        { days: [8, 9, 10], city: 'Your city', status: 'open' },
+        { days: [13, 14, 15, 16, 17], city: 'Your city', status: 'open' }
+      ]
+    },
+    {
+      label: 'January',
+      year: 2027,
+      month: 1,
+      openings: [],
+      note: 'Dates will be posted shortly.'
     }
   ],
-
 
   nav: [
     { name: 'Events', id: 'events' },
