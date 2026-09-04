@@ -304,7 +304,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
         <div className="flex items-center justify-center gap-3 flex-wrap">
           <button
             onClick={onContactClick}
-            className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
+            className="inline-flex justify-center items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-bold whitespace-nowrap"
             style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
           >
             <Mail size={17} />
@@ -312,7 +312,7 @@ export default function AboutPage({ onContactClick, onNavigate }) {
           </button>
           <button
             onClick={() => onNavigate && onNavigate('events')}
-            className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
+            className="inline-flex justify-center items-center gap-2 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-semibold whitespace-nowrap"
             style={{ border: `1.5px solid ${NAVY}`, color: NAVY, background: 'transparent' }}
           >
             See how it works <ArrowRight size={15} />

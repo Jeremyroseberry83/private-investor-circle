@@ -101,15 +101,15 @@ export default function HomePage({ onContactClick, onNavigate }) {
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: '2.5rem' }}>
               <button
                 onClick={() => onNavigate && onNavigate('dates')}
-                className="w-full sm:w-auto"
                 style={{
-                  padding: '15px 30px',
+                  padding: 'clamp(12px, 3.2vw, 15px) clamp(16px, 5vw, 30px)',
                   borderRadius: 999,
                   border: `1.5px solid ${NAVY}`,
                   backgroundColor: '#FFFFFF',
                   color: NAVY,
-                  fontSize: 15,
+                  fontSize: 'clamp(12.5px, 3.4vw, 15px)',
                   fontWeight: 700,
+                  whiteSpace: 'nowrap',
                   cursor: 'pointer',
                   boxShadow: `inset 0 0 0 3px #FFFFFF, inset 0 0 0 4px ${NAVY}59`
                 }}
@@ -118,19 +118,19 @@ export default function HomePage({ onContactClick, onNavigate }) {
               </button>
               <button
                 onClick={() => onNavigate && onNavigate('events')}
-                className="w-full sm:w-auto"
                 style={{
                   display: 'inline-flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   gap: 8,
-                  padding: '15px 30px',
+                  padding: 'clamp(12px, 3.2vw, 15px) clamp(16px, 5vw, 30px)',
                   borderRadius: 999,
                   border: '1.5px solid rgba(255,255,255,0.6)',
                   background: 'transparent',
                   color: 'white',
-                  fontSize: 15,
+                  fontSize: 'clamp(12.5px, 3.4vw, 15px)',
                   fontWeight: 600,
+                  whiteSpace: 'nowrap',
                   cursor: 'pointer'
                 }}
               >
@@ -207,7 +207,7 @@ export default function HomePage({ onContactClick, onNavigate }) {
           <Reveal>
             <DisplayHeading
               eyebrow="What we do"
-              light="The relational introduction is"
+              light={"The relational introduction\u00A0is"}
               bold="the whole asset."
               tone="secondary"
             />

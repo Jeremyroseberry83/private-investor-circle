@@ -356,8 +356,10 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
             className="text-white font-bold mb-6"
             style={{ fontSize: 'clamp(1.7rem, 3vw, 2.5rem)', lineHeight: 1.12, letterSpacing: '-0.025em' }}
           >
-            A booth is not a relationship.{' '}
-            <span style={{ color: SECONDARY, fontStyle: 'italic' }}>It is a queue.</span>
+            <span style={{ display: 'block' }}>A booth is not a relationship.</span>
+            <span style={{ display: 'block', color: SECONDARY, fontStyle: 'italic' }}>
+              It is a queue.
+            </span>
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.76)', fontSize: 16, lineHeight: 1.8, marginBottom: 18, maxWidth: '70ch' }}>
             Conferences earn their place. They are top of funnel — broad exposure, brand presence,

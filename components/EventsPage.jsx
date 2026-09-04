@@ -89,7 +89,7 @@ const PAST_EVENTS = [
   {
     title: 'Investor Day — Harvard/MIT Kendall Square Robotics & AI',
     firm: '4IR Group',
-    place: 'Boston · September 17',
+    place: 'Boston',
     blurb: 'A private investor day for family offices and capital partners: lab tours across the Kendall Square robotics and AI ecosystem, direct meetings with founders, and dinner to close the day.',
     image: '/images/events/kendall-square.jpg',
     url: 'https://luma.com/bostonsept17'
@@ -114,7 +114,7 @@ const PAST_EVENTS = [
     // No presenting firm on this one — Ran and Jeremy hosted the table
     // themselves, so the eyebrow says so rather than naming a client.
     title: 'A Private Dinner — Thursday in Nashville',
-    firm: 'Hosted by Ran & Jeremy',
+    firm: 'Hosted',
     place: 'Nashville, TN',
     blurb: 'A table of six to eight by invitation — founders, principals and friends of the Circle. No agenda beyond conversation and what each person is building.',
     image: '/images/events/nashville-dinner.jpg',
@@ -134,7 +134,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         subtitle="Only one company presents"
         subtitleCaps
         maxWidth={1160}
-        titleSize="clamp(1.9rem, 3.4vw, 2.55rem)"
+        titleSize="min(6vw, clamp(1.5rem, 3.4vw, 2.55rem))"
       />
 
       {/* PAST EVENTS — four cards across at lg, which is why this section runs
@@ -400,7 +400,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <button
               onClick={() => onContactClick && onContactClick('Something else', '')}
-              className="inline-flex justify-center items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-bold w-full sm:w-auto"
+              className="inline-flex justify-center items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-bold whitespace-nowrap"
               style={{ background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`, color: INK }}
             >
               <Mail size={17} />
@@ -408,7 +408,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
             </button>
             <button
               onClick={() => onNavigate && onNavigate('dates')}
-              className="inline-flex justify-center items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold w-full sm:w-auto"
+              className="inline-flex justify-center items-center gap-2 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-semibold whitespace-nowrap"
               style={{
                 border: `1.5px solid ${NAVY}`,
                 color: NAVY,

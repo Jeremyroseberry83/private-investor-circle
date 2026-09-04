@@ -204,7 +204,11 @@ export function VideoHeader({
   // line count. Pass both together — widening alone just makes the type
   // look stranded, and shrinking alone loses the display weight.
   maxWidth = 900,
-  titleSize = 'clamp(1.9rem, 4.4vw, 3rem)'
+  // The min() is what keeps a long headline off a fourth line on a narrow
+  // phone: a plain clamp() floor stops scaling below its own crossover, so
+  // every phone under ~545px got the same 24px against a narrower column.
+  // Above ~375px this behaves exactly like the clamp on its own.
+  titleSize = 'min(6vw, clamp(1.5rem, 4.4vw, 3rem))'
 }) {
   const [ready, setReady] = React.useState(false);
   return (
@@ -272,7 +276,13 @@ export function VideoHeader({
         )}
         <h1
           className="text-white"
-          style={{ fontSize: titleSize, fontWeight: 700, lineHeight: 1.16, letterSpacing: '-0.015em' }}
+          style={{
+            fontSize: titleSize,
+            fontWeight: 700,
+            lineHeight: 1.16,
+            letterSpacing: '-0.015em',
+            textWrap: 'balance'
+          }}
         >
           {title}
           {accent && <span style={{ color: SECONDARY, fontStyle: 'italic' }}> {accent}</span>}
