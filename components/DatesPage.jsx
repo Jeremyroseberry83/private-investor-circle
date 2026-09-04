@@ -11,8 +11,7 @@ const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 // Regions rather than cities on the open dates, because the city inside a
 // region is settled with the firm. Spelled out once, under the calendar.
 const REGION_NOTE =
-  'South Florida covers Palm Beach and Miami; Southern California covers Beverly Hills and Santa Barbara. ' +
-  'Dates marked “your city” are not tied to a region — tell us where, and we will plan around it.';
+  'South Florida covers Palm Beach and Miami; Southern California covers Beverly Hills and Santa Barbara.';
 
 /** Day-of-week for the 1st, and the length of the month. UTC on purpose — a
  *  local-midnight Date shifts a day for anyone west of Greenwich. */
@@ -154,8 +153,26 @@ function MonthCard({ month, onBook, delay }) {
         })}
       </div>
 
+      {month.cities && (
+        <div className="mt-6">
+          <div
+            style={{
+              color: SECONDARY_DEEP,
+              fontSize: 9.5,
+              fontWeight: 700,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              marginBottom: 4
+            }}
+          >
+            Available in
+          </div>
+          <div style={{ color: SLATE, fontSize: 13.5, lineHeight: 1.5 }}>{month.cities}</div>
+        </div>
+      )}
+
       <div
-        className="mt-6"
+        className={month.cities ? 'mt-4' : 'mt-6'}
         style={{ borderTop: month.openings.length ? '1px solid #EFEAE1' : 'none' }}
       >
         {month.openings.map((o) => {
@@ -268,8 +285,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Several firms are requesting these dates.
               </p>
               <p className="mt-1.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>
-                October through December is being locked in now, on a first-come basis. January
-                dates will be posted shortly.
+                October through January is being locked in now, on a first-come basis.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>

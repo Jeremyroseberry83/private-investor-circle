@@ -73,10 +73,11 @@ module.exports = {
   //                     on the calendar on purpose: a month that is spoken
   //                     for is evidence, and it dates the page for a reader.
   //
-  // `city` names the settled city on a booked date and the region on an open
-  // one, because the city inside a region is chosen with the firm. 'Your city'
-  // means the date is not tied to a region at all. REGION_NOTE in
-  // DatesPage.jsx explains both under the calendar.
+  // A month's `cities` are the cities every one of its openings can be hosted
+  // in, stated once above the list. An opening only carries its own `city`
+  // when it differs — a settled city on a booked date, or a fixed location
+  // like the Cayman window. Repeating the same three cities on every row is
+  // what a month-level field exists to avoid.
   //
   // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
   // CONFIDENTIAL - confirm you want these public before a deploy. Edit this
@@ -109,31 +110,39 @@ module.exports = {
       label: 'November',
       year: 2026,
       month: 11,
+      cities: 'Palm Beach · Miami · Beverly Hills · Las Vegas',
       openings: [
         { days: [2, 3, 4, 5], city: 'Cayman Islands', status: 'open' },
-        { days: [10], city: 'South Florida', status: 'open' },
-        { days: [11], city: 'South Florida', status: 'open' },
-        { days: [16], city: 'Your city', status: 'open' },
-        { days: [17], city: 'Your city', status: 'open' }
+        { days: [10], status: 'open' },
+        { days: [11], status: 'open' },
+        { days: [16], status: 'open' },
+        { days: [17], status: 'open' }
       ]
     },
     {
       label: 'December',
       year: 2026,
       month: 12,
+      cities: 'Palm Beach · Miami · Beverly Hills',
       openings: [
-        { days: [1], city: 'Your city', status: 'open' },
-        { days: [2], city: 'Your city', status: 'open' },
-        { days: [8, 9, 10], city: 'Your city', status: 'open' },
-        { days: [13, 14, 15, 16, 17], city: 'Your city', status: 'open' }
+        { days: [1], status: 'open' },
+        { days: [2], status: 'open' },
+        { days: [8, 9, 10], status: 'open' },
+        { days: [13, 14, 15, 16, 17], status: 'open' }
       ]
     },
     {
       label: 'January',
       year: 2027,
       month: 1,
-      openings: [],
-      note: 'Dates will be posted shortly.'
+      cities: 'Palm Beach · Miami · Beverly Hills',
+      openings: [
+        { days: [6], status: 'open' },
+        { days: [7], status: 'open' },
+        { days: [12, 13, 14], status: 'open' },
+        { days: [19, 20, 21], status: 'open' },
+        { days: [26, 27, 28], status: 'open' }
+      ]
     }
   ],
 
