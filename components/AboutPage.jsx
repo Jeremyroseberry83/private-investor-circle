@@ -170,9 +170,9 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               two columns sit at roughly equal height. Keep them that way
               if either is edited.
 
-              Jeremy's website link points at the Netlify deploy until
-              jeremyroseberry.com resolves; the label still reads as the
-              domain, so only the href changes when DNS is live. */}
+              Person still takes `website` and `websiteLabel`; nobody passes
+              them at the moment. Jeremy's personal site comes off the page
+              until he wants it back — pass the pair again to restore it. */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-14">
             <Person
               name="Ran Gimeno"
@@ -195,8 +195,6 @@ export default function AboutPage({ onContactClick, onNavigate }) {
               photo="/images/team/jeremy.jpg"
               objectPosition="center 6%"
               linkedin="https://www.linkedin.com/in/jeremy-roseberry-8264891a1/"
-              website="https://jeremyroseberrycom.netlify.app/"
-              websiteLabel="JeremyRoseberry.com"
               accent={SECONDARY_DEEP}
               bio={[
                 'Jeremy brings nearly two decades of experience across private markets, real assets, and capital formation. Rooted in Palm Beach County — where he has invested and operated across real assets for decades — he has built his career at the intersection of relationships, market depth, and global reach.',
