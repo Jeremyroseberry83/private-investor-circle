@@ -931,7 +931,13 @@ export function DisplayHeading({ eyebrow, light, bold, tone = 'primary', align =
       <h2
         style={{
           color: ink,
-          fontSize: 'clamp(2.1rem, 4.6vw, 3.7rem)',
+          // Two separate fixes in one value. 3.7rem was set against a
+          // full-width measure; this heading lives in a half-width column,
+          // where it left about fifteen characters a line and broke the bold
+          // line in two — hence 3.1rem. And the min() keeps it scaling on a
+          // phone narrower than ~420px, where a plain clamp floor would hold
+          // 2.1rem against a column that has kept shrinking.
+          fontSize: 'min(8vw, clamp(2.1rem, 4.6vw, 3.1rem))',
           lineHeight: 1.04,
           letterSpacing: '-0.035em',
           marginBottom: 34

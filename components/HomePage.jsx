@@ -207,8 +207,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
           <Reveal>
             <DisplayHeading
               eyebrow="What we do"
-              light={"The relational introduction\u00A0is"}
-              bold="the whole asset."
+              light={"The warm relational introduction\u00A0is"}
+              bold="how we do business."
               tone="secondary"
             />
           </Reveal>
