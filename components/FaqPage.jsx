@@ -76,6 +76,10 @@ const GROUPS = [
       {
         q: 'What questions do you ask invitees?',
         a: 'Everyone answers the same set when they register, which is how we know who is actually in the room before the day. On top of these you tailor three to five questions of your own — they sharpen the curation beforehand and hand you real context on each guest for your follow-up.',
+        // Mirrors the live Luma registration form, minus name, email and
+        // mobile — those are the fields Luma collects itself, so listing
+        // them here would say nothing. Phrasing is tidied for reading; the
+        // form itself asks the same things.
         list: [
           'What company do you work for?',
           'What is your job title?',
@@ -84,9 +88,13 @@ const GROUPS = [
           'What city and state are you based out of?',
           'What are you hoping to get out of these events?',
           'What is your LinkedIn profile?',
+          'Are you an accredited or qualified investor?',
           'Approximate assets you advise or manage (AUM)?',
-          'Do you currently allocate to alternatives or private investments?',
-          'Are you an accredited investor?'
+          'Which sectors do you allocate to?',
+          'How do you allocate?',
+          'Have you ever allocated into a fund?',
+          'Do you currently allocate to private credit or alternative strategies?',
+          'Typical allocation for a fund like this?'
         ]
       },
       {
