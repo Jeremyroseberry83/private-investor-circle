@@ -98,11 +98,11 @@ const GROUPS = [
         ]
       },
       {
-        q: 'Where did your list come from?',
+        q: 'Where does your invite list come from?',
         a: 'Relationships built across two careers in capital markets — people Ran and Jeremy have advised, sat opposite at a table, or been introduced to by someone they trust. It was not purchased, scraped, or licensed from anyone.'
       },
       {
-        q: 'Do you sell your list?',
+        q: 'Do you sell your invite list?',
         a: 'No — and we never will. The list is the practice. The moment it is for sale it stops being worth anything to the people on it, and they are the reason the gatherings work.'
       }
     ]
