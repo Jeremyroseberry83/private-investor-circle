@@ -46,7 +46,7 @@ const GROUPS = [
       },
       {
         q: 'Who pays for the venue?',
-        a: 'Either of us — it is negotiable, and we will structure it whichever way suits you. What is worth knowing is that we can usually secure a room for less than a firm would pay approaching it directly, through private memberships and standing relationships with the venues we host in. We pass that rate through rather than marking it up. Either way we arrange the venue, catering and production ourselves: you should be talking to guests on the day, not managing vendors.'
+        a: 'Either the presenting firm or us as hosts — it is negotiable between the two of us, and we will structure it whichever way suits the firm. Invited guests are never asked to contribute: there is no ticket and no bill at the table. What is worth knowing is that we can usually secure a room for less than a firm would pay approaching it directly, through private memberships and standing relationships with the venues we host in. We pass that rate through rather than marking it up. Either way we arrange the venue, catering and production ourselves, so the presenting firm is talking to guests on the day rather than managing vendors.'
       }
     ]
   },
