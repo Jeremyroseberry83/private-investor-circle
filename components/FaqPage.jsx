@@ -37,10 +37,6 @@ const GROUPS = [
     heading: 'Event economics',
     items: [
       {
-        q: 'What’s your business model?',
-        a: 'We charge a flat fee to host the gathering. That is the whole model. We are not paid on whether you raise, so our incentive is that the room is right and you want a second one — not that a deal closes.'
-      },
-      {
         q: 'Do you participate in our capital raise?',
         a: 'No. We take no success fee, no promote and no carried interest. Private Investor Circle is not a registered broker-dealer or investment adviser — we host the room and make the introductions, and anything that follows is settled directly between you and the investor, under your own counsel. Ran Gimeno is separately a registered representative of Nobles & Richards, a broker-dealer; that is a distinct capacity and not the basis on which we host.'
       },
