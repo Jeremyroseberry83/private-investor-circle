@@ -38,7 +38,7 @@ module.exports = {
   // Nashville belongs on the Events page, not here.
   cities: [
     'Palm Beach', 'Miami', 'Fort Lauderdale', 'Beverly Hills', 'New York',
-    'Chicago', 'Dallas', 'Las Vegas', 'Boston', 'Newport, RI'
+    'Chicago', 'Dallas', 'Las Vegas', 'Salt Lake City', 'Boston', 'Newport, RI'
   ],
 
   colors: {

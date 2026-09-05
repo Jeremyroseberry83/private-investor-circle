@@ -213,8 +213,10 @@ export default function EventsPage({ onNavigate, onContactClick }) {
                 className="text-white font-bold mb-6"
                 style={{ fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)', lineHeight: 1.1, letterSpacing: '-0.025em' }}
               >
-                One firm. One room.{' '}
-                <span style={{ color: SECONDARY, fontStyle: 'italic' }}>Everyone&rsquo;s attention.</span>
+                <span style={{ display: 'block' }}>One firm. One room.</span>
+                <span style={{ display: 'block', color: SECONDARY, fontStyle: 'italic' }}>
+                  Everyone&rsquo;s attention.
+                </span>
               </h2>
             </div>
           </Reveal>
