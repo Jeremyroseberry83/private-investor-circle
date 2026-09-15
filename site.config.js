@@ -102,8 +102,11 @@ module.exports = {
       openings: [
         { days: [1], status: 'open' },
         { days: [2], status: 'open' },
+        { days: [5, 6, 7], city: 'Salt Lake City', status: 'booked' },
+        { days: [8], city: 'Boston', status: 'booked' },
         { days: [9], status: 'open' },
-        { days: [13, 14, 15, 16], status: 'open' },
+        { days: [13], city: 'Salt Lake City', status: 'booked' },
+        { days: [14, 15, 16], status: 'open' },
         { days: [21], status: 'open' },
         { days: [22], status: 'open' },
         { days: [26, 27, 28, 29, 30], status: 'open' }
@@ -115,7 +118,8 @@ module.exports = {
       month: 11,
       cities: 'Palm Beach · Miami · Beverly Hills · Las Vegas',
       openings: [
-        { days: [2, 3, 4, 5], city: 'Cayman Islands', status: 'open' },
+        { days: [2, 3, 4], city: 'Cayman Islands', status: 'open' },
+        { days: [5], city: 'Palm Beach', status: 'booked' },
         { days: [10], status: 'open' },
         { days: [11], status: 'open' },
         { days: [16], status: 'open' },
