@@ -30,6 +30,15 @@ const GREY = '#A6A6AB';
 const LINE = 'rgba(235,235,237,0.10)';
 const LINE_SOFT = 'rgba(235,235,237,0.05)';
 
+// The sponsorship cards sit light on the dark ground, which means the brand
+// gold cannot come with them — #CCB273 on cream is 1.8:1. GOLD_DEEP is the
+// same hue carried down to 5.4:1 so the accent survives the flip.
+const CARD_LIGHT = '#F4F1E8';
+const ON_LIGHT = '#0F1C29';        // 15.3:1 on the cream
+const ON_LIGHT_MUTED = '#4A5763';  // 6.6:1
+const GOLD_DEEP = '#7A5E22';       // 5.4:1
+const LINE_LIGHT = 'rgba(15,28,41,0.14)';
+
 const SANS =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
@@ -44,7 +53,11 @@ const CITIES = [
   { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' }
 ];
 
-const FEATURED = ['Seco Bio', 'Phast', 'BOL'];
+const FEATURED = [
+  { name: 'Seco Bio', domain: 'seco.bio', url: 'https://seco.bio' },
+  { name: 'Phast', domain: 'phast.ai', url: 'https://phast.ai/' },
+  { name: 'BOL', domain: 'bolvinwealth.com', url: 'https://www.bolvinwealth.com/' }
+];
 
 const STAGES = [
   {
@@ -188,6 +201,45 @@ function CityCard({ item, delay }) {
   );
 }
 
+/** A featured company: the name, its domain, and a link out to it. */
+function CompanyCard({ item }) {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <a
+      href={item.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="flex flex-col items-center justify-center text-center p-10 sm:p-12"
+      style={{
+        backgroundColor: INK_CARD,
+        border: `1px solid ${hover ? GOLD : LINE}`,
+        borderBottom: `3px solid ${GOLD}`,
+        transform: hover ? 'translateY(-3px)' : 'translateY(0)',
+        transition: 'transform 300ms cubic-bezier(0.22,1,0.36,1), border-color 260ms ease'
+      }}
+    >
+      <span style={display('min(8vw, clamp(1.3rem, 2.4vw, 1.9rem))')}>{item.name}</span>
+      <span
+        className="inline-flex items-center gap-1.5 mt-3"
+        style={{
+          color: hover ? GOLD : GREY,
+          fontFamily: SANS,
+          fontSize: 11,
+          fontWeight: 700,
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          transition: 'color 240ms ease'
+        }}
+      >
+        {item.domain}
+        <ArrowUpRight size={13} />
+      </span>
+    </a>
+  );
+}
+
 function GoldButton({ href, children, download, external }) {
   return (
     <a
@@ -320,29 +372,30 @@ export default function FourIrRoadshow() {
         <div className="max-w-6xl mx-auto">
           <Label className="mb-6">Sponsorship</Label>
           <h2 style={display('min(9vw, clamp(1.9rem, 4vw, 3.1rem))')}>
-            <span style={{ display: 'block' }}>Sponsor the</span>
-            <span style={{ display: 'block', color: GOLD }}>new industrial age.</span>
+            <span style={{ display: 'block' }}>Your firm, in front of</span>
+            <span style={{ display: 'block', color: GOLD }}>the capital in the room.</span>
           </h2>
-          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
-            Four cities. Five investor gatherings. A complete marketing and sponsorship suite —
-            we run all of it for you.
+          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '60ch' }}>
+            Family offices, founders and institutional allocators, in four cities across five
+            evenings. We market you to them before the night, put you in front of them on it, and
+            hand you the room afterwards.
           </p>
 
           {/* Premier tier gets the gold frame; it is the one being sold. */}
           <div
             className="mt-12 p-7 sm:p-10"
-            style={{ backgroundColor: INK_CARD, border: `1px solid ${GOLD}`, borderTop: `4px solid ${GOLD}` }}
+            style={{ backgroundColor: CARD_LIGHT, borderTop: `5px solid ${GOLD}` }}
           >
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
-              <h3 style={display('min(7vw, clamp(1.3rem, 2.4vw, 1.85rem))')}>
+              <h3 style={{ ...display('min(7vw, clamp(1.3rem, 2.4vw, 1.85rem))'), color: ON_LIGHT }}>
                 Premier partnership sponsor
               </h3>
-              <Label>Exclusive · Limited to 5 slots · 2 remaining</Label>
+              <Label color={GOLD_DEEP}>Exclusive · Limited to 5 slots · 2 remaining</Label>
             </div>
 
-            <p className="mt-5" style={{ color: GOLD, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
+            <p className="mt-5" style={{ color: GOLD_DEEP, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
               $20K
-              <span style={{ color: GREY, fontWeight: 400 }}> · All 4 cities · All 5 investor gatherings</span>
+              <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · All 4 cities · All 5 investor gatherings</span>
             </p>
 
             <div className="mt-8 grid md:grid-cols-3 gap-7 md:gap-9">
@@ -351,9 +404,9 @@ export default function FourIrRoadshow() {
                 ['We do', 'Everything for you — marketing, logistics, introductions, and the post-event email to every attendee.'],
                 ['Result', 'You become part of the frontier capital circle leading the new industrial age.']
               ].map(([k, v]) => (
-                <div key={k} style={{ borderTop: `1px solid ${LINE}`, paddingTop: 16 }}>
-                  <Label color={GREY}>{k}</Label>
-                  <p className="mt-2.5" style={{ color: CREAM, fontSize: 15, lineHeight: 1.7 }}>{v}</p>
+                <div key={k} style={{ borderTop: `1px solid ${LINE_LIGHT}`, paddingTop: 16 }}>
+                  <Label color={GOLD_DEEP}>{k}</Label>
+                  <p className="mt-2.5" style={{ color: ON_LIGHT_MUTED, fontSize: 15, lineHeight: 1.7 }}>{v}</p>
                 </div>
               ))}
             </div>
@@ -362,14 +415,14 @@ export default function FourIrRoadshow() {
           {/* BEFORE | DURING | AFTER */}
           <div className="mt-6 grid md:grid-cols-3 gap-5 lg:gap-6">
             {STAGES.map((s) => (
-              <div key={s.stage} className="p-7" style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}` }}>
-                <Label>{s.stage}</Label>
-                <p className="mt-3" style={{ color: CREAM, fontSize: 15.5, fontWeight: 600 }}>{s.lead}</p>
+              <div key={s.stage} className="p-7" style={{ backgroundColor: CARD_LIGHT, borderTop: `3px solid ${GOLD}` }}>
+                <Label color={GOLD_DEEP}>{s.stage}</Label>
+                <p className="mt-3" style={{ color: ON_LIGHT, fontSize: 15.5, fontWeight: 700 }}>{s.lead}</p>
                 <ul className="mt-4">
                   {s.points.map((p) => (
                     <li key={p} className="flex gap-3" style={{ padding: '7px 0' }}>
-                      <span aria-hidden="true" style={{ color: GOLD, flexShrink: 0 }}>·</span>
-                      <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.6 }}>{p}</span>
+                      <span aria-hidden="true" style={{ color: GOLD_DEEP, flexShrink: 0 }}>·</span>
+                      <span style={{ color: ON_LIGHT_MUTED, fontSize: 14.5, lineHeight: 1.6 }}>{p}</span>
                     </li>
                   ))}
                 </ul>
@@ -422,16 +475,8 @@ export default function FourIrRoadshow() {
           </p>
 
           <div className="mt-12 grid sm:grid-cols-3 gap-5 lg:gap-6">
-            {FEATURED.map((name) => (
-              <div
-                key={name}
-                className="flex items-center justify-center p-10 sm:p-12"
-                style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}`, borderBottom: `3px solid ${GOLD}` }}
-              >
-                <span style={{ ...display('min(8vw, clamp(1.3rem, 2.4vw, 1.9rem))'), textAlign: 'center' }}>
-                  {name}
-                </span>
-              </div>
+            {FEATURED.map((c) => (
+              <CompanyCard key={c.url} item={c} />
             ))}
           </div>
         </div>
