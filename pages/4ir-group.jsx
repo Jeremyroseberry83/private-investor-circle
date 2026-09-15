@@ -1,84 +1,75 @@
 import React from 'react';
 import Head from 'next/head';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Download } from 'lucide-react';
 import { useInView } from '../components/ui';
 import { company } from '../site.config';
 
 /**
- * 4IR Group roadshow — an unlisted landing page.
+ * 4IR Group roadshow — an unlisted landing page for companies and sponsors.
  *
  * Deliberately a real route rather than another case in index.jsx's page
- * switch: the whole point is a URL that can be sent to a company or a
- * sponsor, and the switch has no URLs.
+ * switch: the whole point is a URL that can be sent to a partner, and the
+ * switch has no URLs. Unlisted, not secret — nothing links here and the
+ * robots meta keeps it out of search, but the repo is public and the Luma
+ * links are live. The Luma events are approval-required, which is what
+ * actually keeps the rooms curated.
  *
- * Unlisted, not secret. Nothing links to it and the robots meta keeps it out
- * of search — but the repo is public and the Luma links are live, so treat it
- * as shareable-on-purpose rather than confidential. The Luma events are
- * approval-required, which is what actually keeps the rooms curated.
- *
- * It also deliberately does NOT use the site palette. This page is read as
- * 4IR Group's, so it borrows their language — near-black ground under a faint
- * grid, oversized uppercase grotesque in cream, grey body copy — and carries
- * Private Investor Circle only as the convener. Nothing here imports the
- * champagne/navy tokens, and the display serif is overridden, because
- * globals.css puts Playfair on every h1 and h2.
+ * Palette and copy both come from 4IR's own sponsor one-pager, so the page
+ * reads as theirs rather than ours: their near-navy ground, their gold, their
+ * tier language. Private Investor Circle appears only as the convener.
+ * Nothing here imports the site's champagne/navy tokens, and every heading
+ * names the sans stack because globals.css puts Playfair on h1 and h2.
  */
 
-const INK = '#111820';       // near-black ground
-const INK_LIFT = '#161E28';  // card / band surface
-const CREAM = '#F2EFE6';     // headline + primary text
-const GREY = '#939BA5';      // body copy
-const LINE = 'rgba(242,239,230,0.09)';
-const LINE_SOFT = 'rgba(242,239,230,0.05)';
+const INK = '#0F1C29';       // ground — sampled from the one-pager
+const INK_LIFT = '#142433';  // band surface
+const INK_CARD = '#1F2E40';  // card surface
+const GOLD = '#CCB273';      // their accent, straight off the PDF
+const CREAM = '#EBEBED';
+const GREY = '#A6A6AB';
+const LINE = 'rgba(235,235,237,0.10)';
+const LINE_SOFT = 'rgba(235,235,237,0.05)';
 
-// globals.css sets a Playfair display face on h1/h2. 4IR's headlines are a
-// heavy grotesque, so every heading here names the sans stack explicitly.
 const SANS =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
 const HOST_URL = 'https://4irg.com/?utm_source=privateinvestorcircle';
+const PARTNER_EMAIL = 'partnerships@4irgroup.com';
+const ONE_PAGER = '/4ir-group-sponsorship.pdf';
 
-// Dates and times straight off the Luma pages, in chronological order — a
-// reader scanning for the next city should not have to sort them.
 const CITIES = [
+  { city: 'Boston', date: 'Oct 8', day: 'Thursday, October 8', time: '6:00 – 9:00 PM', image: '/images/4ir/boston.jpg', url: 'https://luma.com/4IRGroupBoston' },
+  { city: 'Salt Lake City', date: 'Oct 13', day: 'Tuesday, October 13', time: '4:00 – 7:00 PM MDT', image: '/images/4ir/salt-lake.jpg', url: 'https://luma.com/saltlake' },
+  { city: 'Beverly Hills', date: 'Oct 27', day: 'Tuesday, October 27', time: '5:00 – 8:00 PM PDT', image: '/images/4ir/beverly-hills.jpg', url: 'https://luma.com/bevhills' },
+  { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' }
+];
+
+const FEATURED = ['Seco Bio', 'Phast', 'BOL'];
+
+const STAGES = [
   {
-    city: 'Boston',
-    state: 'Boston, MA',
-    day: 'Thursday, October 8',
-    time: '6:00 – 9:00 PM',
-    url: 'https://luma.com/4IRGroupBoston'
+    stage: 'Before event',
+    lead: 'Marketing on your behalf',
+    points: ['Branded invites', 'Targeted emails', 'Custom messaging', 'Landing page link']
   },
   {
-    city: 'Salt Lake City',
-    state: 'Salt Lake City, UT',
-    day: 'Tuesday, October 13',
-    time: '4:00 – 7:00 PM MDT',
-    url: 'https://luma.com/saltlake'
+    stage: 'During event',
+    lead: 'Premium visibility',
+    points: ['Speaking slot + CTA', 'Clear action link', 'Branded table and signage', 'Founder introductions']
   },
   {
-    city: 'Beverly Hills',
-    state: 'Beverly Hills, CA',
-    day: 'Tuesday, October 27',
-    time: '5:00 – 8:00 PM PDT',
-    url: 'https://luma.com/bevhills'
-  },
-  {
-    city: 'Palm Beach',
-    state: 'Palm Beach, FL',
-    day: 'Thursday, November 5',
-    time: '6:00 – 9:00 PM',
-    url: 'https://luma.com/palmbeachworthave'
+    stage: 'After event',
+    lead: 'Leads plus follow-up',
+    points: ['Email to all attendees', 'Complete contact list', 'Key questions answered', 'Branded follow-up']
   }
 ];
 
-const CONVERSATION = [
-  'How venture hands off to private capital',
-  'How sophisticated investors are underwriting robotics and physical AI',
-  'Which opportunities are worth watching before the market catches on',
-  'Where the next generation of frontier companies are being built'
+const TIERS = [
+  { name: 'Gold', price: '$15K / city', detail: 'Logo, two speaking slots, founder introductions, branded materials and the attendee list.' },
+  { name: 'Silver', price: '$8K / city', detail: 'Logo, one speaking slot, three founder introductions and the attendee list.' },
+  { name: 'Bronze', price: '$5K / city', detail: 'Logo on materials, networking and two introductions.' }
 ];
 
-/** The faint graph-paper wash 4IR lay over their dark sections. */
 const gridWash = {
   position: 'absolute',
   inset: 0,
@@ -87,27 +78,37 @@ const gridWash = {
   backgroundSize: 'clamp(70px, 11vw, 150px) clamp(70px, 11vw, 150px)'
 };
 
+const display = (size) => ({
+  fontFamily: SANS,
+  color: CREAM,
+  fontSize: size,
+  fontWeight: 800,
+  textTransform: 'uppercase',
+  letterSpacing: '-0.025em',
+  lineHeight: 1.02
+});
+
 /** Set in type rather than an image — swap in the real asset when we have it. */
-function Wordmark() {
+function Wordmark({ size = 17 }) {
   return (
     <span
       className="inline-flex items-baseline"
-      style={{ fontFamily: SANS, color: CREAM, letterSpacing: '0.01em', whiteSpace: 'nowrap' }}
+      style={{ fontFamily: SANS, color: CREAM, whiteSpace: 'nowrap' }}
     >
-      <span style={{ fontWeight: 400, fontSize: 17 }}>4</span>
-      <span aria-hidden="true" style={{ opacity: 0.4, margin: '0 5px', fontWeight: 300, fontSize: 17 }}>|</span>
-      <span style={{ fontWeight: 800, fontSize: 17, letterSpacing: '-0.01em' }}>IR</span>
-      <span style={{ fontWeight: 300, fontSize: 17, marginLeft: 5, letterSpacing: '0.02em' }}>GROUP</span>
+      <span style={{ fontWeight: 400, fontSize: size }}>4</span>
+      <span aria-hidden="true" style={{ opacity: 0.4, margin: '0 5px', fontWeight: 300, fontSize: size }}>|</span>
+      <span style={{ fontWeight: 800, fontSize: size, letterSpacing: '-0.01em' }}>IR</span>
+      <span style={{ fontWeight: 300, fontSize: size, marginLeft: 5, letterSpacing: '0.02em' }}>GROUP</span>
     </span>
   );
 }
 
-function Label({ children, className = '' }) {
+function Label({ children, color = GOLD, className = '' }) {
   return (
     <p
       className={className}
       style={{
-        color: GREY,
+        color,
         fontFamily: SANS,
         fontSize: 11,
         fontWeight: 700,
@@ -121,8 +122,9 @@ function Label({ children, className = '' }) {
   );
 }
 
+/** A Luma cover, its city and date, linking to the invitation. */
 function CityCard({ item, delay }) {
-  const [ref, shown] = useInView(0.15);
+  const [ref, shown] = useInView(0.12);
   const [hover, setHover] = React.useState(false);
 
   return (
@@ -133,60 +135,100 @@ function CityCard({ item, delay }) {
       rel="noopener noreferrer"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="flex flex-col p-7 sm:p-8"
+      className="block"
       style={{
-        backgroundColor: hover ? '#1B2531' : INK_LIFT,
-        border: `1px solid ${hover ? 'rgba(242,239,230,0.24)' : LINE}`,
+        border: `1px solid ${hover ? GOLD : LINE}`,
+        backgroundColor: INK_CARD,
         opacity: shown ? 1 : 0,
-        transform: shown ? 'translateY(0)' : 'translateY(18px)',
+        transform: shown ? `translateY(${hover ? -4 : 0}px)` : 'translateY(20px)',
         transition:
-          `opacity 640ms cubic-bezier(0.22,1,0.36,1) ${delay}ms,` +
-          ` transform 640ms cubic-bezier(0.22,1,0.36,1) ${delay}ms,` +
-          ' background-color 260ms ease, border-color 260ms ease'
+          `opacity 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms,` +
+          ` transform 320ms cubic-bezier(0.22,1,0.36,1), border-color 260ms ease`
       }}
     >
-      <Label>{item.day}</Label>
+      <div style={{ aspectRatio: '1 / 1', overflow: 'hidden', backgroundColor: INK_LIFT }}>
+        <img
+          src={item.image}
+          alt={`${item.city} — 4IR Group Investor Evening`}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          style={{
+            display: 'block',
+            transform: hover ? 'scale(1.04)' : 'scale(1)',
+            transition: 'transform 600ms cubic-bezier(0.22,1,0.36,1)'
+          }}
+        />
+      </div>
 
-      <h3
-        className="mt-3"
-        style={{
-          fontFamily: SANS,
-          color: CREAM,
-          fontSize: 'min(7vw, clamp(1.35rem, 2.4vw, 1.9rem))',
-          fontWeight: 800,
-          textTransform: 'uppercase',
-          letterSpacing: '-0.015em',
-          lineHeight: 1.02
-        }}
-      >
-        {item.city}
-      </h3>
+      <div className="p-5 sm:p-6">
+        <Label>{item.day}</Label>
+        <h3 className="mt-2.5" style={display('min(6.5vw, clamp(1.2rem, 2vw, 1.55rem))')}>
+          {item.city}
+        </h3>
+        <p className="mt-2" style={{ color: GREY, fontSize: 13.5, lineHeight: 1.6 }}>
+          {item.time}
+        </p>
+        <span
+          className="inline-flex items-center gap-1.5 mt-5"
+          style={{
+            color: hover ? GOLD : CREAM,
+            fontFamily: SANS,
+            fontSize: 10.5,
+            fontWeight: 700,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            transition: 'color 240ms ease'
+          }}
+        >
+          View the invitation
+          <ArrowUpRight size={13} />
+        </span>
+      </div>
+    </a>
+  );
+}
 
-      <p className="mt-3" style={{ color: GREY, fontSize: 14.5, lineHeight: 1.6 }}>
-        {item.state}
-        <span aria-hidden="true" style={{ opacity: 0.45 }}> · </span>
-        {item.time}
-      </p>
+function GoldButton({ href, children, download, external }) {
+  return (
+    <a
+      href={href}
+      {...(download ? { download: '' } : {})}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5"
+      style={{
+        backgroundColor: GOLD,
+        color: INK,
+        fontFamily: SANS,
+        fontSize: 12,
+        fontWeight: 800,
+        letterSpacing: '0.14em',
+        textTransform: 'uppercase',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      {children}
+    </a>
+  );
+}
 
-      <span
-        className="inline-flex items-center gap-1.5 pt-7"
-        style={{
-          marginTop: 'auto',
-          alignSelf: 'flex-start',
-          color: CREAM,
-          fontFamily: SANS,
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: '0.16em',
-          textTransform: 'uppercase',
-          borderBottom: `1px solid ${hover ? CREAM : 'rgba(242,239,230,0.25)'}`,
-          paddingBottom: 3,
-          transition: 'border-color 240ms ease'
-        }}
-      >
-        View the invitation
-        <ArrowUpRight size={14} />
-      </span>
+function GhostButton({ href, children, external }) {
+  return (
+    <a
+      href={href}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5"
+      style={{
+        border: `1px solid rgba(235,235,237,0.32)`,
+        color: CREAM,
+        fontFamily: SANS,
+        fontSize: 12,
+        fontWeight: 700,
+        letterSpacing: '0.14em',
+        textTransform: 'uppercase',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      {children}
     </a>
   );
 }
@@ -198,167 +240,198 @@ export default function FourIrRoadshow() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>4IR Group — Investor Evenings</title>
         {/* Unlisted: nothing on the site links here, so this meta is the only
-            thing standing between the page and a crawler that finds the URL
-            somewhere else. */}
+            thing standing between the page and a crawler that finds the URL. */}
         <meta name="robots" content="noindex, nofollow" />
         <meta name="theme-color" content={INK} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </Head>
 
-      {/* Thin header, mark left, convener right — 4IR's own bar reads this way. */}
+      {/* A gold hairline across the top, the way the one-pager opens. */}
+      <div aria-hidden="true" style={{ height: 4, backgroundColor: GOLD }} />
+
       <header className="px-6" style={{ borderBottom: `1px solid ${LINE}`, backgroundColor: INK }}>
-        <div className="max-w-6xl mx-auto py-5 flex items-center justify-between gap-4">
+        <div className="max-w-6xl mx-auto py-4 flex items-center justify-between gap-4">
           <a href={HOST_URL} target="_blank" rel="noopener noreferrer">
             <Wordmark />
           </a>
-          <a href="/" style={{ textDecoration: 'none' }}>
-            <span
-              style={{
-                color: GREY,
-                fontFamily: SANS,
-                fontSize: 'clamp(8px, 1.8vw, 10px)',
-                fontWeight: 600,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Convened by {company.shortName}
-            </span>
-          </a>
+
+          <div className="flex items-center gap-6 sm:gap-8">
+            <nav className="hidden md:flex items-center gap-8">
+              {[['Cities', '#cities'], ['Sponsorship', '#sponsorship'], ['Companies', '#companies']].map(([name, href]) => (
+                <a
+                  key={href}
+                  href={href}
+                  style={{
+                    color: GREY,
+                    fontFamily: SANS,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: '0.16em',
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  {name}
+                </a>
+              ))}
+            </nav>
+            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — partnership')}`}>
+              Become a partner
+            </GoldButton>
+          </div>
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="relative px-6" style={{ backgroundColor: INK, overflow: 'hidden' }}>
+      {/* HERO — the four covers are the hero. Everything above them is a
+          tagline and a line of context, on purpose: the pictures and the
+          companies are the point, not a headline about us. */}
+      <section id="cities" className="relative px-6" style={{ backgroundColor: INK, overflow: 'hidden' }}>
         <div aria-hidden="true" style={gridWash} />
 
-        <div className="relative max-w-6xl mx-auto" style={{ paddingTop: 'clamp(4.5rem, 11vw, 9rem)', paddingBottom: 'clamp(4rem, 9vw, 7rem)' }}>
-          <Label>
-            Hosted by 4IR Group{' '}
-            <span aria-hidden="true" style={{ opacity: 0.4 }}>|</span>{' '}
-            <a href={HOST_URL} target="_blank" rel="noopener noreferrer" style={{ color: CREAM }}>
-              4irgroup.com
-            </a>
-          </Label>
-
-          <h1
-            className="mt-7"
-            style={{
-              fontFamily: SANS,
-              color: CREAM,
-              fontSize: 'min(13vw, clamp(2.5rem, 7.4vw, 5.6rem))',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '-0.028em',
-              lineHeight: 0.96
-            }}
-          >
-            <span style={{ display: 'block' }}>Investor</span>
-            <span style={{ display: 'block' }}>Evenings.</span>
-          </h1>
-
+        <div
+          className="relative max-w-6xl mx-auto text-center"
+          style={{ paddingTop: 'clamp(3.5rem, 8vw, 6rem)', paddingBottom: 'clamp(3rem, 6vw, 4.5rem)' }}
+        >
+          <Label>4 Cities · 5 Investor Gatherings</Label>
           <p
-            className="mt-8"
-            style={{ color: GREY, fontSize: 'clamp(15px, 1.7vw, 18px)', lineHeight: 1.7, maxWidth: '44ch' }}
+            className="mt-6 mx-auto"
+            style={{ color: CREAM, fontSize: 'clamp(16px, 2.1vw, 22px)', lineHeight: 1.6, maxWidth: '40ch', fontWeight: 300 }}
           >
-            Four private evenings with the people deploying capital across deep tech and physical
-            AI.
+            Private capital for the companies, infrastructure and ecosystems transforming physical
+            industry.
+          </p>
+          <div aria-hidden="true" style={{ width: 54, height: 2, backgroundColor: GOLD, margin: '30px auto 0' }} />
+        </div>
+
+        <div className="relative max-w-6xl mx-auto" style={{ paddingBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+            {CITIES.map((item, i) => (
+              <CityCard key={item.url} item={item} delay={i * 90} />
+            ))}
+          </div>
+
+          <p className="mt-8 text-center mx-auto" style={{ color: GREY, fontSize: 14.5, lineHeight: 1.75, maxWidth: '62ch' }}>
+            Each evening is private, and registration is subject to host approval.
+          </p>
+        </div>
+      </section>
+
+      {/* SPONSORSHIP */}
+      <section id="sponsorship" className="px-6 py-16 md:py-24" style={{ backgroundColor: INK_LIFT, borderTop: `1px solid ${LINE}` }}>
+        <div className="max-w-6xl mx-auto">
+          <Label className="mb-6">Sponsorship</Label>
+          <h2 style={display('min(9vw, clamp(1.9rem, 4vw, 3.1rem))')}>
+            <span style={{ display: 'block' }}>Sponsor the</span>
+            <span style={{ display: 'block', color: GOLD }}>new industrial age.</span>
+          </h2>
+          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
+            Four cities. Five investor gatherings. A complete marketing and sponsorship suite —
+            we run all of it for you.
           </p>
 
-          <div className="mt-10" style={{ borderTop: `1px solid ${LINE}`, paddingTop: 22 }}>
-            <Label>
-              Sponsored by Finstrat{' '}
-              <span aria-hidden="true" style={{ opacity: 0.4 }}>|</span> Nixon Peabody
-            </Label>
-          </div>
-        </div>
-      </section>
+          {/* Premier tier gets the gold frame; it is the one being sold. */}
+          <div
+            className="mt-12 p-7 sm:p-10"
+            style={{ backgroundColor: INK_CARD, border: `1px solid ${GOLD}`, borderTop: `4px solid ${GOLD}` }}
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+              <h3 style={display('min(7vw, clamp(1.3rem, 2.4vw, 1.85rem))')}>
+                Premier partnership sponsor
+              </h3>
+              <Label>Exclusive · Limited to 5 slots · 2 remaining</Label>
+            </div>
 
-      {/* THE GATHERING */}
-      <section className="px-6 py-16 md:py-24" style={{ backgroundColor: INK_LIFT, borderTop: `1px solid ${LINE}` }}>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
-          <div>
-            <Label className="mb-6">The gathering</Label>
-            <h2
-              style={{
-                fontFamily: SANS,
-                color: CREAM,
-                fontSize: 'min(9vw, clamp(1.8rem, 3.6vw, 2.9rem))',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                letterSpacing: '-0.025em',
-                lineHeight: 1.02,
-                textWrap: 'balance'
-              }}
-            >
-              Family offices, founders and institutional allocators.
-            </h2>
-          </div>
-
-          <div>
-            <p style={{ color: GREY, fontSize: 17, lineHeight: 1.8 }}>
-              A private gathering of the decision-makers responsible for deploying capital across
-              deep tech and physical AI. The conversation centers on where capital is actually
-              flowing in the frontier:
+            <p className="mt-5" style={{ color: GOLD, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
+              $20K
+              <span style={{ color: GREY, fontWeight: 400 }}> · All 4 cities · All 5 investor gatherings</span>
             </p>
 
-            <ul className="mt-8" style={{ borderTop: `1px solid ${LINE}` }}>
-              {CONVERSATION.map((line, i) => (
-                <li
-                  key={line}
-                  className="flex gap-5"
-                  style={{ borderBottom: `1px solid ${LINE}`, padding: '17px 0' }}
-                >
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      color: GREY,
-                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                      fontSize: 12,
-                      paddingTop: 4,
-                      flexShrink: 0
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span style={{ color: CREAM, fontSize: 16, lineHeight: 1.65 }}>{line}</span>
-                </li>
+            <div className="mt-8 grid md:grid-cols-3 gap-7 md:gap-9">
+              {[
+                ['You get', 'Pre-event marketing, an event speaking slot with a call to action, the complete attendee list and follow-up, and a branded suite.'],
+                ['We do', 'Everything for you — marketing, logistics, introductions, and the post-event email to every attendee.'],
+                ['Result', 'You become part of the frontier capital circle leading the new industrial age.']
+              ].map(([k, v]) => (
+                <div key={k} style={{ borderTop: `1px solid ${LINE}`, paddingTop: 16 }}>
+                  <Label color={GREY}>{k}</Label>
+                  <p className="mt-2.5" style={{ color: CREAM, fontSize: 15, lineHeight: 1.7 }}>{v}</p>
+                </div>
               ))}
-            </ul>
+            </div>
+          </div>
+
+          {/* BEFORE | DURING | AFTER */}
+          <div className="mt-6 grid md:grid-cols-3 gap-5 lg:gap-6">
+            {STAGES.map((s) => (
+              <div key={s.stage} className="p-7" style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}` }}>
+                <Label>{s.stage}</Label>
+                <p className="mt-3" style={{ color: CREAM, fontSize: 15.5, fontWeight: 600 }}>{s.lead}</p>
+                <ul className="mt-4">
+                  {s.points.map((p) => (
+                    <li key={p} className="flex gap-3" style={{ padding: '7px 0' }}>
+                      <span aria-hidden="true" style={{ color: GOLD, flexShrink: 0 }}>·</span>
+                      <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.6 }}>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Other tiers */}
+          <div className="mt-14">
+            <Label className="mb-6">Other sponsorship options</Label>
+            <div style={{ borderTop: `1px solid ${LINE}` }}>
+              {TIERS.map((t) => (
+                <div
+                  key={t.name}
+                  className="flex flex-wrap items-baseline gap-x-6 gap-y-2"
+                  style={{ borderBottom: `1px solid ${LINE}`, padding: '20px 0' }}
+                >
+                  <span style={{ ...display('clamp(1rem, 1.6vw, 1.15rem)'), minWidth: 110 }}>{t.name}</span>
+                  <span style={{ color: GOLD, fontFamily: SANS, fontSize: 15, fontWeight: 800, minWidth: 120 }}>{t.price}</span>
+                  <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.65, flex: '1 1 260px' }}>{t.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <GoldButton href={ONE_PAGER} download>
+              <Download size={15} />
+              Download the one-pager
+            </GoldButton>
+            <GhostButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — partnership')}`}>
+              {PARTNER_EMAIL}
+            </GhostButton>
           </div>
         </div>
       </section>
 
-      {/* THE ROADSHOW */}
-      <section className="relative px-6 py-16 md:py-24" style={{ backgroundColor: INK, overflow: 'hidden' }}>
+      {/* FEATURED COMPANIES */}
+      <section id="companies" className="relative px-6 py-16 md:py-24" style={{ backgroundColor: INK, overflow: 'hidden' }}>
         <div aria-hidden="true" style={gridWash} />
 
         <div className="relative max-w-6xl mx-auto">
-          <div className="max-w-2xl mb-12">
-            <Label className="mb-6">The roadshow</Label>
-            <h2
-              style={{
-                fontFamily: SANS,
-                color: CREAM,
-                fontSize: 'min(9vw, clamp(1.8rem, 3.6vw, 2.9rem))',
-                fontWeight: 800,
-                textTransform: 'uppercase',
-                letterSpacing: '-0.025em',
-                lineHeight: 1.02
-              }}
-            >
-              Four cities.
-            </h2>
-            <p className="mt-6" style={{ color: GREY, fontSize: 16.5, lineHeight: 1.8 }}>
-              Each evening is private, and registration is subject to host approval. Open an
-              invitation to see the agenda and request a place.
-            </p>
-          </div>
+          <Label className="mb-6">In front of investors</Label>
+          <h2 style={display('min(9vw, clamp(1.9rem, 4vw, 3.1rem))')}>
+            The companies we are bringing.
+          </h2>
+          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
+            Featured across all four cities, in front of family offices, founders and institutional
+            allocators deploying capital into deep tech and physical AI.
+          </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-            {CITIES.map((item, i) => (
-              <CityCard key={item.url} item={item} delay={i * 80} />
+          <div className="mt-12 grid sm:grid-cols-3 gap-5 lg:gap-6">
+            {FEATURED.map((name) => (
+              <div
+                key={name}
+                className="flex items-center justify-center p-10 sm:p-12"
+                style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}`, borderBottom: `3px solid ${GOLD}` }}
+              >
+                <span style={{ ...display('min(8vw, clamp(1.3rem, 2.4vw, 1.9rem))'), textAlign: 'center' }}>
+                  {name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -367,62 +440,21 @@ export default function FourIrRoadshow() {
       {/* CLOSE */}
       <section className="px-6 py-16 md:py-24" style={{ backgroundColor: INK_LIFT, borderTop: `1px solid ${LINE}` }}>
         <div className="max-w-6xl mx-auto">
-          <h2
-            style={{
-              fontFamily: SANS,
-              color: CREAM,
-              fontSize: 'min(10vw, clamp(1.9rem, 4.4vw, 3.4rem))',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '-0.028em',
-              lineHeight: 1.0,
-              maxWidth: '16ch',
-              textWrap: 'balance'
-            }}
-          >
-            Present. Or sponsor a city.
+          <h2 style={{ ...display('min(10vw, clamp(1.9rem, 4.4vw, 3.4rem))'), maxWidth: '18ch', textWrap: 'balance' }}>
+            Become a premier partner.
           </h2>
-          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '54ch' }}>
-            Tell us which city and what you would want the room to take away, and we will come back
-            on what is still open.
+          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '56ch' }}>
+            Only two premier slots remain. Limited partnership positions are reserved for frontier
+            capital leaders.
           </p>
-
-          <div className="mt-10 flex items-center gap-4 flex-wrap">
-            <a
-              href={`mailto:${company.email}?subject=${encodeURIComponent('4IR Group roadshow')}`}
-              className="inline-flex items-center gap-2 px-7 py-3.5"
-              style={{
-                backgroundColor: CREAM,
-                color: INK,
-                fontFamily: SANS,
-                fontSize: 12,
-                fontWeight: 800,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              Get in touch
-            </a>
-            <a
-              href={HOST_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5"
-              style={{
-                border: `1px solid rgba(242,239,230,0.3)`,
-                color: CREAM,
-                fontFamily: SANS,
-                fontSize: 12,
-                fontWeight: 700,
-                letterSpacing: '0.14em',
-                textTransform: 'uppercase',
-                whiteSpace: 'nowrap'
-              }}
-            >
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — premier partnership')}`}>
+              {PARTNER_EMAIL}
+            </GoldButton>
+            <GhostButton href={HOST_URL} external>
               About 4IR Group
               <ArrowUpRight size={14} />
-            </a>
+            </GhostButton>
           </div>
         </div>
       </section>
@@ -431,12 +463,12 @@ export default function FourIrRoadshow() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-wrap items-center justify-between gap-5" style={{ paddingBottom: 22, borderBottom: `1px solid ${LINE}` }}>
             <Wordmark />
-            <Label>Convened by {company.name}</Label>
+            <Label color={GREY}>Convened by {company.name}</Label>
           </div>
 
           {/* Capital-raising context means this is not optional boilerplate —
               it travels with the page wherever the link is forwarded. */}
-          <p className="mt-7" style={{ fontSize: 11.5, lineHeight: 1.75, color: 'rgba(147,155,165,0.72)', maxWidth: '78ch' }}>
+          <p className="mt-7" style={{ fontSize: 11.5, lineHeight: 1.75, color: 'rgba(166,166,171,0.72)', maxWidth: '78ch' }}>
             {company.name} hosts private gatherings and convenings. Nothing on this page is an offer
             to sell or a solicitation of an offer to buy any security, nor is it investment, legal or
             tax advice. {company.name} is not a registered broker-dealer or investment adviser. Any
@@ -444,7 +476,7 @@ export default function FourIrRoadshow() {
             parties involved, under their own counsel.
           </p>
 
-          <p className="mt-6" style={{ fontSize: 11.5, color: 'rgba(147,155,165,0.5)' }}>
+          <p className="mt-6" style={{ fontSize: 11.5, color: 'rgba(166,166,171,0.5)' }}>
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
         </div>
