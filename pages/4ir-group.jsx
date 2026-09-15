@@ -50,7 +50,10 @@ const CITIES = [
   { city: 'Boston', date: 'Oct 8', day: 'Thursday, October 8', time: '6:00 – 9:00 PM', image: '/images/4ir/boston.jpg', url: 'https://luma.com/4IRGroupBoston' },
   { city: 'Salt Lake City', date: 'Oct 13', day: 'Tuesday, October 13', time: '4:00 – 7:00 PM MDT', image: '/images/4ir/salt-lake.jpg', url: 'https://luma.com/saltlake' },
   { city: 'Beverly Hills', date: 'Oct 27', day: 'Tuesday, October 27', time: '5:00 – 8:00 PM PDT', image: '/images/4ir/beverly-hills.jpg', url: 'https://luma.com/bevhills' },
-  { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' }
+  { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' },
+  // The Luma listing for this one still carries Palm Beach, FL as its
+  // location — their copy-paste, not ours. We say Chicago here.
+  { city: 'Chicago', date: 'Nov 12', day: 'Thursday, November 12', time: '6:00 – 9:00 PM', image: '/images/4ir/chicago.jpg', url: 'https://luma.com/chicago4ir' }
 ];
 
 const FEATURED = [
@@ -148,7 +151,7 @@ function CityCard({ item, delay }) {
       rel="noopener noreferrer"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="block"
+      className="flex flex-col"
       style={{
         border: `1px solid ${hover ? GOLD : LINE}`,
         backgroundColor: INK_CARD,
@@ -159,7 +162,7 @@ function CityCard({ item, delay }) {
           ` transform 320ms cubic-bezier(0.22,1,0.36,1), border-color 260ms ease`
       }}
     >
-      <div style={{ aspectRatio: '1 / 1', overflow: 'hidden', backgroundColor: INK_LIFT }}>
+      <div style={{ aspectRatio: '1 / 1', overflow: 'hidden', backgroundColor: INK_LIFT, flexShrink: 0 }}>
         <img
           src={item.image}
           alt={`${item.city} — 4IR Group Investor Evening`}
@@ -173,7 +176,7 @@ function CityCard({ item, delay }) {
         />
       </div>
 
-      <div className="p-5 sm:p-6">
+      <div className="flex flex-col flex-1 p-5">
         <Label>{item.day}</Label>
         <h3 className="mt-2.5" style={display('min(6.5vw, clamp(1.2rem, 2vw, 1.55rem))')}>
           {item.city}
@@ -182,8 +185,10 @@ function CityCard({ item, delay }) {
           {item.time}
         </p>
         <span
-          className="inline-flex items-center gap-1.5 mt-5"
+          className="inline-flex items-center gap-1.5 pt-5"
           style={{
+            marginTop: 'auto',
+            alignSelf: 'flex-start',
             color: hover ? GOLD : CREAM,
             fontFamily: SANS,
             fontSize: 10.5,
@@ -343,7 +348,7 @@ export default function FourIrRoadshow() {
           className="relative max-w-6xl mx-auto text-center"
           style={{ paddingTop: 'clamp(3.5rem, 8vw, 6rem)', paddingBottom: 'clamp(3rem, 6vw, 4.5rem)' }}
         >
-          <Label>4 Cities · 5 Investor Gatherings</Label>
+          <Label>5 Cities · 5 Investor Gatherings</Label>
           <p
             className="mt-6 mx-auto"
             style={{ color: CREAM, fontSize: 'clamp(16px, 2.1vw, 22px)', lineHeight: 1.6, maxWidth: '40ch', fontWeight: 300 }}
@@ -355,9 +360,9 @@ export default function FourIrRoadshow() {
         </div>
 
         <div className="relative max-w-6xl mx-auto" style={{ paddingBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
             {CITIES.map((item, i) => (
-              <CityCard key={item.url} item={item} delay={i * 90} />
+              <CityCard key={item.url} item={item} delay={i * 80} />
             ))}
           </div>
 
@@ -376,7 +381,7 @@ export default function FourIrRoadshow() {
             <span style={{ display: 'block', color: GOLD }}>the capital in the room.</span>
           </h2>
           <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '60ch' }}>
-            Family offices, founders and institutional allocators, in four cities across five
+            Family offices, founders and institutional allocators, in five cities across five
             evenings. We market you to them before the night, put you in front of them on it, and
             hand you the room afterwards.
           </p>
@@ -395,7 +400,7 @@ export default function FourIrRoadshow() {
 
             <p className="mt-5" style={{ color: GOLD_DEEP, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
               $20K
-              <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · All 4 cities · All 5 investor gatherings</span>
+              <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · All 5 cities · All 5 investor gatherings</span>
             </p>
 
             <div className="mt-8 grid md:grid-cols-3 gap-7 md:gap-9">
@@ -470,7 +475,7 @@ export default function FourIrRoadshow() {
             The companies we are bringing.
           </h2>
           <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
-            Featured across all four cities, in front of family offices, founders and institutional
+            Featured across all five cities, in front of family offices, founders and institutional
             allocators deploying capital into deep tech and physical AI.
           </p>
 
