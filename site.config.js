@@ -102,7 +102,7 @@ module.exports = {
       openings: [
         { days: [1], status: 'open' },
         { days: [2], status: 'open' },
-        { days: [5, 6, 7], city: 'Salt Lake City', status: 'booked' },
+        { days: [5, 6, 7], city: 'Park City', status: 'booked' },
         { days: [8], city: 'Boston', status: 'booked' },
         { days: [9], status: 'open' },
         { days: [13], city: 'Salt Lake City', status: 'booked' },
