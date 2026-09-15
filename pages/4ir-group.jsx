@@ -331,8 +331,11 @@ export default function FourIrRoadshow() {
                 </a>
               ))}
             </nav>
-            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — partnership')}`}>
-              Become a partner
+            {/* The header CTA hands over the one-pager rather than opening a
+                mail client — a sponsor wants the numbers before they write. */}
+            <GoldButton href={ONE_PAGER} download>
+              <Download size={14} />
+              Join as sponsor
             </GoldButton>
           </div>
         </div>
