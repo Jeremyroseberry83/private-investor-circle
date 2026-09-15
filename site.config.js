@@ -103,8 +103,10 @@ module.exports = {
         { days: [1], status: 'open' },
         { days: [2], status: 'open' },
         { days: [9], status: 'open' },
+        { days: [13, 14, 15, 16], status: 'open' },
         { days: [21], status: 'open' },
-        { days: [22], status: 'open' }
+        { days: [22], status: 'open' },
+        { days: [26, 27, 28, 29, 30], status: 'open' }
       ]
     },
     {
