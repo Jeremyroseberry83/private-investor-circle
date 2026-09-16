@@ -48,13 +48,28 @@ const ONE_PAGER = '/4ir-group-sponsorship.pdf';
 
 const CITIES = [
   { city: 'Boston', date: 'Oct 8', day: 'Thursday, October 8', time: '6:00 – 9:00 PM', image: '/images/4ir/boston.jpg', url: 'https://luma.com/4IRGroupBoston' },
-  { city: 'Salt Lake City', date: 'Oct 13', day: 'Tuesday, October 13', time: '4:00 – 7:00 PM MDT', image: '/images/4ir/salt-lake.jpg', url: 'https://luma.com/saltlake' },
+  { city: 'Salt Lake City', date: 'Oct 13', day: 'Tuesday, October 13', time: '6:00 – 9:00 PM MDT', image: '/images/4ir/salt-lake.jpg', url: 'https://luma.com/saltlake' },
   { city: 'Beverly Hills', date: 'Oct 27', day: 'Tuesday, October 27', time: '5:00 – 8:00 PM PDT', image: '/images/4ir/beverly-hills.jpg', url: 'https://luma.com/bevhills' },
   { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' },
   // The Luma listing for this one still carries Palm Beach, FL as its
   // location — their copy-paste, not ours. We say Chicago here.
   { city: 'Chicago', date: 'Nov 12', day: 'Thursday, November 12', time: '6:00 – 9:00 PM', image: '/images/4ir/chicago.jpg', url: 'https://luma.com/chicago4ir' }
 ];
+
+// The timeline is written against a 6:00 start. Any city that does not run to
+// it is called out under the programme — derived, not typed, so the sentence
+// cannot drift away from the cards above it.
+const TYPICAL_START = '6:00';
+const TIME_EXCEPTIONS = CITIES.filter((c) => !c.time.startsWith(TYPICAL_START));
+
+/** '5:00 – 8:00 PM PDT' -> '5:00 to 8:00' */
+function plainTime(t) {
+  return t
+    .replace(/\s*(AM|PM)\b/g, '')
+    .replace(/\s*[A-Z]{3}\s*$/, '')
+    .replace('–', 'to')
+    .trim();
+}
 
 const FEATURED = [
   { name: 'Seco Bio', domain: 'seco.bio', url: 'https://seco.bio' }
@@ -641,8 +656,15 @@ export default function FourIrRoadshow() {
           </ol>
 
           <p className="mt-4" style={{ color: GREY, fontSize: 14.5, lineHeight: 1.75, maxWidth: '64ch' }}>
-            A typical evening. Times shift with the city and the venue — Salt Lake City runs 4:00 to
-            7:00 — but the shape does not.
+            A typical evening. Times shift with the city and the venue
+            {TIME_EXCEPTIONS.length > 0 && (
+              <>
+                {' — '}
+                {TIME_EXCEPTIONS.map((c) => `${c.city} runs ${plainTime(c.time)}`).join('; ')}
+                {' — '}
+              </>
+            )}
+            {TIME_EXCEPTIONS.length > 0 ? 'but the shape does not.' : ' but the shape does not.'}
           </p>
         </div>
       </section>
