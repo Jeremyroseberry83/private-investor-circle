@@ -538,7 +538,7 @@ export default function FourIrRoadshow() {
               {[
                 ['You get', 'Pre-event marketing, an event speaking slot with a call to action, the complete attendee list and follow-up, and a branded suite.'],
                 ['We do', 'Everything for you — marketing, logistics, introductions, and the post-event email to every attendee.'],
-                ['Result', 'You become part of the frontier capital circle leading the new industrial age.']
+                ['Result', 'Your firm in front of the same investors city after city, until the name is familiar rather than new.']
               ].map(([k, v]) => (
                 <div key={k} style={{ borderTop: `1px solid ${LINE_LIGHT}`, paddingTop: 16 }}>
                   <Label color={GOLD_DEEP}>{k}</Label>
@@ -675,14 +675,14 @@ export default function FourIrRoadshow() {
       <section className="px-6 py-16 md:py-24" style={{ backgroundColor: INK_LIFT, borderTop: `1px solid ${LINE}` }}>
         <div className="max-w-6xl mx-auto">
           <h2 style={{ ...display('min(10vw, clamp(1.9rem, 4.4vw, 3.4rem))'), maxWidth: '18ch', textWrap: 'balance' }}>
-            Become a premier partner.
+            Ready to sponsor?
           </h2>
-          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '56ch' }}>
-            Only two premier slots remain. Limited partnership positions are reserved for frontier
-            capital leaders.
+          <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
+            Flexible pricing, flexible scope, and full marketing support from pre-event through to
+            post-event follow-up. Tell us which city and what you want the room to take away.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — premier partnership')}`}>
+            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — sponsorship')}`}>
               {PARTNER_EMAIL}
             </GoldButton>
             <GhostButton href={HOST_URL} external>
