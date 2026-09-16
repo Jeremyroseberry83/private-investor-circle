@@ -86,6 +86,48 @@ const TIERS = [
   { name: 'Bronze', price: '$5K / city', detail: 'Logo on materials, networking and two introductions.' }
 ];
 
+// The run of show, written as what a sponsor or a company gets at each point
+// of the evening rather than what merely happens. `who` is the chip on the
+// card, so a reader scanning for their own name finds it without reading.
+const PROGRAM = [
+  {
+    time: '6:00',
+    title: 'Doors and welcome reception',
+    who: 'Everyone',
+    body: 'Guests arrive into a branded room — your signage, your materials on the table. Drinks, and introductions made by the hosts rather than left to chance.'
+  },
+  {
+    time: '6:30',
+    title: 'Curated introductions',
+    who: 'Sponsors & companies',
+    body: 'The part a floor plan cannot do. We know who is in the room and what they came for, so we walk you over by name and stay for the first two minutes.'
+  },
+  {
+    time: '7:00',
+    title: 'The company presents',
+    who: 'Companies',
+    body: 'The floor, uninterrupted, in front of every allocator in the room. No competing pitches on either side, and no expo hall to shout over.'
+  },
+  {
+    time: '7:45',
+    title: 'Sponsor address and call to action',
+    who: 'Sponsors',
+    body: 'Your speaking slot — time on your feet, not a logo on a banner — closing on one clear next step and a link the room can act on that night.'
+  },
+  {
+    time: '8:15',
+    title: 'Dinner and open conversation',
+    who: 'Everyone',
+    body: 'The hour that does the work. Nobody is watching the clock for a next session, because there is not one.'
+  },
+  {
+    time: '9:00',
+    title: 'Close — and what follows',
+    who: 'Sponsors & companies',
+    body: 'The room ends; the list does not. Every attendee, their answers to the questions you chose, and a branded follow-up sent on your behalf in the days after.'
+  }
+];
+
 const gridWash = {
   position: 'absolute',
   inset: 0,
@@ -245,6 +287,86 @@ function CompanyCard({ item }) {
   );
 }
 
+/**
+ * One stage of the evening.
+ *
+ * The rail runs down the left on a phone and down the middle from lg up,
+ * where cards alternate sides. The node is positioned against the same two
+ * anchors, so it always sits on the line.
+ */
+function ProgramStep({ item, index }) {
+  const [ref, shown] = useInView(0.2);
+  const left = index % 2 === 0;
+
+  return (
+    <li
+      ref={ref}
+      className="relative pl-16 lg:pl-0 pb-10 lg:pb-14"
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? 'translateY(0)' : 'translateY(18px)',
+        transition: 'opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 700ms cubic-bezier(0.22,1,0.36,1)'
+      }}
+    >
+      <span
+        aria-hidden="true"
+        className="absolute top-0 left-5 lg:left-1/2 flex items-center justify-center"
+        style={{
+          width: 40,
+          height: 40,
+          marginLeft: -20,
+          borderRadius: 999,
+          backgroundColor: INK,
+          border: `1px solid ${GOLD}`,
+          color: GOLD,
+          fontFamily: SANS,
+          fontSize: 12,
+          fontWeight: 800,
+          letterSpacing: '0.02em'
+        }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
+      <div className="lg:grid lg:grid-cols-2 lg:gap-x-16">
+        <div className={left ? 'lg:col-start-1 lg:text-right' : 'lg:col-start-2'}>
+          <div
+            className="p-6 sm:p-7"
+            style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}`, borderTop: `2px solid ${GOLD}` }}
+          >
+            <div className={`flex flex-wrap items-baseline gap-x-4 gap-y-1 ${left ? 'lg:justify-end' : ''}`}>
+              <span style={{ color: GOLD, fontFamily: SANS, fontSize: 15, fontWeight: 800, letterSpacing: '0.02em' }}>
+                {item.time}
+              </span>
+              <span
+                style={{
+                  color: GREY,
+                  fontFamily: SANS,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  border: `1px solid ${LINE}`,
+                  padding: '3px 9px'
+                }}
+              >
+                {item.who}
+              </span>
+            </div>
+
+            <h3 className="mt-3" style={display('min(6.5vw, clamp(1.05rem, 1.7vw, 1.3rem))')}>
+              {item.title}
+            </h3>
+            <p className="mt-3" style={{ color: GREY, fontSize: 15, lineHeight: 1.7 }}>
+              {item.body}
+            </p>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+}
+
 function GoldButton({ href, children, download, external }) {
   return (
     <a
@@ -314,7 +436,7 @@ export default function FourIrRoadshow() {
 
           <div className="flex items-center gap-6 sm:gap-8">
             <nav className="hidden md:flex items-center gap-8">
-              {[['Cities', '#cities'], ['Sponsorship', '#sponsorship'], ['Companies', '#companies']].map(([name, href]) => (
+              {[['Cities', '#cities'], ['Sponsorship', '#sponsorship'], ['Program', '#program'], ['Companies', '#companies']].map(([name, href]) => (
                 <a
                   key={href}
                   href={href}
@@ -465,6 +587,46 @@ export default function FourIrRoadshow() {
               {PARTNER_EMAIL}
             </GhostButton>
           </div>
+        </div>
+      </section>
+
+      {/* PROGRAM */}
+      <section id="program" className="relative px-6 py-16 md:py-24" style={{ backgroundColor: INK, overflow: 'hidden' }}>
+        <div aria-hidden="true" style={gridWash} />
+
+        <div className="relative max-w-6xl mx-auto">
+          <div className="max-w-2xl mb-14">
+            <Label className="mb-6">Program</Label>
+            <h2 style={display('min(9vw, clamp(1.9rem, 4vw, 3.1rem))')}>
+              How the evening runs.
+            </h2>
+            <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8 }}>
+              The same shape in every city. Three hours, one room, and a running order built so
+              the conversations that matter actually happen.
+            </p>
+          </div>
+
+          <ol className="relative">
+            {/* The rail. Fades at both ends so it reads as a thread rather
+                than a border, and sits under the nodes. */}
+            <span
+              aria-hidden="true"
+              className="absolute top-0 bottom-0 left-5 lg:left-1/2"
+              style={{
+                width: 1,
+                marginLeft: -0.5,
+                background: `linear-gradient(180deg, rgba(204,178,115,0) 0%, ${GOLD} 8%, ${GOLD} 88%, rgba(204,178,115,0) 100%)`
+              }}
+            />
+            {PROGRAM.map((item, i) => (
+              <ProgramStep key={item.time} item={item} index={i} />
+            ))}
+          </ol>
+
+          <p className="mt-4" style={{ color: GREY, fontSize: 14.5, lineHeight: 1.75, maxWidth: '64ch' }}>
+            A typical evening. Times shift with the city and the venue — Salt Lake City runs 4:00 to
+            7:00 — but the shape does not.
+          </p>
         </div>
       </section>
 
