@@ -49,7 +49,7 @@ const ONE_PAGER = '/4ir-group-sponsorship.pdf';
 const CITIES = [
   { city: 'Boston', date: 'Oct 8', day: 'Thursday, October 8', time: '6:00 – 9:00 PM', image: '/images/4ir/boston.jpg', url: 'https://luma.com/4IRGroupBoston' },
   { city: 'Salt Lake City', date: 'Oct 13', day: 'Tuesday, October 13', time: '6:00 – 9:00 PM MDT', image: '/images/4ir/salt-lake.jpg', url: 'https://luma.com/saltlake' },
-  { city: 'Beverly Hills', date: 'Oct 27', day: 'Tuesday, October 27', time: '5:00 – 8:00 PM PDT', image: '/images/4ir/beverly-hills.jpg', url: 'https://luma.com/bevhills' },
+  { city: 'Beverly Hills', date: 'Oct 27', day: 'Tuesday, October 27', time: '6:00 – 9:00 PM PDT', image: '/images/4ir/beverly-hills.jpg', url: 'https://luma.com/bevhills' },
   { city: 'Palm Beach', date: 'Nov 5', day: 'Thursday, November 5', time: '6:00 – 9:00 PM', image: '/images/4ir/palm-beach.jpg', url: 'https://luma.com/palmbeachworthave' },
   // The Luma listing for this one still carries Palm Beach, FL as its
   // location — their copy-paste, not ours. We say Chicago here.
@@ -656,15 +656,11 @@ export default function FourIrRoadshow() {
           </ol>
 
           <p className="mt-4" style={{ color: GREY, fontSize: 14.5, lineHeight: 1.75, maxWidth: '64ch' }}>
-            A typical evening. Times shift with the city and the venue
-            {TIME_EXCEPTIONS.length > 0 && (
-              <>
-                {' — '}
-                {TIME_EXCEPTIONS.map((c) => `${c.city} runs ${plainTime(c.time)}`).join('; ')}
-                {' — '}
-              </>
-            )}
-            {TIME_EXCEPTIONS.length > 0 ? 'but the shape does not.' : ' but the shape does not.'}
+            {TIME_EXCEPTIONS.length > 0
+              ? `A typical evening. Times shift with the city and the venue — ${TIME_EXCEPTIONS
+                  .map((c) => `${c.city} runs ${plainTime(c.time)}`)
+                  .join('; ')} — but the shape does not.`
+              : 'Every city runs to the same clock. Times can still shift with the venue, but the shape does not.'}
           </p>
         </div>
       </section>
