@@ -44,6 +44,7 @@ const SANS =
 
 const HOST_URL = 'https://4irg.com/?utm_source=privateinvestorcircle';
 const ONE_PAGER = '/4ir-group-sponsorship.pdf';
+const CONTACT_EMAIL = 'joe@4irg.com';
 
 const CITIES = [
   { city: 'Boston', date: 'Oct 8', day: 'Thursday, October 8', time: '6:00 – 9:00 PM', image: '/images/4ir/boston.jpg', url: 'https://luma.com/4IRGroupBoston' },
@@ -403,28 +404,6 @@ function GoldButton({ href, children, download, external }) {
   );
 }
 
-function GhostButton({ href, children, external }) {
-  return (
-    <a
-      href={href}
-      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5"
-      style={{
-        border: `1px solid rgba(235,235,237,0.32)`,
-        color: CREAM,
-        fontFamily: SANS,
-        fontSize: 12,
-        fontWeight: 700,
-        letterSpacing: '0.14em',
-        textTransform: 'uppercase',
-        whiteSpace: 'nowrap'
-      }}
-    >
-      {children}
-    </a>
-  );
-}
-
 export default function FourIrRoadshow() {
   return (
     <div style={{ backgroundColor: INK, minHeight: '100vh' }}>
@@ -699,11 +678,10 @@ export default function FourIrRoadshow() {
             Flexible pricing, flexible scope, and full marketing support from pre-event through to
             post-event follow-up. Tell us which city and what you want the room to take away.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <GhostButton href={HOST_URL} external>
-              About 4IR Group
-              <ArrowUpRight size={14} />
-            </GhostButton>
+          <div className="mt-10">
+            <GoldButton href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — sponsorship')}`}>
+              Connect
+            </GoldButton>
           </div>
         </div>
       </section>
