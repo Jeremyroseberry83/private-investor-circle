@@ -43,7 +43,6 @@ const SANS =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
 const HOST_URL = 'https://4irg.com/?utm_source=privateinvestorcircle';
-const PARTNER_EMAIL = 'partnerships@4irgroup.com';
 const ONE_PAGER = '/4ir-group-sponsorship.pdf';
 
 const CITIES = [
@@ -615,9 +614,6 @@ export default function FourIrRoadshow() {
               <Download size={15} />
               Download the one-pager
             </GoldButton>
-            <GhostButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — partnership')}`}>
-              {PARTNER_EMAIL}
-            </GhostButton>
           </div>
         </div>
       </section>
@@ -704,9 +700,6 @@ export default function FourIrRoadshow() {
             post-event follow-up. Tell us which city and what you want the room to take away.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <GoldButton href={`mailto:${PARTNER_EMAIL}?subject=${encodeURIComponent('4IR Group roadshow — sponsorship')}`}>
-              {PARTNER_EMAIL}
-            </GoldButton>
             <GhostButton href={HOST_URL} external>
               About 4IR Group
               <ArrowUpRight size={14} />
