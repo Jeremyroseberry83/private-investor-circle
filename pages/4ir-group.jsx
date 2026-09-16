@@ -80,14 +80,11 @@ const STAGES = [
   }
 ];
 
-// Ordered smallest scope first, so the list climbs with the range stated
-// above it. No per-row price on purpose: the spread is $2.5K to $15K and
-// where a sponsor lands inside it depends on scope and city, so a single
-// number against each row would be wrong for most of them.
+// Straight off the revised one-pager, in the order it lists them.
 const TIERS = [
-  { name: 'Bronze', detail: 'Logo on materials, networking through the evening, and two introductions made for you.' },
-  { name: 'Silver', detail: 'Logo, one speaking slot, three founder introductions and the attendee list.' },
-  { name: 'Gold', detail: 'Logo, two speaking slots, founder introductions, branded materials and the attendee list.' }
+  { name: 'Platinum', price: '$15K', points: ['Speaking slot + CTA', 'Founder introductions', 'Logo and brand visibility'] },
+  { name: 'Silver', price: '$8K', points: ['Speaking slot', 'Three founder introductions', 'Attendee list'] },
+  { name: 'Bronze', price: '$2.5K', points: ['Logo on materials', 'Two founder introductions', 'Event access'] }
 ];
 
 // The run of show, written as what a sponsor or a company gets at each point
@@ -524,16 +521,17 @@ export default function FourIrRoadshow() {
               <h3 style={{ ...display('min(7vw, clamp(1.3rem, 2.4vw, 1.85rem))'), color: ON_LIGHT }}>
                 The full roadshow
               </h3>
-              <Label color={GOLD_DEEP}>Exclusive · Limited to 5 slots · 2 remaining</Label>
+              <Label color={GOLD_DEEP}>Best value</Label>
             </div>
 
             <p className="mt-5" style={{ color: GOLD_DEEP, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
               $60,000
               <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · Every city, every gathering</span>
             </p>
-            <p className="mt-2.5" style={{ color: ON_LIGHT_MUTED, fontSize: 14.5, lineHeight: 1.65 }}>
-              Taking the whole roadshow rather than a city at a time, at a materially better rate
-              than booking them individually.
+            <p className="mt-2.5" style={{ color: ON_LIGHT_MUTED, fontSize: 14.5, lineHeight: 1.65, maxWidth: '62ch' }}>
+              All-in sponsorship across every city, at a materially better rate than booking them
+              one at a time. The complete marketing suite: branded outreach before the night, a
+              speaking slot with a call to action on it, and the attendee list plus follow-up after.
             </p>
 
             <div className="mt-8 grid md:grid-cols-3 gap-7 md:gap-9">
@@ -570,25 +568,30 @@ export default function FourIrRoadshow() {
 
           {/* Other tiers */}
           <div className="mt-14">
-            <Label className="mb-6">A single city</Label>
-            <p style={{ color: GOLD, fontFamily: SANS, fontSize: 'clamp(18px, 2.4vw, 26px)', fontWeight: 800, letterSpacing: '-0.01em' }}>
-              $2,500 – $15,000
-              <span style={{ color: GREY, fontWeight: 400, fontSize: 'clamp(15px, 1.7vw, 17px)' }}> per event</span>
-            </p>
-            <p className="mt-3" style={{ color: GREY, fontSize: 16, lineHeight: 1.75, maxWidth: '58ch' }}>
-              Where a sponsor sits in that range depends on the scope they take and the city. These
-              are the three we build from — tell us which matters and we will price it.
+            <Label className="mb-6">Per-event sponsorship tiers</Label>
+            <p style={{ color: GREY, fontSize: 16.5, lineHeight: 1.8, maxWidth: '58ch' }}>
+              Take a single city, at the scope that suits you. Flexible pricing, flexible scope, and
+              the same marketing support from pre-event through to follow-up.
             </p>
 
-            <div className="mt-8" style={{ borderTop: `1px solid ${LINE}` }}>
+            <div className="mt-8 grid md:grid-cols-3 gap-5 lg:gap-6">
               {TIERS.map((t) => (
-                <div
-                  key={t.name}
-                  className="flex flex-wrap items-baseline gap-x-6 gap-y-2"
-                  style={{ borderBottom: `1px solid ${LINE}`, padding: '20px 0' }}
-                >
-                  <span style={{ ...display('clamp(1rem, 1.6vw, 1.15rem)'), minWidth: 110 }}>{t.name}</span>
-                  <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.65, flex: '1 1 300px' }}>{t.detail}</span>
+                <div key={t.name} className="p-7" style={{ backgroundColor: INK_CARD, border: `1px solid ${LINE}` }}>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span style={display('clamp(1.05rem, 1.7vw, 1.25rem)')}>{t.name}</span>
+                    <span style={{ color: GOLD, fontFamily: SANS, fontSize: 16, fontWeight: 800, whiteSpace: 'nowrap' }}>
+                      {t.price}
+                      <span style={{ color: GREY, fontWeight: 400, fontSize: 13 }}> / event</span>
+                    </span>
+                  </div>
+                  <ul className="mt-5" style={{ borderTop: `1px solid ${LINE}` }}>
+                    {t.points.map((pt) => (
+                      <li key={pt} className="flex gap-3" style={{ borderBottom: `1px solid ${LINE}`, padding: '11px 0' }}>
+                        <span aria-hidden="true" style={{ color: GOLD, flexShrink: 0 }}>·</span>
+                        <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.6 }}>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
