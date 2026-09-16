@@ -80,10 +80,14 @@ const STAGES = [
   }
 ];
 
+// Ordered smallest scope first, so the list climbs with the range stated
+// above it. No per-row price on purpose: the spread is $2.5K to $15K and
+// where a sponsor lands inside it depends on scope and city, so a single
+// number against each row would be wrong for most of them.
 const TIERS = [
-  { name: 'Gold', price: '$15K / city', detail: 'Logo, two speaking slots, founder introductions, branded materials and the attendee list.' },
-  { name: 'Silver', price: '$8K / city', detail: 'Logo, one speaking slot, three founder introductions and the attendee list.' },
-  { name: 'Bronze', price: '$5K / city', detail: 'Logo on materials, networking and two introductions.' }
+  { name: 'Bronze', detail: 'Logo on materials, networking through the evening, and two introductions made for you.' },
+  { name: 'Silver', detail: 'Logo, one speaking slot, three founder introductions and the attendee list.' },
+  { name: 'Gold', detail: 'Logo, two speaking slots, founder introductions, branded materials and the attendee list.' }
 ];
 
 // The run of show, written as what a sponsor or a company gets at each point
@@ -518,14 +522,18 @@ export default function FourIrRoadshow() {
           >
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
               <h3 style={{ ...display('min(7vw, clamp(1.3rem, 2.4vw, 1.85rem))'), color: ON_LIGHT }}>
-                Premier partnership sponsor
+                The full roadshow
               </h3>
               <Label color={GOLD_DEEP}>Exclusive · Limited to 5 slots · 2 remaining</Label>
             </div>
 
             <p className="mt-5" style={{ color: GOLD_DEEP, fontFamily: SANS, fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 800, letterSpacing: '0.01em' }}>
-              $20K
-              <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · All 5 cities · All 5 investor gatherings</span>
+              $60,000
+              <span style={{ color: ON_LIGHT_MUTED, fontWeight: 400 }}> · Every city, every gathering</span>
+            </p>
+            <p className="mt-2.5" style={{ color: ON_LIGHT_MUTED, fontSize: 14.5, lineHeight: 1.65 }}>
+              Taking the whole roadshow rather than a city at a time, at a materially better rate
+              than booking them individually.
             </p>
 
             <div className="mt-8 grid md:grid-cols-3 gap-7 md:gap-9">
@@ -562,8 +570,17 @@ export default function FourIrRoadshow() {
 
           {/* Other tiers */}
           <div className="mt-14">
-            <Label className="mb-6">Other sponsorship options</Label>
-            <div style={{ borderTop: `1px solid ${LINE}` }}>
+            <Label className="mb-6">A single city</Label>
+            <p style={{ color: GOLD, fontFamily: SANS, fontSize: 'clamp(18px, 2.4vw, 26px)', fontWeight: 800, letterSpacing: '-0.01em' }}>
+              $2,500 – $15,000
+              <span style={{ color: GREY, fontWeight: 400, fontSize: 'clamp(15px, 1.7vw, 17px)' }}> per event</span>
+            </p>
+            <p className="mt-3" style={{ color: GREY, fontSize: 16, lineHeight: 1.75, maxWidth: '58ch' }}>
+              Where a sponsor sits in that range depends on the scope they take and the city. These
+              are the three we build from — tell us which matters and we will price it.
+            </p>
+
+            <div className="mt-8" style={{ borderTop: `1px solid ${LINE}` }}>
               {TIERS.map((t) => (
                 <div
                   key={t.name}
@@ -571,8 +588,7 @@ export default function FourIrRoadshow() {
                   style={{ borderBottom: `1px solid ${LINE}`, padding: '20px 0' }}
                 >
                   <span style={{ ...display('clamp(1rem, 1.6vw, 1.15rem)'), minWidth: 110 }}>{t.name}</span>
-                  <span style={{ color: GOLD, fontFamily: SANS, fontSize: 15, fontWeight: 800, minWidth: 120 }}>{t.price}</span>
-                  <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.65, flex: '1 1 260px' }}>{t.detail}</span>
+                  <span style={{ color: GREY, fontSize: 14.5, lineHeight: 1.65, flex: '1 1 300px' }}>{t.detail}</span>
                 </div>
               ))}
             </div>
