@@ -57,9 +57,7 @@ const CITIES = [
 ];
 
 const FEATURED = [
-  { name: 'Seco Bio', domain: 'seco.bio', url: 'https://seco.bio' },
-  { name: 'Phast', domain: 'phast.ai', url: 'https://phast.ai/' },
-  { name: 'BOL', domain: 'bolvinwealth.com', url: 'https://www.bolvinwealth.com/' }
+  { name: 'Seco Bio', domain: 'seco.bio', url: 'https://seco.bio' }
 ];
 
 const STAGES = [
@@ -105,25 +103,25 @@ const PROGRAM = [
   },
   {
     time: '7:00',
-    title: 'The company presents',
+    title: 'The companies present',
     who: 'Companies',
-    body: 'The floor, uninterrupted, in front of every allocator in the room. No competing pitches on either side, and no expo hall to shout over.'
+    body: 'Each company takes the floor, uninterrupted, in front of every allocator in the room. No competing pitches on either side, and no expo hall to shout over.'
   },
   {
     time: '7:45',
-    title: 'Sponsor address and call to action',
+    title: 'Sponsors take the floor',
     who: 'Sponsors',
-    body: 'Your speaking slot — time on your feet, not a logo on a banner — closing on one clear next step and a link the room can act on that night.'
+    body: 'Your speaking slot — time on your feet, not a logo on a banner — ending on one clear next step and a link the room can act on that night.'
   },
   {
     time: '8:15',
-    title: 'Dinner and open conversation',
+    title: 'Hospitality and open conversation',
     who: 'Everyone',
-    body: 'The hour that does the work. Nobody is watching the clock for a next session, because there is not one.'
+    body: 'The hour that does the work, over whatever the city calls for. Nobody is watching the clock for a next session, because there is not one.'
   },
   {
     time: '9:00',
-    title: 'Close — and what follows',
+    title: 'Call to action and next steps',
     who: 'Sponsors & companies',
     body: 'The room ends; the list does not. Every attendee, their answers to the questions you chose, and a branded follow-up sent on your behalf in the days after.'
   }
@@ -656,14 +654,20 @@ export default function FourIrRoadshow() {
         <div className="relative max-w-6xl mx-auto">
           <Label className="mb-6">In front of investors</Label>
           <h2 style={display('min(9vw, clamp(1.9rem, 4vw, 3.1rem))')}>
-            The companies we are bringing.
+            {FEATURED.length === 1 ? 'The company we are bringing.' : 'The companies we are bringing.'}
           </h2>
           <p className="mt-7" style={{ color: GREY, fontSize: 17, lineHeight: 1.8, maxWidth: '58ch' }}>
             Featured across all five cities, in front of family offices, founders and institutional
             allocators deploying capital into deep tech and physical AI.
           </p>
 
-          <div className="mt-12 grid sm:grid-cols-3 gap-5 lg:gap-6">
+          {/* A lone card in a three-up grid reads as two missing ones, so the
+              track count follows the list and a single card is capped rather
+              than stretched across the page. */}
+          <div
+            className={`mt-12 grid gap-5 lg:gap-6 ${FEATURED.length > 1 ? 'sm:grid-cols-3' : ''}`}
+            style={FEATURED.length === 1 ? { maxWidth: 420 } : undefined}
+          >
             {FEATURED.map((c) => (
               <CompanyCard key={c.url} item={c} />
             ))}
