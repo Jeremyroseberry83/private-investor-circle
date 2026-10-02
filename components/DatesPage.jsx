@@ -288,7 +288,9 @@ export default function DatesPage({ onNavigate, onContactClick }) {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+          {/* items-start: October now runs to fourteen rows, and stretched cards
+              would leave the short months as tall boxes of white space. */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-start">
             {calendar.map((month, i) => (
               <MonthCard
                 key={`${month.year}-${month.month}`}

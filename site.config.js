@@ -109,7 +109,11 @@ module.exports = {
         { days: [14, 15, 16], status: 'open' },
         { days: [21], status: 'open' },
         { days: [22], status: 'open' },
-        { days: [26, 27, 28, 29, 30], status: 'open' }
+        { days: [26], city: 'Beverly Hills', status: 'booked' },
+        { days: [27], city: 'Santa Barbara & Calabasas', status: 'booked' },
+        { days: [28], status: 'open' },
+        { days: [29], city: 'Palo Alto', status: 'booked' },
+        { days: [30], status: 'open' }
       ]
     },
     {
@@ -119,11 +123,11 @@ module.exports = {
       cities: 'Palm Beach · Miami · Beverly Hills · Las Vegas',
       openings: [
         { days: [2, 3, 4], city: 'Cayman Islands', status: 'open' },
-        { days: [5], city: 'Palm Beach', status: 'booked' },
-        { days: [10], status: 'open' },
+        { days: [5], city: 'Chicago', status: 'booked' },
+        { days: [10], city: 'Beverly Hills', status: 'booked' },
         { days: [11], status: 'open' },
         { days: [16], status: 'open' },
-        { days: [17], status: 'open' }
+        { days: [17], city: 'Palm Beach', status: 'booked' }
       ]
     },
     {
