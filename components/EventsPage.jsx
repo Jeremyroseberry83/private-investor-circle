@@ -102,11 +102,13 @@ const PAST_EVENTS = [
     url: ''
   },
   {
-    title: 'Guardian Net Lease Fund',
-    firm: 'Real Estate',
-    place: 'Calabasas, CA',
-    blurb: 'A private dinner at the edge of the Santa Monica Mountains: one net lease real estate fund in front of a table of Southern California principals and family offices.',
-    image: '/images/events/guardian-net-lease.jpg',
+    // The presenting firm is deliberately unnamed on this one — the eyebrow
+    // carries the sector and nothing else.
+    title: 'NBA Acquisition',
+    firm: 'Professional Sports',
+    place: 'Beverly Hills',
+    blurb: 'A private, in-depth gathering with principals at a residence in the Hills regarding a Las Vegas NBA expansion team and arena opportunity.',
+    image: '/images/events/nba-acquisition.jpg',
     url: ''
   },
   {
