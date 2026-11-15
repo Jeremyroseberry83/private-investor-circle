@@ -82,50 +82,19 @@ module.exports = {
   // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
   // CONFIDENTIAL - confirm you want these public before a deploy. Edit this
   // array to update the calendar; nothing else needs touching.
+  // Months roll off once they are past: September and October 2026 came off
+  // on 14 Nov 2026. November keeps only the dates still ahead of today.
+  //
+  // Holiday blackout: nothing is offered from the week of Christmas through
+  // 7 January 2027. December therefore stops at the 17th and January opens
+  // on the 12th. Do not re-add dates inside that window.
   calendar: [
-    {
-      label: 'September',
-      year: 2026,
-      month: 9,
-      openings: [
-        { days: [9], city: 'Miami', status: 'booked' },
-        { days: [17], city: 'Boston', status: 'booked' },
-        { days: [29], city: 'Palm Beach', status: 'booked' },
-        { days: [30], city: 'Beverly Hills', status: 'booked' }
-      ]
-    },
-    {
-      label: 'October',
-      year: 2026,
-      month: 10,
-      cities: 'Palm Beach · Miami · Beverly Hills · New York · Salt Lake City',
-      openings: [
-        { days: [1], status: 'open' },
-        { days: [2], status: 'open' },
-        { days: [5, 6, 7], city: 'Park City', status: 'booked' },
-        { days: [8], city: 'Boston', status: 'booked' },
-        { days: [9], status: 'open' },
-        { days: [13], city: 'Salt Lake City', status: 'booked' },
-        { days: [14, 15, 16], status: 'open' },
-        { days: [21], status: 'open' },
-        { days: [22], status: 'open' },
-        { days: [26], city: 'Beverly Hills', status: 'booked' },
-        { days: [27], city: 'Santa Barbara & Calabasas', status: 'booked' },
-        { days: [28], status: 'open' },
-        { days: [29], city: 'Palo Alto', status: 'booked' },
-        { days: [30], status: 'open' }
-      ]
-    },
     {
       label: 'November',
       year: 2026,
       month: 11,
       cities: 'Palm Beach · Miami · Beverly Hills · Las Vegas',
       openings: [
-        { days: [2, 3, 4], city: 'Cayman Islands', status: 'open' },
-        { days: [5], city: 'Chicago', status: 'booked' },
-        { days: [10], city: 'Beverly Hills', status: 'booked' },
-        { days: [11], status: 'open' },
         { days: [16], status: 'open' },
         { days: [17], city: 'Palm Beach', status: 'booked' }
       ]
@@ -148,8 +117,6 @@ module.exports = {
       month: 1,
       cities: 'Palm Beach · Miami · Beverly Hills',
       openings: [
-        { days: [6], status: 'open' },
-        { days: [7], status: 'open' },
         { days: [12, 13, 14], status: 'open' },
         { days: [19, 20, 21], status: 'open' },
         { days: [26, 27, 28], status: 'open' }

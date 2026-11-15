@@ -280,7 +280,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Several firms are requesting these dates.
               </p>
               <p className="mt-1.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>
-                October through January is being locked in now, on a first-come basis.
+                November through January is being locked in now, on a first-come basis.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>
@@ -288,8 +288,8 @@ export default function DatesPage({ onNavigate, onContactClick }) {
             </div>
           </div>
 
-          {/* items-start: October now runs to fourteen rows, and stretched cards
-              would leave the short months as tall boxes of white space. */}
+          {/* items-start: months carry different numbers of openings, and stretched
+              cards would leave the short ones as tall boxes of white space. */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-start">
             {calendar.map((month, i) => (
               <MonthCard

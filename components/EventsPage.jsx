@@ -92,6 +92,40 @@ const TESTIMONIALS = [
 // recorded and the links can be restored later.
 const PAST_EVENTS = [
   {
+    // Biscayne Bay during Art Basel week. Note this one is dated 3 Dec 2026 —
+    // ahead of today — so it sits in this list as a scheduled gathering.
+    title: 'Art Basel Investor Networking',
+    firm: 'Hosted',
+    place: 'Miami · Venetian Marina',
+    blurb: 'An evening on the water during Art Basel week — principals, collectors and allocators aboard a private yacht on Biscayne Bay, with the skyline across the channel.',
+    image: '/images/events/art-basel-networking.jpg',
+    url: ''
+  },
+  {
+    title: 'Guardian Net Lease Fund',
+    firm: 'Real Estate',
+    place: 'Calabasas, CA',
+    blurb: 'A private dinner at the edge of the Santa Monica Mountains: one net lease real estate fund in front of a table of Southern California principals and family offices.',
+    image: '/images/events/guardian-net-lease.jpg',
+    url: ''
+  },
+  {
+    title: 'New York Investor Gathering',
+    firm: 'Deep Technology',
+    place: 'New York',
+    blurb: 'An accredited-investor evening in midtown on physical AI and the next deep tech frontier, with three companies presenting and time afterwards with the room.',
+    image: '/images/events/new-york-investor-gathering.jpg',
+    url: ''
+  },
+  {
+    title: 'Family Office Gathering',
+    firm: 'Deep Technology',
+    place: 'Salt Lake City',
+    blurb: 'An investor evening in Salt Lake: family offices and principals from across the Mountain West over dinner, on where frontier technology capital is actually going.',
+    image: '/images/events/family-office-gathering.jpg',
+    url: ''
+  },
+  {
     title: 'Investor Day — Harvard/MIT Kendall Square Robotics & AI',
     firm: 'Bio-Technology Group',
     place: 'Boston',
@@ -102,7 +136,7 @@ const PAST_EVENTS = [
   {
     title: 'A Private Evening — Sunset on the Miami River',
     firm: 'ETF',
-    place: 'Miami · The Capital Grille',
+    place: 'Miami · Bolivian ETF',
     blurb: 'A private reception on the terrace: craft cocktails, curated cuisine, and Latin American investment opportunities discussed directly with company leadership.',
     image: '/images/events/miami-river.jpg',
     url: 'https://luma.com/kkyvdxzh'
@@ -163,7 +197,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
             {PAST_EVENTS.map((e) => (
               <div
-                key={e.url}
+                key={e.title}
                 className="rounded-xl overflow-hidden flex flex-col"
                 style={{ backgroundColor: 'white', border: '1px solid #E7E2D9' }}
               >
