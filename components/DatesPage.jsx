@@ -53,21 +53,36 @@ function Legend() {
  * carry a city name, and a list on its own does not show you how much of a
  * month is already spoken for.
  */
-function MonthCard({ month, onBook, delay }) {
+function MonthCard({ month, onBookMonth, delay }) {
   const [ref, shown] = useInView(0.15);
   const { firstWeekday, dayCount } = monthShape(month.year, month.month);
 
-  // Day number -> the opening that owns it, so the grid can colour a cell
-  // without walking the openings array for every square.
-  const byDay = {};
-  month.openings.forEach((o) => o.days.forEach((d) => { byDay[d] = o; }));
+  // Every weekday is open unless it is booked, blocked, or already past.
+  // Day number -> the booking that owns it, so the grid can colour a cell
+  // without walking the array for every square.
+  const booked = month.booked || [];
+  const blocked = new Set(month.blocked || []);
+  const from = month.from || 1;
 
-  const openCount = month.openings.filter((o) => o.status === 'open').length;
-  // Three states, not two: a month with openings left, a month that is spoken
+  const bookedByDay = {};
+  booked.forEach((o) => o.days.forEach((d) => { bookedByDay[d] = o; }));
+
+  // UTC for the same reason monthShape uses it — a local-midnight Date puts
+  // the weekday a day out for anyone west of Greenwich.
+  const isWeekday = (d) => {
+    const w = new Date(Date.UTC(month.year, month.month - 1, d)).getUTCDay();
+    return w >= 1 && w <= 5;
+  };
+  const isOpen = (d) => isWeekday(d) && d >= from && !bookedByDay[d] && !blocked.has(d);
+
+  let openCount = 0;
+  for (let d = 1; d <= dayCount; d += 1) if (isOpen(d)) openCount += 1;
+
+  // Three states, not two: a month with weekdays left, a month that is spoken
   // for, and a month we have not published yet.
   const status = openCount
     ? `${openCount} open`
-    : month.openings.length
+    : booked.length
       ? 'Fully booked'
       : 'To come';
 
@@ -125,9 +140,8 @@ function MonthCard({ month, onBook, delay }) {
       <div className="grid grid-cols-7 gap-1">
         {cells.map((day, i) => {
           if (day === null) return <div key={`blank-${i}`} style={{ aspectRatio: '1 / 1' }} />;
-          const opening = byDay[day];
-          const booked = Boolean(opening) && opening.status === 'booked';
-          const open = Boolean(opening) && opening.status === 'open';
+          const isBooked = Boolean(bookedByDay[day]);
+          const open = isOpen(day);
           return (
             <div
               key={day}
@@ -136,9 +150,9 @@ function MonthCard({ month, onBook, delay }) {
                 aspectRatio: '1 / 1',
                 borderRadius: 8,
                 fontSize: 12.5,
-                fontWeight: opening ? 700 : 400,
-                color: booked ? '#FFFFFF' : open ? SLATE : 'rgba(110,104,98,0.55)',
-                backgroundColor: booked ? NAVY : 'transparent',
+                fontWeight: isBooked || open ? 700 : 400,
+                color: isBooked ? '#FFFFFF' : open ? SLATE : 'rgba(110,104,98,0.55)',
+                backgroundColor: isBooked ? NAVY : 'transparent',
                 border: open ? `1.5px solid ${SECONDARY_DEEP}` : '1.5px solid transparent'
               }}
             >
@@ -166,75 +180,72 @@ function MonthCard({ month, onBook, delay }) {
         </div>
       )}
 
+      {/* Only the booked dates get a row of their own. Listing every open
+          weekday would run to twenty rows a month and bury them; the grid
+          already says which days are free, and one button books any of them. */}
       <div
         className={month.cities ? 'mt-4' : 'mt-6'}
-        style={{ borderTop: month.openings.length ? '1px solid #EFEAE1' : 'none' }}
+        style={{ borderTop: booked.length ? '1px solid #EFEAE1' : 'none' }}
       >
-        {month.openings.map((o) => {
-          const booked = o.status === 'booked';
-          return (
-            <div
-              key={dayLabel(o.days)}
-              className="flex items-center justify-between gap-3"
-              style={{ borderBottom: '1px solid #EFEAE1', padding: '13px 0' }}
-            >
-              <div className="flex items-baseline gap-3" style={{ minWidth: 0 }}>
-                <span
-                  style={{
-                    color: booked ? MUTED : SLATE,
-                    fontSize: 14.5,
-                    fontWeight: 700,
-                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {dayLabel(o.days)}
-                </span>
-                <span style={{ color: booked ? MUTED : SLATE, fontSize: 14.5, lineHeight: 1.4 }}>
-                  {o.city}
-                </span>
-              </div>
-
-              {booked ? (
-                <span
-                  className="inline-flex items-center rounded-full"
-                  style={{
-                    backgroundColor: NAVY,
-                    color: '#FFFFFF',
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    padding: '7px 14px',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0
-                  }}
-                >
-                  Booked
-                </span>
-              ) : (
-                <button
-                  onClick={() => onBook(`${month.label} ${dayLabel(o.days)}`, o.city)}
-                  className="inline-flex items-center gap-1.5 rounded-full"
-                  style={{
-                    background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`,
-                    color: INK,
-                    fontSize: 12.5,
-                    fontWeight: 700,
-                    padding: '8px 15px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    flexShrink: 0
-                  }}
-                >
-                  Book now
-                  <ArrowRight size={13} />
-                </button>
-              )}
+        {booked.map((o) => (
+          <div
+            key={dayLabel(o.days)}
+            className="flex items-center justify-between gap-3"
+            style={{ borderBottom: '1px solid #EFEAE1', padding: '13px 0' }}
+          >
+            <div className="flex items-baseline gap-3" style={{ minWidth: 0 }}>
+              <span
+                style={{
+                  color: MUTED,
+                  fontSize: 14.5,
+                  fontWeight: 700,
+                  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {dayLabel(o.days)}
+              </span>
+              <span style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.4 }}>{o.city}</span>
             </div>
-          );
-        })}
+
+            <span
+              className="inline-flex items-center rounded-full"
+              style={{
+                backgroundColor: NAVY,
+                color: '#FFFFFF',
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '7px 14px',
+                whiteSpace: 'nowrap',
+                flexShrink: 0
+              }}
+            >
+              Booked
+            </span>
+          </div>
+        ))}
+
+        {openCount > 0 && (
+          <button
+            onClick={() => onBookMonth(month.label)}
+            className="flex items-center justify-center gap-1.5 rounded-full w-full"
+            style={{
+              marginTop: booked.length ? 16 : 0,
+              background: `linear-gradient(90deg, ${SECONDARY} 0%, ${SECONDARY_MID} 100%)`,
+              color: INK,
+              fontSize: 12.5,
+              fontWeight: 700,
+              padding: '11px 15px',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            Book a date in {month.label}
+            <ArrowRight size={13} />
+          </button>
+        )}
 
         {month.note && (
           <p style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, fontStyle: 'italic' }}>
@@ -255,6 +266,14 @@ export default function DatesPage({ onNavigate, onContactClick }) {
       date
         ? `We would like to book ${date} — ${city}. About our firm and what we would present: `
         : 'We would like to host a gathering. City and rough timing we have in mind: '
+    );
+
+  // Every weekday in a month is bookable, so the card asks for the month and
+  // lets the firm name the day rather than pre-filling one of twenty.
+  const bookMonth = (label) =>
+    onContactClick(
+      'Hosting a gathering',
+      `We would like to book a date in ${label}. The city and day we have in mind: `
     );
 
   return (
@@ -280,7 +299,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Several firms are requesting these dates.
               </p>
               <p className="mt-1.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>
-                November through January is being locked in now, on a first-come basis.
+                November through April is being locked in now, on a first-come basis.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>
@@ -295,7 +314,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
               <MonthCard
                 key={`${month.year}-${month.month}`}
                 month={month}
-                onBook={book}
+                onBookMonth={bookMonth}
                 delay={i * 80}
               />
             ))}
