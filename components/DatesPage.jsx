@@ -4,7 +4,7 @@ import {
   VideoHeader, Reveal, useInView,
   NAVY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
-import { calendar } from '../site.config';
+import { calendar, convergence } from '../site.config';
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -325,6 +325,93 @@ export default function DatesPage({ onNavigate, onContactClick }) {
               These dates coincide with Ran&rsquo;s and Jeremy&rsquo;s own travel. With enough lead
               time we can plan around another date or city — and in South Florida or Southern
               California we can often move faster.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* WHERE CAPITAL CONVERGES — the argument for picking one date over
+          another. These are other people's events; we are not affiliated with
+          any of them and the copy must never suggest otherwise. See the note
+          above `convergence` in site.config.js before editing. */}
+      <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#F4F1EA' }}>
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <div className="max-w-2xl mb-10">
+              <div
+                style={{
+                  color: SECONDARY_DEEP,
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  marginBottom: 14
+                }}
+              >
+                Planning 2027
+              </div>
+              <h2
+                className="font-bold mb-5"
+                style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
+              >
+                Where capital is already in the room.
+              </h2>
+              <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
+                Some weeks bring allocators to a city whatever we do. Holding a gathering inside
+                one of them means a firm is catching people who are already there, rather than
+                asking anyone to fly. These are the weeks worth planning around.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E7E2D9' }}>
+            {convergence.map((c, i) => (
+              <div
+                key={c.label}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 px-6 sm:px-7 py-5"
+                style={{ borderTop: i ? '1px solid #EFEAE1' : 'none' }}
+              >
+                <div style={{ flexShrink: 0, minWidth: 108 }}>
+                  <div
+                    style={{
+                      color: SLATE,
+                      fontSize: 14.5,
+                      fontWeight: 700,
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {c.window}
+                  </div>
+                  <div style={{ color: SECONDARY_DEEP, fontSize: 12, marginTop: 2 }}>{c.city}</div>
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <div className="flex items-baseline gap-2.5 flex-wrap">
+                    <span style={{ color: SLATE, fontSize: 15.5, fontWeight: 700 }}>{c.label}</span>
+                    {c.tentative && (
+                      <span
+                        style={{
+                          color: SECONDARY_DEEP,
+                          fontSize: 10,
+                          fontWeight: 700,
+                          letterSpacing: '0.12em',
+                          textTransform: 'uppercase'
+                        }}
+                      >
+                        Dates to confirm
+                      </span>
+                    )}
+                  </div>
+                  <p style={{ color: MUTED, fontSize: 14.5, lineHeight: 1.65, marginTop: 3 }}>{c.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="mt-6" style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, fontStyle: 'italic' }}>
+              These are other organizations&rsquo; events, listed because of who they bring to town.
+              We are not affiliated with any of them.
             </p>
           </Reveal>
         </div>

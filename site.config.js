@@ -101,6 +101,53 @@ module.exports = {
   //
   // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
   // CONFIDENTIAL — confirm you want these public before a deploy.
+  // Weeks when allocators are already in a city for something else. This is
+  // the reason a date is worth picking: a firm is not asking people to fly
+  // somewhere, it is catching them where they already are.
+  //
+  // NAMING THESE IS DESCRIPTIVE, NOT AFFILIATION. We are not a side event,
+  // partner or sponsor of any of them. Never use their logos, never write
+  // "official", "in partnership with" or "side event of". The NFL polices its
+  // marks hardest — run that row past counsel before it goes in a proposal.
+  //
+  // Third-party dates move. `tentative` marks the ones where sources disagree
+  // or the organiser has not fixed the date; confirm before quoting any of
+  // them to a sponsor. Verified 18 Nov 2026.
+  convergence: [
+    {
+      window: 'Jan 19 – 21',
+      city: 'Miami Beach',
+      label: 'Uncorrelated Miami',
+      note: 'Niche alternatives, pitched at family offices, RIAs and UHNW investors rather than institutions.',
+      tentative: true
+    },
+    {
+      window: 'Late January',
+      city: 'Miami Beach',
+      label: 'Miami Alts Week',
+      note: 'A run of alternatives conferences in one week. Allocators stay in town across all of it.',
+      tentative: true
+    },
+    {
+      window: 'Feb 14',
+      city: 'Los Angeles',
+      label: 'Super Bowl LXI',
+      note: 'At SoFi Stadium. The days before it are already a private-capital week across Beverly Hills.'
+    },
+    {
+      window: 'Feb 22 – 25',
+      city: 'Miami Beach',
+      label: 'Global Alts',
+      note: 'The largest capital introduction week of the year — upwards of 1,500 allocators in one convention center.'
+    },
+    {
+      window: 'May 2 – 5',
+      city: 'Beverly Hills',
+      label: 'Milken Global Conference',
+      note: 'Beyond the quarter, but it brings global capital to our own doorstep for four days.'
+    }
+  ],
+
   calendar: [
     {
       label: 'November',
