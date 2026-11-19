@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import {
-  DisplayHeading, CityList, Reveal, NAVY,
+  DisplayHeading, Reveal, NAVY,
   SECONDARY, SECONDARY_DEEP, MUTED, INK, BG
 } from './ui';
-import { cities } from '../site.config';
+import HostMap from './HostMap';
 
 export default function HomePage({ onContactClick, onNavigate }) {
   const [videoReady, setVideoReady] = React.useState(false);
@@ -179,9 +179,10 @@ export default function HomePage({ onContactClick, onNavigate }) {
         </svg>
       </section>
 
-      {/* CITIES — same block and treatment as the Events page, so the two
-          pages state the reach identically. The names animate in; the note
-          under them does the qualifying. */}
+      {/* CITIES — the map carries the names, so the text list that used to sit
+          here would only repeat them. Pins arrive one at a time, west to east;
+          `plain` drops the seasons, which belong on the Dates page where
+          someone is choosing a week rather than reading where we work. */}
       <section
         className="py-14 md:py-20 px-6"
         style={{ backgroundColor: BG, borderTop: `1px solid ${NAVY}` }}
@@ -193,8 +194,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
           >
             Cities we host in
           </p>
-          <CityList items={cities} />
-          <p className="mx-auto mt-8" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
+          <HostMap variant="plain" title="Cities where we host private investor gatherings" />
+          <p className="mx-auto mt-10" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.8, maxWidth: '58ch' }}>
             These are where we host most often. With enough lead time we have the flexibility to
             plan around a different city or a date that suits your firm.
           </p>

@@ -14,9 +14,16 @@ import { useInView, SECONDARY_DEEP, SLATE, MUTED, NAVY } from './ui';
  * coast cities sit within 90px of the Atlantic and their labels need somewhere
  * to go. Shrink that margin and BOSTON and NEWPORT run off the edge.
  *
- * A city with `windows` carries the months when capital is actually in that
- * city — filled pin, season under the name. A city without one is somewhere we
- * host that has no season of its own, and gets a hollow pin.
+ * Two variants. `seasons` (the Dates page) splits the cities: a filled pin
+ * with its months underneath where capital has a season, a hollow one where
+ * we host but the city has no season of its own. `plain` (the home page) drops
+ * the distinction and the months — there the question is only where we host,
+ * and a half-empty map would read as though half the cities were second rate.
+ *
+ * Pins arrive one at a time, scaling up from the pin point. The stagger is
+ * deliberately slow: twelve cities at 240ms is about three and a half seconds,
+ * which is long enough to read as a sweep across the country rather than a
+ * flicker. Reduced-motion skips the whole thing.
  *
  * Pin positions come from the same projection. Regenerate rather than nudging
  * these numbers: an eyeballed pin is fifty miles out and the only person who
@@ -29,7 +36,7 @@ const OUTLINE = 'M701.1 426.7L701.4 428.9L701.8 430.4L702.8 432.8L703.2 434.7L70
 
 const CITIES = [
   { name: 'San Francisco', x: 36.6, y: 244.3, dx: 14, dy: 2, anchor: 'start', windows: 'SEPT – NOV' },
-  { name: 'Los Angeles', x: 80.5, y: 333.9, dx: 14, dy: 2, anchor: 'start', windows: 'MAY – NOV' },
+  { name: 'Beverly Hills', x: 80.5, y: 333.9, dx: 14, dy: 2, anchor: 'start', windows: 'MAY – NOV' },
   { name: 'Las Vegas', x: 142.0, y: 303.7, dx: 14, dy: -12, anchor: 'start', windows: '' },
   { name: 'Salt Lake City', x: 209.2, y: 220.9, dx: 14, dy: -6, anchor: 'start', windows: 'SEPT – NOV' },
   { name: 'Dallas', x: 436.1, y: 403.9, dx: 0, dy: 30, anchor: 'middle', windows: '' },
@@ -39,14 +46,30 @@ const CITIES = [
   { name: 'Newport, RI', x: 816.5, y: 178.3, dx: 16, dy: 10, anchor: 'start', windows: '' },
   { name: 'New York', x: 780.9, y: 203.5, dx: -16, dy: 4, anchor: 'end', windows: 'MAY – OCT' },
   { name: 'Palm Beach', x: 738.7, y: 502.5, dx: 16, dy: -20, anchor: 'start', windows: 'DEC – APR' },
-  { name: 'Miami Beach', x: 740.0, y: 520.9, dx: 16, dy: 18, anchor: 'start', windows: 'DEC – APR' }
+  { name: 'Miami', x: 740.0, y: 520.9, dx: 16, dy: 18, anchor: 'start', windows: 'DEC – APR' }
 ];
 
-export default function HostMap({ title }) {
+export default function HostMap({ title, variant = 'seasons', stagger = 240 }) {
   const [ref, shown] = useInView(0.2);
+  const plain = variant === 'plain';
 
   return (
     <div ref={ref}>
+      <style>{`
+        .pic-pin {
+          opacity: 0;
+          transform: scale(0.35);
+          transform-box: view-box;
+          transition:
+            opacity 760ms ease var(--pin-delay, 0ms),
+            transform 760ms cubic-bezier(0.22, 1, 0.36, 1) var(--pin-delay, 0ms);
+        }
+        .pic-pin-in { opacity: 1; transform: scale(1); }
+        @media (prefers-reduced-motion: reduce) {
+          .pic-pin { transition: none; opacity: 1; transform: none; }
+        }
+      `}</style>
+
       <svg
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
         role="img"
@@ -56,22 +79,23 @@ export default function HostMap({ title }) {
         <path d={OUTLINE} fill="#E6E0D4" stroke="#D2C9B8" strokeWidth="1.2" />
 
         {CITIES.map((c, i) => {
-          const anchored = Boolean(c.windows);
+          const filled = plain || Boolean(c.windows);
           return (
             <g
               key={c.name}
+              className={`pic-pin${shown ? ' pic-pin-in' : ''}`}
               style={{
-                opacity: shown ? 1 : 0,
-                transition: `opacity 480ms ease ${140 + i * 55}ms`
+                '--pin-delay': `${i * stagger}ms`,
+                transformOrigin: `${c.x}px ${c.y}px`
               }}
             >
-              {anchored && <circle cx={c.x} cy={c.y} r="13" fill={NAVY} opacity="0.13" />}
+              {filled && <circle cx={c.x} cy={c.y} r="13" fill={NAVY} opacity="0.13" />}
               <circle
                 cx={c.x}
                 cy={c.y}
-                r={anchored ? 6 : 5}
-                fill={anchored ? NAVY : '#FFFFFF'}
-                stroke={anchored ? NAVY : SECONDARY_DEEP}
+                r={filled ? 6 : 5}
+                fill={filled ? NAVY : '#FFFFFF'}
+                stroke={filled ? NAVY : SECONDARY_DEEP}
                 strokeWidth="2"
               />
               <text
@@ -79,7 +103,7 @@ export default function HostMap({ title }) {
                 y={c.y + c.dy}
                 textAnchor={c.anchor}
                 style={{
-                  fill: anchored ? SLATE : MUTED,
+                  fill: filled ? SLATE : MUTED,
                   fontSize: 16,
                   fontWeight: 700,
                   letterSpacing: '0.04em',
@@ -88,7 +112,7 @@ export default function HostMap({ title }) {
               >
                 {c.name.toUpperCase()}
               </text>
-              {anchored && (
+              {!plain && c.windows && (
                 <text
                   x={c.x + c.dx}
                   y={c.y + c.dy + 17}
@@ -109,19 +133,21 @@ export default function HostMap({ title }) {
         })}
       </svg>
 
-      <div className="flex flex-wrap items-center gap-x-7 gap-y-2 mt-5">
-        <span className="inline-flex items-center gap-2.5" style={{ color: MUTED, fontSize: 13 }}>
-          <span aria-hidden="true" style={{ width: 12, height: 12, borderRadius: 999, background: NAVY, flexShrink: 0 }} />
-          The window when capital is in town
-        </span>
-        <span className="inline-flex items-center gap-2.5" style={{ color: MUTED, fontSize: 13 }}>
-          <span
-            aria-hidden="true"
-            style={{ width: 12, height: 12, borderRadius: 999, background: '#FFFFFF', border: `2px solid ${SECONDARY_DEEP}`, flexShrink: 0 }}
-          />
-          We host here as well
-        </span>
-      </div>
+      {!plain && (
+        <div className="flex flex-wrap items-center gap-x-7 gap-y-2 mt-5">
+          <span className="inline-flex items-center gap-2.5" style={{ color: MUTED, fontSize: 13 }}>
+            <span aria-hidden="true" style={{ width: 12, height: 12, borderRadius: 999, background: NAVY, flexShrink: 0 }} />
+            The window when capital is in town
+          </span>
+          <span className="inline-flex items-center gap-2.5" style={{ color: MUTED, fontSize: 13 }}>
+            <span
+              aria-hidden="true"
+              style={{ width: 12, height: 12, borderRadius: 999, background: '#FFFFFF', border: `2px solid ${SECONDARY_DEEP}`, flexShrink: 0 }}
+            />
+            We host here as well
+          </span>
+        </div>
+      )}
     </div>
   );
 }
