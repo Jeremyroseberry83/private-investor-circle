@@ -42,7 +42,7 @@ const CITIES = [
   { name: 'Dallas', x: 436.1, y: 403.9, dx: 0, dy: 30, anchor: 'middle', windows: '' },
   { name: 'Nashville', x: 598.5, y: 327.7, dx: 14, dy: 14, anchor: 'start', windows: '' },
   { name: 'Chicago', x: 574.5, y: 212.8, dx: 0, dy: -16, anchor: 'middle', windows: '' },
-  { name: 'Boston', x: 815.6, y: 160.2, dx: 16, dy: -6, anchor: 'start', windows: '' },
+  { name: 'Boston', x: 815.6, y: 160.2, dx: 16, dy: -6, anchor: 'start', windows: 'APR \u00b7 OCT' },
   { name: 'Newport, RI', x: 816.5, y: 178.3, dx: 16, dy: 10, anchor: 'start', windows: '' },
   { name: 'New York', x: 780.9, y: 203.5, dx: -16, dy: 4, anchor: 'end', windows: 'MAY – OCT' },
   { name: 'Palm Beach', x: 738.7, y: 502.5, dx: 16, dy: -20, anchor: 'start', windows: 'DEC – APR' },

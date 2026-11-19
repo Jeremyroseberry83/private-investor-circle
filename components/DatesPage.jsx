@@ -331,10 +331,12 @@ export default function DatesPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
-      {/* HOW CAPITAL MOVES THROUGH THE YEAR — the argument for picking one date
-          over another. Seasons and cities only: no conference is named here,
-          on purpose. The reasoning and the real dates are in the note above
-          `convergence` in site.config.js. Read it before editing. */}
+      {/* THE 2027 WEEKS — other organizations' conferences, named with their real
+          dates. The posture is the point: we publish their calendar for free,
+          which is the opposite of farming their rooms, and it is why naming
+          them is safe. Do not claim a partnership with any of them — that is a
+          factual claim about a relationship we do not have. See the note above
+          `convergence` in site.config.js before editing. */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#F4F1EA' }}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
@@ -358,9 +360,10 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Where capital relationships are already gathering in 2027.
               </h2>
               <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-                Family offices move with the seasons &mdash; south for the winter, north through
-                spring, out east in August, west in the fall. A gathering held inside one of those
-                windows catches people where they already are, rather than asking anyone to fly.
+                We would rather our firms saw the whole calendar than only ours. These are the
+                weeks that already bring allocators to a city, run by other organizations &mdash;
+                several of which we attend ourselves. A gathering held inside one of them catches
+                people who are there anyway, rather than asking anyone to fly.
               </p>
             </div>
           </Reveal>
@@ -415,8 +418,9 @@ export default function DatesPage({ onNavigate, onContactClick }) {
 
           <Reveal>
             <p className="mt-6" style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, fontStyle: 'italic' }}>
-              We hold the specific weeks behind each of these. Tell us where your investors are
-              and we&rsquo;ll tell you which window is worth your firm&rsquo;s time.
+              We are not affiliated with any of these and we are not paid to list them. Dates
+              marked &ldquo;to confirm&rdquo; are not yet fixed by the organizer &mdash; check with
+              them before you book travel.
             </p>
           </Reveal>
         </div>
