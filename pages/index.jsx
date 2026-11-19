@@ -15,8 +15,11 @@ const TITLE = `${company.name} — Private Investor Gatherings`;
 const DESCRIPTION =
   'Your firm presents exclusively to a curated room of principals, family offices, wealth managers and RIAs — typically thirty to fifty, sized to your offering. Private investor gatherings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
 
-export default function Site() {
-  const [currentPage, setCurrentPage] = useState('home');
+export default function Site({ initialPage = 'home' }) {
+  // initialPage lets a real route render a specific page. /dates exists so the
+  // calendar can be linked to from outside the site — a PDF, an email — which
+  // state alone could not do.
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [contactContext, setContactContext] = useState(null);
