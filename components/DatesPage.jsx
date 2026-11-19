@@ -4,6 +4,7 @@ import {
   VideoHeader, Reveal, useInView,
   NAVY, SECONDARY, SECONDARY_MID, SECONDARY_DEEP, SLATE, MUTED, INK, BG
 } from './ui';
+import HostMap from './HostMap';
 import { calendar, convergence } from '../site.config';
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -348,13 +349,13 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                   marginBottom: 14
                 }}
               >
-                Planning 2027
+                Planning ahead
               </div>
               <h2
                 className="font-bold mb-5"
                 style={{ color: SLATE, fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: 1.14, letterSpacing: '-0.025em' }}
               >
-                Where capital is already in the room.
+                Where capital relationships are already gathering in 2027.
               </h2>
               <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
                 Some weeks bring allocators to a city whatever we do. Holding a gathering inside
@@ -363,6 +364,10 @@ export default function DatesPage({ onNavigate, onContactClick }) {
               </p>
             </div>
           </Reveal>
+
+          <div className="mb-10">
+            <HostMap title="The cities where capital gathers in 2027" />
+          </div>
 
           <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E7E2D9' }}>
             {convergence.map((c, i) => (
