@@ -300,7 +300,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Several firms are requesting these dates.
               </p>
               <p className="mt-1.5" style={{ color: MUTED, fontSize: 15.5, lineHeight: 1.75 }}>
-                November through April is being locked in now, on a first-come basis.
+                Through December 2027 is being locked in now, on a first-come basis.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>

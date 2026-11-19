@@ -182,15 +182,35 @@ module.exports = {
     }
   ],
 
+  // The calendar the Dates page draws. November 2026 through December 2027.
+  //
+  // EVERY WEEKDAY IS OPEN unless something below says otherwise. That is the
+  // programmatic posture: a firm planning a series should see a year it can
+  // book into, not a short list of leftovers. Weekends are never offered.
+  //
+  //   from     first day of the month still on offer — the current month only,
+  //            because it is already underway. Bump it as the month passes.
+  //   booked   days spoken for. Navy cell, and a row of their own underneath.
+  //            `city` is optional; a booked date with no city settled yet
+  //            still shows as booked.
+  //   blocked  days we are not offering. Same plain cell as a weekend, and no
+  //            row underneath — the reason lives in a comment here, not on the
+  //            public page.
+  //
+  //   cities   leans on the season (see `convergence`): Florida through the
+  //            winter, the north and west once it warms. It is a lean, not a
+  //            rule — Miami in June is fine if someone asks for it.
+  //
+  // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
+  // CONFIDENTIAL — confirm you want these public before a deploy.
   calendar: [
     {
       label: 'November',
       year: 2026,
       month: 11,
       cities: 'Palm Beach · Miami · Beverly Hills · Las Vegas',
-      from: 16,
+      from: 18,
       booked: [
-        { days: [17], city: 'Palm Beach' },
         { days: [18, 19, 20] }
       ]
     },
@@ -203,8 +223,7 @@ module.exports = {
         { days: [2] },
         { days: [4] }
       ],
-      // The 3rd sits between two booked evenings, so it comes off the board.
-      // The 21st onward is the Christmas blackout.
+      // The 3rd sits between two booked evenings. The 21st onward is Christmas.
       blocked: [3, 21, 22, 23, 24, 25, 28, 29, 30, 31]
     },
     {
@@ -223,9 +242,7 @@ module.exports = {
       year: 2027,
       month: 2,
       cities: 'Palm Beach · Miami · Beverly Hills',
-      // The 11th and 12th are held for a gathering ahead of the Super Bowl.
-      // The 14th is the game itself and falls on a Sunday in 2027, so it is
-      // already closed — listed anyway so the intent survives.
+      // The 11th and 12th are held for a gathering ahead of the Super Bowl. The 14th is the game, and a Sunday.
       blocked: [11, 12, 14]
     },
     {
@@ -239,6 +256,64 @@ module.exports = {
       year: 2027,
       month: 4,
       cities: 'Palm Beach · Miami · Beverly Hills'
+    },
+    {
+      label: 'May',
+      year: 2027,
+      month: 5,
+      cities: 'Beverly Hills · New York · Las Vegas',
+      // Memorial Day.
+      blocked: [31]
+    },
+    {
+      label: 'June',
+      year: 2027,
+      month: 6,
+      cities: 'Beverly Hills · New York · Las Vegas'
+    },
+    {
+      label: 'July',
+      year: 2027,
+      month: 7,
+      cities: 'Beverly Hills · New York · Las Vegas',
+      // Independence Day, observed.
+      blocked: [5]
+    },
+    {
+      label: 'August',
+      year: 2027,
+      month: 8,
+      cities: 'Beverly Hills · New York · Las Vegas'
+    },
+    {
+      label: 'September',
+      year: 2027,
+      month: 9,
+      cities: 'Beverly Hills · New York · San Francisco · Salt Lake City',
+      // Labor Day.
+      blocked: [6]
+    },
+    {
+      label: 'October',
+      year: 2027,
+      month: 10,
+      cities: 'Beverly Hills · New York · San Francisco · Salt Lake City'
+    },
+    {
+      label: 'November',
+      year: 2027,
+      month: 11,
+      cities: 'Beverly Hills · New York · San Francisco · Salt Lake City',
+      // Thanksgiving and the Friday after.
+      blocked: [25, 26]
+    },
+    {
+      label: 'December',
+      year: 2027,
+      month: 12,
+      cities: 'Palm Beach · Miami · Beverly Hills',
+      // The Christmas blackout again, same as 2026.
+      blocked: [20, 21, 22, 23, 24, 27, 28, 29, 30, 31]
     }
   ],
 
