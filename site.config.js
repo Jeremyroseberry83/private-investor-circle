@@ -376,5 +376,48 @@ module.exports = {
     { name: 'About', id: 'about' }
   ],
 
+  // Every page has its own URL. The site swaps components through state, but
+  // state is not an address — a page nobody can link to cannot be sent in an
+  // email, shared, or indexed. Each id below has a route file in pages/ that
+  // renders the site with that page already open, and the nav pushes these
+  // paths so the address bar always matches what is on screen.
+  //
+  // Adding a page means three things: a case in renderPage, an entry here, and
+  // a route file. Miss the route file and the link 404s.
+  paths: {
+    home: '/',
+    events: '/events',
+    plan: '/plan-yours',
+    faqs: '/faqs',
+    about: '/about',
+    dates: '/dates'
+  },
+
+  // Title and description per page, so a shared link says what it is rather
+  // than repeating the home page everywhere.
+  meta: {
+    home: null,
+    events: {
+      title: 'Past Gatherings',
+      description: 'Private investor gatherings we have hosted — the rooms, the cities and the companies we have worked with.'
+    },
+    plan: {
+      title: 'Plan Your Gathering',
+      description: 'How a private investor gathering comes together: one firm in the room, a guest list built around your target investor, and every detail handled.'
+    },
+    faqs: {
+      title: 'Questions',
+      description: 'What a Private Investor Circle gathering costs, who attends, how the guest list is built, and what you leave with.'
+    },
+    about: {
+      title: 'About',
+      description: 'Ran Gimeno and Jeremy Roseberry host private investor gatherings for firms raising capital across the United States.'
+    },
+    dates: {
+      title: 'Available Dates',
+      description: 'Open dates through December 2027, the cities we host in, and the weeks that already bring allocators to town.'
+    }
+  },
+
   translateLanguages: 'en,es,fr,pt,he,zh-CN'
 };

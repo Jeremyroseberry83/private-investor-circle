@@ -9,16 +9,19 @@ import DatesPage from '../components/DatesPage';
 import AboutPage from '../components/AboutPage';
 import ContactForm from '../components/ContactForm';
 import Translate from '../components/Translate';
-import { company, colors, nav as navItems } from '../site.config';
+import { useRouter } from 'next/router';
+import { company, colors, nav as navItems, paths, meta as pageMeta } from '../site.config';
 
 const TITLE = `${company.name} — Private Investor Gatherings`;
 const DESCRIPTION =
   'Your firm presents exclusively to a curated room of principals, family offices, wealth managers and RIAs — typically thirty to fifty, sized to your offering. Private investor gatherings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
 
 export default function Site({ initialPage = 'home' }) {
-  // initialPage lets a real route render a specific page. /dates exists so the
-  // calendar can be linked to from outside the site — a PDF, an email — which
-  // state alone could not do.
+  // Every page has a route file that renders this component with its own
+  // initialPage. State still does the swapping, but the URL is the source of
+  // truth — so a link to /faqs opens the FAQs, and clicking FAQs changes the
+  // address bar to match.
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
@@ -41,9 +44,20 @@ export default function Site({ initialPage = 'home' }) {
   // back — a footer that can't get you home isn't a footer.
   const footerLinks = [{ name: 'Home', id: 'home' }, ...navItems];
 
+  // If Next reuses this component across routes rather than remounting it, the
+  // prop changes and the state would not. Keep them in step either way.
+  useEffect(() => {
+    setCurrentPage(initialPage);
+  }, [initialPage]);
+
   const handleNavClick = (pageId) => {
-    setCurrentPage(pageId);
     setMobileMenuOpen(false);
+    const next = paths[pageId] || '/';
+    if (router && router.push && router.asPath !== next) {
+      router.push(next);
+      return;
+    }
+    setCurrentPage(pageId);
     window.scrollTo(0, 0);
   };
 
@@ -64,26 +78,32 @@ export default function Site({ initialPage = 'home' }) {
     }
   };
 
+  // Per-page title and description, falling back to the site's own.
+  const pm = pageMeta[currentPage];
+  const PAGE_TITLE = pm ? `${pm.title} — ${company.name}` : TITLE;
+  const PAGE_DESC = pm ? pm.description : DESCRIPTION;
+  const CANONICAL = `https://${company.domain}${paths[currentPage] === '/' ? '' : paths[currentPage] || ''}`;
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: colors.BG }}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{TITLE}</title>
-        <meta name="description" content={DESCRIPTION} />
-        <link rel="canonical" href={`https://${company.domain}`} />
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESC} />
+        <link rel="canonical" href={CANONICAL} />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={company.name} />
-        <meta property="og:url" content={`https://${company.domain}`} />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:url" content={CANONICAL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESC} />
         <meta property="og:image" content={`https://${company.domain}/images/og-cover.jpg`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESC} />
         <meta name="twitter:image" content={`https://${company.domain}/images/og-cover.jpg`} />
       </Head>
 
