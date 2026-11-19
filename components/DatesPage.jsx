@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Calendar } from 'lucide-react';
 import {
   VideoHeader, Reveal, useInView,
@@ -271,6 +271,25 @@ export default function DatesPage({ onNavigate, onContactClick }) {
 
   // Every weekday in a month is bookable, so the card asks for the month and
   // lets the firm name the day rather than pre-filling one of twenty.
+  // Four at a time, starting on the month we are in. The select moves the
+  // window rather than picking a single month, so the row never goes ragged
+  // and the next three months are always in view beside the one chosen.
+  const WINDOW = 4;
+  const maxStart = Math.max(0, calendar.length - WINDOW);
+  const clampStart = (i) => Math.max(0, Math.min(i, maxStart));
+  // The select keeps whatever was picked; the window is the clamped version of
+  // it. Choosing December 2027 shows September through December with December
+  // in view, rather than snapping the control back to September as if the
+  // choice had been refused.
+  const [picked, setPicked] = useState(0);
+  const start = clampStart(picked);
+  const visible = calendar.slice(start, start + WINDOW);
+  const first = visible[0];
+  const last = visible[visible.length - 1];
+  const windowLabel = first
+    ? `${first.label} ${first.year} \u2014 ${last.label} ${last.year}`
+    : '';
+
   const bookMonth = (label) =>
     onContactClick(
       'Hosting a gathering',
@@ -308,10 +327,47 @@ export default function DatesPage({ onNavigate, onContactClick }) {
             </div>
           </div>
 
+          {/* Four months at a time. Fourteen cards down the page made the reader
+              scroll past a year of grids to find the one they wanted; the
+              window shows what is next and the select jumps anywhere. */}
+          <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
+            <p style={{ color: SLATE, fontSize: 15, fontWeight: 600 }}>
+              {windowLabel}
+            </p>
+            <label className="inline-flex items-center gap-2.5" style={{ color: MUTED, fontSize: 13.5 }}>
+              Jump to
+              <select
+                value={picked}
+                onChange={(e) => setPicked(Number(e.target.value))}
+                style={{
+                  appearance: 'none',
+                  backgroundColor: '#FFFFFF',
+                  border: `1px solid ${SECONDARY_DEEP}`,
+                  borderRadius: 999,
+                  color: SLATE,
+                  fontSize: 13.5,
+                  fontWeight: 600,
+                  padding: '8px 34px 8px 15px',
+                  cursor: 'pointer',
+                  backgroundImage:
+                    `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'><path d='M1 1l4.5 4.5L10 1' fill='none' stroke='%237A6752' stroke-width='1.6' stroke-linecap='round'/></svg>")`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 14px center'
+                }}
+              >
+                {calendar.map((m, i) => (
+                  <option key={`${m.year}-${m.month}`} value={i}>
+                    {m.label} {m.year}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
           {/* items-start: months carry different numbers of openings, and stretched
               cards would leave the short ones as tall boxes of white space. */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-start">
-            {calendar.map((month, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 items-start">
+            {visible.map((month, i) => (
               <MonthCard
                 key={`${month.year}-${month.month}`}
                 month={month}
