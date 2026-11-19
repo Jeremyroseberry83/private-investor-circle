@@ -101,50 +101,84 @@ module.exports = {
   //
   // Seeded from the Fall Dates 2026 sheet, which is marked PRIVATE &
   // CONFIDENTIAL — confirm you want these public before a deploy.
-  // Weeks when allocators are already in a city for something else. This is
-  // the reason a date is worth picking: a firm is not asking people to fly
-  // somewhere, it is catching them where they already are.
+  // How capital moves through the year.
   //
-  // NAMING THESE IS DESCRIPTIVE, NOT AFFILIATION. We are not a side event,
-  // partner or sponsor of any of them. Never use their logos, never write
-  // "official", "in partnership with" or "side event of". The NFL polices its
-  // marks hardest — run that row past counsel before it goes in a proposal.
+  // DELIBERATELY UNNAMED. An earlier draft listed the actual conferences by
+  // name. It was dropped: naming them makes us look like we farm other
+  // people's rooms, and Ran and Jeremy attend several of these. Being seen to
+  // poach around them is how you stop getting invited. The seasonal read is
+  // also the better story — it says we understand the rhythm rather than that
+  // we follow somebody else's calendar — and it never goes stale.
   //
-  // Third-party dates move. `tentative` marks the ones where sources disagree
-  // or the organiser has not fixed the date; confirm before quoting any of
-  // them to a sponsor. Verified 18 Nov 2026.
+  // The real dates belong in the sponsor conversation, not on the page.
+  // Verified 18 Nov 2026, for internal use:
+  //
+  //   Jan 19-21      Miami Beach      Uncorrelated Miami (sources disagree)
+  //   Late Jan       Miami Beach      Miami Alts Week
+  //   Feb 14         Inglewood, CA    Super Bowl LXI, SoFi Stadium
+  //   Feb 22-25      Miami Beach      iConnections Global Alts
+  //   Mar 8-11       Wellington, FL   Family office retreat, PB Polo & CC
+  //   Mar 9          New York         Opal Family Office Winter Forum
+  //   May 2-5        Beverly Hills    Milken Global Conference
+  //   Jun 7-13       New York         Tech Week
+  //   Jun 8-9        New York         iConnections Global Alts NY
+  //   Aug 31-Sep 1   Water Mill, NY   Opal Legacy Summit
+  //   Sep 13-19      Los Angeles      Tech Week
+  //   Sep 14-15      New York         Family office forum, Times Square
+  //   Oct 4-10       San Francisco    Tech Week
+  //   Early Dec      Miami Beach      Art Basel (2027 dates unannounced)
+  //
+  //   Jets & Capital: jet-hangar gatherings, roughly 85% allocators. Their
+  //   2027 destination is not published yet — their site has a "2027 Events"
+  //   heading with no city under it. Worth watching.
   convergence: [
     {
-      window: 'Jan 19 – 21',
+      window: 'January – February',
       city: 'Miami Beach',
-      label: 'Uncorrelated Miami',
-      note: 'Niche alternatives, pitched at family offices, RIAs and UHNW investors rather than institutions.',
-      tentative: true
+      label: 'The Florida season opens',
+      note: 'More allocators pass through South Florida in these eight weeks than anywhere else all year. Winter is when the alternatives calendar concentrates.'
     },
     {
-      window: 'Late January',
-      city: 'Miami Beach',
-      label: 'Miami Alts Week',
-      note: 'A run of alternatives conferences in one week. Allocators stay in town across all of it.',
-      tentative: true
-    },
-    {
-      window: 'Feb 14',
+      window: 'February',
       city: 'Los Angeles',
-      label: 'Super Bowl LXI',
-      note: 'At SoFi Stadium. The days before it are already a private-capital week across Beverly Hills.'
+      label: 'Championship weekend',
+      note: 'The city fills, hotels book out months ahead, and a private capital week forms around the game without anyone organizing one.'
     },
     {
-      window: 'Feb 22 – 25',
-      city: 'Miami Beach',
-      label: 'Global Alts',
-      note: 'The largest capital introduction week of the year — upwards of 1,500 allocators in one convention center.'
+      window: 'March',
+      city: 'Palm Beach · New York',
+      label: 'The season turns north',
+      note: 'The tail of the Florida winter, and the first large family office gatherings of the year back up the coast.'
     },
     {
-      window: 'May 2 – 5',
+      window: 'May',
       city: 'Beverly Hills',
-      label: 'Milken Global Conference',
-      note: 'Beyond the quarter, but it brings global capital to our own doorstep for four days.'
+      label: 'Global capital comes west',
+      note: 'One week each spring when the people who allocate internationally are all in Southern California at once.'
+    },
+    {
+      window: 'June',
+      city: 'New York',
+      label: 'The city is at its fullest',
+      note: 'Venture programming and allocator meetings land in the same week. Nobody who matters is out of town.'
+    },
+    {
+      window: 'Late August',
+      city: 'The Hamptons',
+      label: 'Families are already out east',
+      note: 'Through Labor Day, nobody is travelling to a meeting — they are already there, and more relaxed than they will be all year.'
+    },
+    {
+      window: 'September – October',
+      city: 'Los Angeles · San Francisco',
+      label: 'Founder season moves up the coast',
+      note: 'Los Angeles first, the Bay Area a few weeks later. The two no longer run back to back, so the window is wider than it used to be.'
+    },
+    {
+      window: 'December',
+      city: 'Miami Beach',
+      label: 'The year closes where it opened',
+      note: 'The first week of December brings collectors and capital back to South Florida, and the season begins again.'
     }
   ],
 

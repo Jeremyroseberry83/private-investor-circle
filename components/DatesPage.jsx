@@ -331,10 +331,10 @@ export default function DatesPage({ onNavigate, onContactClick }) {
         </div>
       </section>
 
-      {/* WHERE CAPITAL CONVERGES — the argument for picking one date over
-          another. These are other people's events; we are not affiliated with
-          any of them and the copy must never suggest otherwise. See the note
-          above `convergence` in site.config.js before editing. */}
+      {/* HOW CAPITAL MOVES THROUGH THE YEAR — the argument for picking one date
+          over another. Seasons and cities only: no conference is named here,
+          on purpose. The reasoning and the real dates are in the note above
+          `convergence` in site.config.js. Read it before editing. */}
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#F4F1EA' }}>
         <div className="max-w-5xl mx-auto">
           <Reveal>
@@ -358,9 +358,9 @@ export default function DatesPage({ onNavigate, onContactClick }) {
                 Where capital relationships are already gathering in 2027.
               </h2>
               <p style={{ color: MUTED, fontSize: 16.5, lineHeight: 1.8 }}>
-                Some weeks bring allocators to a city whatever we do. Holding a gathering inside
-                one of them means a firm is catching people who are already there, rather than
-                asking anyone to fly. These are the weeks worth planning around.
+                Family offices move with the seasons &mdash; south for the winter, north through
+                spring, out east in August, west in the fall. A gathering held inside one of those
+                windows catches people where they already are, rather than asking anyone to fly.
               </p>
             </div>
           </Reveal>
@@ -415,8 +415,8 @@ export default function DatesPage({ onNavigate, onContactClick }) {
 
           <Reveal>
             <p className="mt-6" style={{ color: MUTED, fontSize: 14, lineHeight: 1.7, fontStyle: 'italic' }}>
-              These are other organizations&rsquo; events, listed because of who they bring to town.
-              We are not affiliated with any of them.
+              We hold the specific weeks behind each of these. Tell us where your investors are
+              and we&rsquo;ll tell you which window is worth your firm&rsquo;s time.
             </p>
           </Reveal>
         </div>

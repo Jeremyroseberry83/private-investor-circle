@@ -36,10 +36,10 @@ const CITIES = [
   { name: 'Nashville', x: 598.5, y: 327.7, dx: 14, dy: 14, anchor: 'start', windows: '' },
   { name: 'Chicago', x: 574.5, y: 212.8, dx: 0, dy: -16, anchor: 'middle', windows: '' },
   { name: 'Boston', x: 815.6, y: 160.2, dx: 16, dy: -6, anchor: 'start', windows: '' },
-  { name: 'Newport, RI', x: 816.5, y: 178.3, dx: 16, dy: 14, anchor: 'start', windows: 'JUL' },
-  { name: 'New York', x: 780.9, y: 203.5, dx: -16, dy: 4, anchor: 'end', windows: 'MAR · JUN' },
-  { name: 'Palm Beach', x: 738.7, y: 502.5, dx: 16, dy: -6, anchor: 'start', windows: '' },
-  { name: 'Miami Beach', x: 740.0, y: 520.9, dx: 16, dy: 16, anchor: 'start', windows: 'JAN · FEB · DEC' }
+  { name: 'Newport, RI', x: 816.5, y: 178.3, dx: 16, dy: 10, anchor: 'start', windows: '' },
+  { name: 'New York', x: 780.9, y: 203.5, dx: -16, dy: 4, anchor: 'end', windows: 'MAR · JUN · SEP' },
+  { name: 'Palm Beach', x: 738.7, y: 502.5, dx: 16, dy: -20, anchor: 'start', windows: 'MAR' },
+  { name: 'Miami Beach', x: 740.0, y: 520.9, dx: 16, dy: 18, anchor: 'start', windows: 'JAN · FEB · DEC' }
 ];
 
 export default function HostMap({ title }) {
