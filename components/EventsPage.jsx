@@ -101,16 +101,10 @@ const PAST_EVENTS = [
     image: '/images/events/art-basel-networking.jpg',
     url: ''
   },
-  {
-    // The presenting firm is deliberately unnamed on this one — the eyebrow
-    // carries the sector and nothing else.
-    title: 'NBA Acquisition',
-    firm: 'Professional Sports',
-    place: 'Beverly Hills',
-    blurb: 'A private, in-depth gathering with principals at a residence in the Hills regarding a Las Vegas NBA expansion team and arena opportunity.',
-    image: '/images/events/nba-acquisition.jpg',
-    url: ''
-  },
+  // Pulled from the page on 23 Nov 2026 at Jeremy's request — the NBA
+  // acquisition gathering is not shown publicly. The card is gone, not
+  // hidden; the cover image is still in public/images/events/ if it is ever
+  // restored. Do not re-add it without asking.
   {
     title: 'New York Investor Gathering',
     firm: 'Deep Technology',
