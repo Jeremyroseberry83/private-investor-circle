@@ -14,7 +14,7 @@ import { company, colors, nav as navItems, paths, meta as pageMeta } from '../si
 
 const TITLE = `${company.name} — Private Investor Gatherings`;
 const DESCRIPTION =
-  'Your firm presents exclusively to a curated room of principals, family offices, wealth managers and RIAs — typically thirty to fifty, sized to your offering. Private investor gatherings hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
+  'Gatherings designed to give you access to private capital — for your raise, your cause or your charity. Your firm presents exclusively to a curated room of thirty to fifty principals, family offices, wealth managers and RIAs, hosted by Ran Gimeno and Jeremy Roseberry in Palm Beach, Miami, New York, Chicago, Dallas and Beverly Hills.';
 
 export default function Site({ initialPage = 'home' }) {
   // Every page has a route file that renders this component with its own

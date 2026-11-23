@@ -172,7 +172,7 @@ export default function EventsPage({ onNavigate, onContactClick }) {
         eyebrow="Private investor event"
         title="A capital gathering with the principals and advisors"
         accent="worth being in relationship with."
-        subtitle="Only one company presents"
+        subtitle="One company presents · access to private capital"
         subtitleCaps
         maxWidth={1160}
         titleSize="min(6vw, clamp(1.5rem, 3.4vw, 2.55rem))"

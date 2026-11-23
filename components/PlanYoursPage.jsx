@@ -210,7 +210,7 @@ export default function PlanYoursPage({ onNavigate, onContactClick }) {
         eyebrow="Plan yours"
         title="We work with the firm presenting"
         accent="and curate the allocators attending."
-        subtitle="Both start the same way: a conversation"
+        subtitle="Gatherings designed to give you access to private capital"
         subtitleCaps
       />
 

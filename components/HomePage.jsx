@@ -77,8 +77,8 @@ export default function HomePage({ onContactClick, onNavigate }) {
                 letterSpacing: '-0.02em'
               }}
             >
-              Trusted relationships{' '}
-              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>in capital markets.</span>
+              Giving companies access to{' '}
+              <span style={{ color: SECONDARY, fontStyle: 'italic' }}>private capital.</span>
             </h1>
 
             <p

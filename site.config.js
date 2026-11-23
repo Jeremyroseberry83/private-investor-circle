@@ -399,23 +399,23 @@ module.exports = {
     home: null,
     events: {
       title: 'Past Gatherings',
-      description: 'Private investor gatherings we have hosted — the rooms, the cities and the companies we have worked with.'
+      description: 'Gatherings we have hosted that gave companies access to private capital — the rooms, the cities and the firms we have worked with.'
     },
     plan: {
       title: 'Plan Your Gathering',
-      description: 'How a private investor gathering comes together: one firm in the room, a guest list built around your target investor, and every detail handled.'
+      description: 'How a gathering designed to give you access to private capital comes together: one firm in the room, a guest list built around your target investor, and every detail handled.'
     },
     faqs: {
       title: 'Questions',
-      description: 'What a Private Investor Circle gathering costs, who attends, how the guest list is built, and what you leave with.'
+      description: 'What a gathering costs, who attends, how the guest list is built, and what access to private capital actually looks like on the night.'
     },
     about: {
       title: 'About',
-      description: 'Ran Gimeno and Jeremy Roseberry host private investor gatherings for firms raising capital across the United States.'
+      description: 'Ran Gimeno and Jeremy Roseberry host gatherings that give companies access to private capital, across the United States.'
     },
     dates: {
       title: 'Available Dates',
-      description: 'Open dates through December 2027, the cities we host in, and the weeks that already bring allocators to town.'
+      description: 'Open dates through December 2027 for a gathering that gives you access to private capital — for your raise, your cause or your charity.'
     }
   },
 

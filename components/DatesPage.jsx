@@ -304,7 +304,7 @@ export default function DatesPage({ onNavigate, onContactClick }) {
         eyebrow="Private investor gatherings"
         title="Available dates"
         accent="for your firm."
-        subtitle="Ran and Jeremy host only a few gatherings a month, so each room stays genuinely curated. These openings follow their own travel."
+        subtitle="Access to private capital for your raise, your cause or your charity. Ran and Jeremy host only a few gatherings a month, so each room stays genuinely curated."
       />
 
       <section className="py-16 md:py-24 px-6" style={{ backgroundColor: BG }}>
@@ -427,6 +427,28 @@ export default function DatesPage({ onNavigate, onContactClick }) {
           <div className="mb-10">
             <HostMap title="The cities where capital gathers in 2027" />
           </div>
+
+          {/* The header has to carry the posture, because a bare list of other
+              people's conferences reads as circling them. "Support" is an
+              opinion and is safe; "partner" would be a claim about a
+              relationship we do not have. */}
+          <Reveal>
+            <div className="flex items-baseline justify-between gap-4 flex-wrap mb-4">
+              <h3
+                className="font-bold"
+                style={{ color: SLATE, fontSize: 19, letterSpacing: '-0.01em' }}
+              >
+                Gatherings we support
+              </h3>
+              <span style={{ color: SECONDARY_DEEP, fontSize: 12.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                2027 &middot; nationwide
+              </span>
+            </div>
+            <p className="mb-6" style={{ color: MUTED, fontSize: 15, lineHeight: 1.75, maxWidth: '62ch' }}>
+              Other people&rsquo;s rooms, published here because they are worth your calendar. We
+              take nothing for listing them.
+            </p>
+          </Reveal>
 
           <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: '#FFFFFF', border: '1px solid #E7E2D9' }}>
             {convergence.map((c, i) => (
